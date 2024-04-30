@@ -1,0 +1,39 @@
+<ion-list-header no-lines>
+  抄送
+  <button
+    ion-button
+    icon-only
+    item-end
+    clear
+    type="button"
+    (tap)="addUser()"
+    *ngIf="ccPermission!==0"
+  >
+    <ion-icon name="md-add"></ion-icon>
+  </button>
+</ion-list-header>
+
+<div class="user-container" *ngIf="users.length>0">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-3 *ngFor="let user of users; let i = index">
+        <div class="img-container">
+          <img src="assets/imgs/avatar/{{user.userIcon||'00.png'}}" />
+          <!-- <img
+                        (tap)="deleteUser(user.userId)"
+                        class="delete-user"
+                        src="assets/imgs/buttons/delete-grey.png"
+                        *ngIf="ccPermission===2"
+                    /> -->
+          <ion-icon
+            (tap)="deleteUser(user.userId)"
+            class="delete-user"
+            name="delete-grey"
+            *ngIf="ccPermission===2"
+          ></ion-icon>
+        </div>
+        <p>{{user.userName}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

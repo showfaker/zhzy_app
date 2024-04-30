@@ -1,0 +1,190 @@
+<!--
+  Generated template for the InspectionDevicePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{objInfo?.deviceNo}}</ion-title>
+    <ion-buttons end>
+      <button
+        ion-button
+        icon-only
+        (click)="openMoreMenu($event)"
+        class="title-icon"
+      >
+        <ion-icon
+          name="md-more"
+          class="device-list"
+          style="font-size: 30px"
+        ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="new-list" *ngFor="let itemGroup of itemGroups">
+    <ion-list-header no-lines> {{itemGroup.itemGroup}} </ion-list-header>
+    <ng-container *ngFor="let item of itemGroup.items">
+      <div class="div-item">
+        <ion-item *ngIf="item.itemType!=='06'" detail-push no-lines>
+          <ion-label>
+            <b *ngIf="!item?.nullable">*</b>{{item?.itemName}}：</ion-label
+          >
+          <ion-input
+            *ngIf="item.itemType==='01'&&item.itemValue===item.defaultValue"
+            type="text"
+            [readonly]="true"
+            text-right
+            [value]="setItemValue(item.props,item.itemValue)"
+            (tap)="openRadioTextarea(item)"
+          ></ion-input>
+          <div
+            *ngIf="item.itemType==='01'&&item.itemValue!==item.defaultValue"
+            item-end
+            style="width: 120px"
+            (tap)="openRadioTextarea(item)"
+          >
+            <h3 text-right style="color: #f00">
+              {{setItemValue(item.props,item.itemValue)}}
+            </h3>
+            <div text-right style="color: #f00" class="ell">
+              {{item.itemMemo}}
+            </div>
+          </div>
+
+          <ion-input
+            *ngIf="item.itemType==='03'"
+            type="text"
+            [readonly]="true"
+            text-right
+            [value]="item.itemValue"
+            (tap)="openInputModal(item.itemValue,item.itemName,'text')"
+          ></ion-input>
+
+          <ion-input
+            *ngIf="item.itemType==='04'"
+            type="text"
+            [readonly]="true"
+            text-right
+            [value]="item.itemValue"
+            (tap)="openInputModal(item,'number')"
+          ></ion-input>
+
+          <ion-input
+            *ngIf="item.itemType==='05'"
+            type="text"
+            [readonly]="true"
+            text-right
+            [value]="item.itemValue"
+            (tap)="openTextarea(item)"
+          ></ion-input>
+        </ion-item>
+        <span
+          *ngIf="item.itemType!=='06'"
+          class="item-his"
+          (click)="itemHis($event,item)"
+          ><ion-icon name="md-more"></ion-icon
+        ></span>
+      </div>
+      <ion-item
+        no-lines
+        *ngIf="item.itemType==='06'"
+        [ngStyle]="{'margin-bottom': (item.docs&&item.docs.length>0)?'0':'1px'}"
+      >
+        <ion-label>
+          <b *ngIf="!item?.nullable">*</b>{{item?.itemName}}：</ion-label
+        >
+        <button
+          *ngIf="item.itemType==='06'"
+          ion-button
+          icon-only
+          item-end
+          clear
+          type="button"
+          (tap)="chooseType(item)"
+        >
+          <ion-icon name="md-add"></ion-icon>
+        </button>
+      </ion-item>
+      <div
+        class="docs-container"
+        *ngIf="item.itemType==='06'&&item.docs&&item.docs.length>0"
+      >
+        <ion-grid>
+          <ion-row>
+            <ion-col col-3 *ngFor="let doc of item.docs; let i = index">
+              <div class="img-container">
+                <img
+                  [src]="fileBasePath+doc.uri"
+                  (tap)="viewPic(fileBasePath+doc.uri)"
+                />
+                <!-- <img
+                  (tap)="deleteDoc(item,doc.docId)"
+                  class="delete-doc"
+                  src="assets/imgs/buttons/delete-grey.png"
+                /> -->
+                <ion-icon
+                  (tap)="deleteDoc(item,doc.docId)"
+                  class="delete-doc"
+                  name="delete-grey"
+                ></ion-icon>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ng-container>
+  </ion-list>
+  <ion-list class="new-list">
+    <ion-item [attr.detail-push]="true" no-lines>
+      <ion-label> <b>*</b>巡检结果：</ion-label>
+      <ion-input
+        type="text"
+        [readonly]="true"
+        text-right
+        [value]="objInfo?.inspectionStatusText"
+        (tap)="openSheetModal()"
+      ></ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>巡检时间：</ion-label>
+      <ion-input
+        type="text"
+        [readonly]="true"
+        text-right
+        [value]="inspectionTime"
+      ></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer *ngIf="buttons.length&&objPermission===2">
+  <ion-toolbar class="footer-bar">
+    <ng-container *ngIf="buttons.length<=4">
+      <ion-grid>
+        <ion-row>
+          <ion-col
+            *ngFor="let button of buttons"
+            class="{{buttonFlex(buttons.length)}}"
+          >
+            <div class="btn">
+              <!-- <img
+                (tap)="buttonFunction(button.buttonAction)"
+                src="assets/imgs/buttons/{{button.buttonIcon}}"
+                alt=""
+              /> -->
+              <ion-icon
+                (tap)="buttonFunction(button.buttonAction)"
+                [name]="button.buttonIcon.split('.')[0]"
+              ></ion-icon>
+              <p>{{button.buttonText}}</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-container>
+  </ion-toolbar>
+</ion-footer>

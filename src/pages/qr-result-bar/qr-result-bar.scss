@@ -1,0 +1,21 @@
+page-qr-result-bar {
+    .station-name {
+        text-align: center;
+        color: #727272;
+        margin: 10px;
+        font-size: 13px;
+    }
+    .device-name {
+        text-align: center;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+        font-size: 14px;
+    }
+    ion-img.img-unloaded img {
+        display: block;
+    }
+    ion-col {
+        color: #727272;
+        text-align: center;
+    }
+}

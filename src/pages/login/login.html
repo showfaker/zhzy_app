@@ -1,0 +1,43 @@
+<ion-content>
+  <div class="logo">
+    <img [src]="'assets/imgs/login/logo@2x.png'" style="height: 33px" />
+  </div>
+
+  <form #loginForm="ngForm" novalidate (submit)="onLogin(login)">
+    <ion-list no-lines>
+      <ion-item>
+        <input
+          [(ngModel)]="login.username"
+          name="username"
+          type="text"
+          #username="ngModel"
+          spellcheck="false"
+          autocapitalize="off"
+          required
+          placeholder="用户名"
+        />
+      </ion-item>
+
+      <ion-item class="hasImg">
+        <input
+          [(ngModel)]="login.password"
+          name="password"
+          [type]="inputPwdType"
+          #password="ngModel"
+          required
+          placeholder="密码"
+        />
+        <img src="assets/imgs/login/login_yw@2x.png"
+        (click)="changeInputType()"
+        />
+      </ion-item>
+    </ion-list>
+
+    <button type="submit" block>登录</button>
+  </form>
+  <p class="register">
+    <span>&nbsp;&nbsp;</span>
+    <!-- <span (click)="register($event)">注册新用户</span> -->
+  </p>
+  <p class="version">{{version?'V'+version:''}}</p>
+</ion-content>

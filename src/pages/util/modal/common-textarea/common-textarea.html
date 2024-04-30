@@ -1,0 +1,23 @@
+<ion-content no-scroll>
+  <ion-icon name="close" (tap)="close()"></ion-icon>
+  <h6>{{title}}</h6>
+  <ion-textarea [(ngModel)]="value"></ion-textarea>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <button
+          ion-button
+          small
+          color="light"
+          class="clear-btn"
+          (tap)="clear()"
+        >
+          清除
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button small class="ok-btn" (tap)="ok()">确定</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

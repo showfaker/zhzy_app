@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-searchbar class="mysearchbar"
+        [(ngModel)]="myInput"
+        placeholder="仓库名称模糊查询"
+        [showCancelButton]=true
+        cancelButtonText = "取消"
+        (ionInput)="onInput($event)"
+        (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+</ion-header>
+<ion-content>
+    <ion-list class="checkList" no-lines>
+        <ion-item class="oneCheck"  (click)=firstChecked()>
+            一级仓库
+            <ion-icon name="arrow-up" item-end></ion-icon>
+            <ion-icon [hidden]='true' name="arrow-down" item-end></ion-icon>
+        </ion-item>
+        <ion-item class="twoCheck" (click)=secondChecked()>
+            二级仓库
+            <ion-icon name="arrow-up" item-end></ion-icon>
+            <ion-icon [hidden]='true' name="arrow-down" item-end></ion-icon>
+        </ion-item>
+        <ion-item class="threeCheck" (click)=thirdChecked()>
+            三级仓库
+            <ion-icon name="arrow-up" item-end></ion-icon>
+            <ion-icon [hidden]='true' name="arrow-down" item-end></ion-icon>
+        </ion-item>
+    </ion-list>
+    <ion-list class="checkList" no-lines>
+        <ion-item class="oneCheck">
+            一级仓库
+            <ion-icon name="arrow-up" item-end></ion-icon>
+            <ion-icon [hidden]='true' name="arrow-down" item-end></ion-icon>
+        </ion-item>
+        <ion-item class="twoCheck">
+            二级仓库
+            <ion-icon name="arrow-up" item-end></ion-icon>
+            <ion-icon [hidden]='true' name="arrow-down" item-end></ion-icon>
+        </ion-item>
+        <ion-item class="threeCheck">
+            三级仓库
+            <ion-icon name="arrow-up" item-end></ion-icon>
+            <ion-icon [hidden]='true' name="arrow-down" item-end></ion-icon>
+        </ion-item>
+    </ion-list>
+    <button class="buttonfull" ion-button full (click)="next()">确定</button>
+</ion-content>

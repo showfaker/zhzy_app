@@ -1,0 +1,152 @@
+page-modules-details4 {
+  .scan {
+    width: 18px;
+    height: 18px;
+  }
+  .down-me {
+    color: #525862;
+    font-size: 1.4em;
+    margin-left: 10px;
+    margin-right: 5px;
+  }
+  .my-back {
+    font-size: 30px;
+    color: #525862;
+  }
+  .card-list {
+    padding: 21px 0;
+  }
+
+  .card {
+    margin: 21px;
+    background: #ffffff;
+    box-shadow: 0 4px 10px 1px rgba(138, 169, 185, 0.15);
+    border-radius: 12px;
+    &:first-child {
+      margin-top: 0;
+    }
+    .card-content {
+      display: inline-block;
+      margin-right: 10px;
+      width: 100%;
+      // height: 190px;
+      h1 {
+        // padding: 5px 0;
+        font-size: 16px;
+        border-bottom: 1px solid #dedbdb;
+        margin: 0;
+        height: 40px;
+        line-height: 40px;
+        text-indent: 10px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        font-size: 16px;
+        color: #2b2e30;
+        letter-spacing: 0;
+        font-weight: 500;
+      }
+
+      .card-content-test-list {
+        padding: 12px 9px 0;
+        font-size: 13px;
+        color: #919ba3;
+        letter-spacing: 0;
+        font-weight: 400;
+        &:last-child {
+          padding-bottom: 12px;
+        }
+        span {
+          width: 70%;
+          display: inline-block;
+          &:first-child {
+            width: 20%;
+            vertical-align: top;
+          }
+        }
+      }
+    }
+  }
+
+  ion-backdrop {
+    visibility: visible;
+    z-index: -1;
+  }
+
+  .my-custom-menu {
+    background-color: #fff;
+
+    .condition {
+      padding: 15px 30px;
+      border-bottom: 1px solid #dcdcdc;
+      overflow: hidden;
+      p {
+      }
+      span,
+      input {
+        text-align: center;
+        line-height: 30px;
+
+        border-radius: 20px;
+        color: #88898a;
+        width: 100%;
+        display: block;
+        height: 30px;
+        margin-top: 15px;
+        background: #f0f0f0;
+        border: 0;
+        .item-cover {
+          width: auto;
+          display: none;
+        }
+        .datetime-ios {
+          padding: 0;
+          .datetime-text {
+            line-height: 30px;
+            height: 30px;
+          }
+        }
+        &.had-endtime {
+          width: 45%;
+          float: left;
+          &:last-child {
+            float: right;
+          }
+        }
+      }
+    }
+
+    .my-button {
+      position: fixed;
+      bottom: 0;
+      height: 60px;
+      width: 100%;
+      margin-left: 8%;
+      button {
+        height: 70%;
+        width: 40%;
+        border-radius: 30px;
+        &:last-child {
+          margin-left: 1%;
+          background-color: #58a6f7;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+.action-sheet-ios.modules-details1-sheetctrl
+  .action-sheet-wrapper
+  .action-sheet-container
+  .action-sheet-group:first-child {
+  height: auto;
+  max-height: 50%;
+}
+/**当你触摸并按住触摸目标时候，禁止系统默认菜单,时间标签滑动报错 **/
+.picker-columns {
+  touch-action: none;
+}

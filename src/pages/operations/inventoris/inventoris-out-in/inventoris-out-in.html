@@ -1,0 +1,310 @@
+<!--
+  Generated template for the InventorisOutPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{type==='in'?'入库':'出库'}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleBaseInfo = !toggleBaseInfo">
+        基础信息
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleBaseInfo?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <!-- 基础信息 -->
+      <ng-container *ngIf="toggleBaseInfo">
+        <ion-item detail-push no-lines>
+          <ion-label>
+            <b>*</b>
+            操作类型：
+          </ion-label>
+          <ion-input
+            *ngIf="!view"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="ioSubTypeText"
+            (tap)="buildIoSubTypeOption($event)"
+          ></ion-input>
+          <ion-input
+            *ngIf="view"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="ioSubTypeText"
+          ></ion-input>
+        </ion-item>
+        <ion-item detail-push no-lines>
+          <ion-label>
+            <b>*</b>
+            仓库名称：
+          </ion-label>
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="warehouseName"
+            (tap)="selectWarehouses({id:'warehouseId',name:'warehouseName'},false)"
+            *ngIf="!view"
+          ></ion-input>
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="warehouseName"
+            *ngIf="view"
+          ></ion-input>
+        </ion-item>
+        <ion-item detail-push no-lines *ngIf="showRelaWarehouse">
+          <ion-label>
+            <b>*</b>
+            对方仓库：
+          </ion-label>
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="relaWarehouseName"
+            (tap)="selectWarehouses({id:'relaWarehouseId',name:'relaWarehouseName'})"
+            *ngIf="!view"
+          ></ion-input>
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="relaWarehouseName"
+            *ngIf="view"
+          ></ion-input>
+        </ion-item>
+        <ion-item detail-push no-lines>
+          <ion-label>
+            <b>*</b>
+            {{type==='in'?'入库人':'出库人'}}：
+          </ion-label>
+          <ion-input
+            *ngIf="!view"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="ioOperatorName"
+            (tap)="selectUser($event)"
+          ></ion-input>
+          <ion-input
+            *ngIf="view"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="ioOperatorName"
+          ></ion-input>
+        </ion-item>
+        <ion-item detail-push no-lines>
+          <ion-label>
+            <b>*</b>
+            {{type==='in'?'入库时间':'出库时间'}}：
+          </ion-label>
+          <ion-datetime
+            *ngIf="!view"
+            displayFormat="YYYY-MM-DD HH:mm"
+            cancelText="清除"
+            doneText="确定"
+            [pickerOptions]="customIoTimePickerOptions"
+            formControlName="ioTime"
+          ></ion-datetime>
+          <ion-datetime
+            *ngIf="view"
+            displayFormat="YYYY-MM-DD HH:mm"
+            cancelText="清除"
+            doneText="确定"
+            [pickerOptions]="customIoTimePickerOptions"
+            formControlName="ioTime"
+            [disabled]="true"
+          ></ion-datetime>
+        </ion-item>
+        <ion-item detail-push no-lines>
+          <ion-label> {{relaBusinessTypeText||'单号'}}： </ion-label>
+          <ion-input
+            *ngIf="!view"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="relaBusinessCode"
+            (tap)="selectBusiness($event)"
+          ></ion-input>
+          <ion-input
+            *ngIf="view"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="relaBusinessCode"
+          ></ion-input>
+        </ion-item>
+        <ion-item no-lines>
+          <ion-label> 审批人： </ion-label>
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="approverName"
+          ></ion-input>
+        </ion-item>
+        <ion-item no-lines>
+          <ion-label> 审批时间： </ion-label>
+          <ion-datetime
+            displayFormat="YYYY-MM-DD HH:mm"
+            cancelText="清除"
+            doneText="确定"
+            formControlName="approveTime"
+            [disabled]="true"
+          ></ion-datetime>
+        </ion-item>
+        <ion-item no-lines>
+          <ion-label> 确认人 </ion-label>
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="checkerName"
+          ></ion-input>
+        </ion-item>
+        <ion-item no-lines>
+          <ion-label> 确认时间： </ion-label>
+          <ion-datetime
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="checkTime"
+            [disabled]="true"
+          ></ion-datetime>
+        </ion-item>
+        <ion-item detail-push no-lines>
+          <ion-label> {{type==='in'?'入库说明':'出库说明'}}： </ion-label>
+          <ion-input
+            *ngIf="!view"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="ioDesc"
+            (tap)="addMemo($event)"
+          ></ion-input>
+          <ion-input
+            *ngIf="view"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="ioDesc"
+          ></ion-input>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <ion-list class="new-list">
+      <ion-list-header
+        no-lines
+        (tap)="materialDetailsToggle = !materialDetailsToggle"
+      >
+        物资明细
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{materialDetailsToggle?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="materialDetailsToggle">
+        <ion-grid
+          class="material-iostorge"
+          formArrayName="materialIostorgeDetails"
+        >
+          <ion-row
+            *ngFor="let materia of getMaterialIostorgeDetails(form); let i = index"
+            [formGroupName]="i"
+          >
+            <ion-col col-8 (tap)="selectMaterials('edit',materia, i)">
+              <div class="ell">{{ materia.value.materialNo }}</div>
+              <div class="ell">{{ materia.value.materialName }}</div>
+              <div class="ell">{{ materia.value.materialSpec }}</div>
+            </ion-col>
+            <ion-col col-3 (tap)="selectMaterials('edit',materia, i)">
+              <div text-center>
+                <span class="ell"
+                  >{{ materia.value.ioNum }}{{
+                  materia.value.unitText||materia.value.unit }}</span
+                >
+              </div>
+            </ion-col>
+            <ion-col col-1>
+              <ion-icon
+                *ngIf="!view"
+                (tap)="deleteMaterialIostorgeDetails(i)"
+                class="delete-grey"
+                name="delete-grey"
+              ></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row class="add-row" *ngIf="!view">
+            <ion-col col-12>
+              <ion-icon
+                name="md-add-circle"
+                (tap)="selectMaterials('add')"
+              ></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ng-container>
+    </ion-list>
+  </form>
+</ion-content>
+<ion-footer *ngIf="view!==true">
+  <ion-toolbar class="footer-bar">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <div class="btn">
+            <!-- <img (tap)="cancel()" src="assets/imgs/buttons/delete-grey.png" alt="" /> -->
+            <ion-icon (tap)="cancel()" name="delete-grey"></ion-icon>
+            <p>取消</p>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div class="btn">
+            <!-- <img (tap)="save()" src="assets/imgs/buttons/ok.png" alt="" /> -->
+            <ion-icon (tap)="save()" name="ok"></ion-icon>
+            <p>确定</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
+<ion-footer *ngIf="approve===true">
+  <ion-toolbar class="footer-bar">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <div class="btn">
+            <!-- <img (tap)="cancel()" src="assets/imgs/buttons/delete-grey.png" alt="" /> -->
+            <ion-icon
+              (tap)="materialsApprove('03')"
+              name="delete-grey"
+            ></ion-icon>
+            <p>拒绝</p>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div class="btn">
+            <!-- <img (tap)="save()" src="assets/imgs/buttons/ok.png" alt="" /> -->
+            <ion-icon (tap)="materialsApprove('02')" name="ok"></ion-icon>
+            <p>同意</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

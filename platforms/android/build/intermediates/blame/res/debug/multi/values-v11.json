@@ -1,0 +1,28 @@
+[
+    {
+        "outputFile": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 3,
+                    "endColumn": 10,
+                    "endOffset": 150
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.journeyapps\\zxing-android-embedded\\3.3.0\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 3,
+                        "endColumn": 10,
+                        "endOffset": 150
+                    }
+                }
+            }
+        ]
+    }
+]

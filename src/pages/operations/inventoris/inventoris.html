@@ -1,0 +1,193 @@
+<!--
+  Generated template for the InventorisPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>物资库存</ion-title>
+    <ion-buttons end>
+      <button class="navbar-button" ion-button icon-only (click)="serchMenu()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+      <button
+        class="navbar-button"
+        ion-button
+        icon-only
+        (click)="inventorisMenus($event)"
+      >
+        <ion-icon name="add-square"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar>
+    <div class="search">
+      <span class="select-item" (click)="select()">{{materialTypeText}}</span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #search>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="正在刷新..."
+    ></ion-refresher-content>
+  </ion-refresher>
+  <!-- <div class="search">
+    <span (click)="select()">{{materialTypeText+'▼' || ''}}</span>
+  </div> -->
+  <ion-list>
+    <ion-card *ngFor="let inventoris of inventorisList">
+      <ion-card-header> {{inventoris.title}} </ion-card-header>
+      <ng-container *ngIf="inventoris.pic">
+        <div
+          class="inventoris-img"
+          [style.background-image]="'url(' + fileBasePath+inventoris.pic+ ')'"
+          (tap)="viewImage(fileBasePath+inventoris.pic)"
+        ></div>
+      </ng-container>
+      <ion-card-content>
+        <p>{{inventoris.item1}}</p>
+        <p>{{inventoris.item2}}</p>
+        <p>{{inventoris.item3}}</p>
+        <p>{{inventoris.item4}}</p>
+      </ion-card-content>
+      <ion-row>
+        <ion-col col-6>
+          <button
+            ion-button
+            icon-start
+            clear
+            small
+            (tap)="inventorisRecord(inventoris)"
+          >
+            <ion-icon name="inventoris-record"></ion-icon>
+            <div>出入库记录</div>
+          </button>
+        </ion-col>
+        <ion-col col-3 *ngIf="inventoris.hasInOutBtns===1">
+          <button
+            ion-button
+            icon-start
+            clear
+            small
+            (tap)="openInputModal(inventoris,'out')"
+          >
+            <ion-icon name="inventoris-out"></ion-icon>
+            <div>出库</div>
+          </button>
+        </ion-col>
+        <ion-col col-3 *ngIf="inventoris.hasInOutBtns===1">
+          <button
+            ion-button
+            icon-start
+            clear
+            small
+            (tap)="openInputModal(inventoris,'in')"
+          >
+            <ion-icon name="inventoris-in"></ion-icon>
+            <div>入库</div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="crescent"
+      loadingText="加载更多数据..."
+    ></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<ng-container *ngIf="showMenu">
+  <ion-menu
+    [content]="search"
+    side="right"
+    id="search"
+    type="overlay"
+    swipeEnabled="true"
+    class="search-menu"
+  >
+    <ion-content class="outer-content" no-bounce>
+      <div class="common-search-container">
+        <div class="common-search">
+          <div class="button-picker border-bottom">
+            <div class="query-label">仓库</div>
+            <button
+              ion-button
+              round
+              small
+              color="light"
+              (click)="selectWarehouses()"
+            >
+              {{(warehouses?.warehouseName)||'未选择'}}
+              <ion-icon
+                *ngIf="warehouses"
+                (click)="clearWarehouses($event)"
+                class="clear-icon"
+                name="delete"
+              ></ion-icon>
+            </button>
+          </div>
+          <div class="button-picker border-bottom">
+            <div class="query-label">物料</div>
+            <button
+              ion-button
+              round
+              small
+              color="light"
+              (click)="selectMaterials()"
+            >
+              {{materia.length?'已选'+(materia.length)+'项':'未选择'}}
+            </button>
+          </div>
+          <div class="button-picker">
+            <div class="query-label">关联设备</div>
+            <button
+              class="ell"
+              ion-button
+              round
+              small
+              color="light"
+              (click)="selectEquipment()"
+            >
+              {{(equipment?.deviceName)||'未选择'}}
+              <ion-icon
+                *ngIf="equipment"
+                (click)="clearEquipment($event)"
+                class="clear-icon"
+                name="delete"
+              ></ion-icon>
+            </button>
+          </div>
+        </div>
+        <ion-list>
+          <ion-row class="fix-bottom">
+            <ion-col col-6 text-center>
+              <button
+                ion-button
+                round
+                small
+                class="reset-btn"
+                color="light"
+                (click)="reset()"
+              >
+                重置
+              </button>
+            </ion-col>
+            <ion-col col-6 text-center>
+              <button ion-button round small class="query-btn" (click)="ok()">
+                查询
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+      </div>
+    </ion-content>
+  </ion-menu>
+</ng-container>

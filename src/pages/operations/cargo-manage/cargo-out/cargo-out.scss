@@ -1,0 +1,41 @@
+cargo-out{
+    .gray{
+        color: #999
+    }
+    .black{
+        color: black;
+    }
+    .textarea{
+        height: 130px;
+        .textareaTitle{
+            font-size: 15px;
+        }
+        .text-input{
+            height: 80px;
+        }
+    }
+    .buttons{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        .buttonfull{
+            display: inline-block;
+            font-size: 17px;
+            width: 50%;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: #e4e4e4;
+        }
+        .blue{
+            background: #5daee5;
+            color: white;
+            float: right;
+        }
+    }
+    .rinhtInput{
+        .text-input{
+            text-align: right
+        }
+    }
+}

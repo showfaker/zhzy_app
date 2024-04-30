@@ -1,0 +1,277 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>运行日报</ion-title>
+  </ion-navbar>
+</ion-header>
+<!--  发电情况页面  -->
+<ion-content>
+  <ion-list *ngIf="generating">
+    <ion-item ion-item class="title">
+      <span>发电情况</span>
+      <span>停电情况</span>
+      <span>天气情况</span>
+    </ion-item>
+    <i [class.power-cut]="powerCut" [class.weather]="weather"></i>
+    <ion-item>
+      <ion-label item-end>电表倍率</ion-label>
+      <ion-input
+        type="text"
+        placeholder="请输入数值"
+        [(ngModel)]="runlogReq.meterRatio"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label item-end>当前并网装机容量（MW）</ion-label>
+      <ion-input
+        type="text"
+        placeholder="请输入数值"
+        [(ngModel)]="runlogReq.parallelCapacity"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label item-end>昨日计量表示值</ion-label>
+      <ion-input
+        type="text"
+        placeholder="{{ getYesterdayMeterValue }}"
+        disabled
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label item-end>今日计量表示值</ion-label>
+      <ion-input
+        type="text"
+        placeholder="请输入数值"
+        [(ngModel)]="runlogReq.meterValue"
+        (input)="meterValueChange()"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label item-end>今日上网电量（KWh）</ion-label>
+      <ion-input
+        type="text"
+        placeholder="{{ getDailyEnergy }}"
+        [(ngModel)]="runlogReq.dailyEnergy"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label item-end>今日每MW上网电量（KWh）</ion-label>
+      <ion-input
+        type="text"
+        placeholder="{{ getDailyEnergyMW }}"
+        disabled
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label item-end>本月上网电量（KWh）</ion-label>
+      <ion-input
+        type="text"
+        placeholder="{{ getMouthEnergy }}"
+        disabled
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label item-end>今日最大负荷（KWh）</ion-label>
+      <ion-input
+        type="text"
+        placeholder="请输入数值"
+        [(ngModel)]="runlogReq.maxPower"
+      ></ion-input>
+    </ion-item>
+  </ion-list>
+  <!-- </ion-content> -->
+  <!--  停电情况页面  -->
+  <!-- <ion-content *ngIf = 'powerCut'> -->
+  <ion-list *ngIf="powerCut">
+    <ion-item ion-item class="title">
+      <span>发电情况</span>
+      <span>停电情况</span>
+      <span>天气情况</span>
+    </ion-item>
+    <i [class.power-cut]="powerCut" [class.weather]="weather"></i>
+    <!-- <textarea
+      placeholder="请输入停电情况"
+      [(ngModel)]="runlogReq.powerOutage"
+    ></textarea> -->
+    <ion-item-group
+      *ngFor="let jobRecordLoss of runlogReq.jobRecordLosses; let index = index"
+    >
+      <ion-item (click)="getLossTypes(index)">
+        <ion-label item-end>损失类别</ion-label>
+        <ion-note item-end>{{
+          jobRecordLoss?.lossTypeText || "选择损失类别"
+        }}</ion-note>
+      </ion-item>
+      <ion-item (click)="equipment(index, jobRecordLoss?.deviceName)">
+        <ion-label item-end>设备名称</ion-label>
+        <ion-note item-end>{{
+          jobRecordLoss?.deviceName || "选择设备名称"
+        }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label item-end>损失情况描述</ion-label>
+        <ion-input
+          type="text"
+          placeholder="请输入损失情况描述"
+          [(ngModel)]="jobRecordLoss.lossDesc"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label item-end>停电开始时间</ion-label>
+        <ion-datetime
+          displayFormat="HH:mm"
+          cancelText="取消"
+          doneText="确定"
+          placeholder="请选择停电开始时间"
+          [(ngModel)]="jobRecordLoss.start_time"
+        ></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label item-end>恢复时间</ion-label>
+        <ion-datetime
+          displayFormat="HH:mm"
+          cancelText="取消"
+          doneText="确定"
+          placeholder="请选择恢复时间"
+          [(ngModel)]="jobRecordLoss.end_time"
+        ></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label item-end>约损失电量（KWh）</ion-label>
+        <ion-input
+          type="text"
+          placeholder="请输入数值"
+          [(ngModel)]="jobRecordLoss.lossEnergy"
+        ></ion-input>
+      </ion-item>
+      <ion-item-divider>
+        <button
+          ion-button
+          color="danger"
+          block
+          (click)="deleteRecordLoss(index)"
+        >
+          <ion-icon slot="start" name="trash"></ion-icon>删除
+        </button>
+      </ion-item-divider>
+    </ion-item-group>
+    <ion-item-group>
+      <ion-item>
+        <button ion-button color="secondary" block (click)="addRecordLoss()">
+          <ion-icon slot="start" name="add"></ion-icon>新增
+        </button>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+  <!-- </ion-content> -->
+  <!--  天气情况  -->
+  <!-- <ion-content *ngIf = 'weather'> -->
+  <ion-list *ngIf="weather">
+    <ion-item ion-item class="title">
+      <span>发电情况</span>
+      <span>停电情况</span>
+      <span>天气情况</span>
+    </ion-item>
+    <i [class.power-cut]="powerCut" [class.weather]="weather"></i>
+    <ion-item>
+      <ion-label item-end>日辐照量（MJ/M²）</ion-label>
+      <ion-input
+        type="text"
+        placeholder="请输入数值"
+        [(ngModel)]="runlogReq.irradiation"
+      ></ion-input>
+    </ion-item>
+    <ion-item (click)="weatherInfo()">
+      <ion-label item-end>今日天气</ion-label>
+      <ion-note item-end>{{
+        (runlogReq && runlogReq.weatherInfoName) || "请选择天气"
+      }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label item-end>晴天</ion-label>
+      <ion-input
+        type="number"
+        placeholder="请输入整天晴天时长/h"
+        [(ngModel)]="runlogReq.genHoursFine"
+        (input)="updateGenHours()"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label item-end>少云</ion-label>
+      <ion-input
+        type="number"
+        placeholder="请输入整天少云时长/h"
+        [(ngModel)]="runlogReq.genHoursPcloud"
+        (input)="updateGenHours()"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label item-end>多云</ion-label>
+      <ion-input
+        type="number"
+        placeholder="请输入整天多云时长/h"
+        [(ngModel)]="runlogReq.genHoursCloudy"
+        (input)="updateGenHours()"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label item-end>阴霾</ion-label>
+      <ion-input
+        type="number"
+        placeholder="请输入整天阴霾时长/h"
+        [(ngModel)]="runlogReq.genHoursWet"
+        (input)="updateGenHours()"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label item-end>雨雪</ion-label>
+      <ion-input
+        type="number"
+        placeholder="请输入整天雨雪时长/h"
+        [(ngModel)]="runlogReq.genHoursRain"
+        (input)="updateGenHours()"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label item-end>设备运行小时数</ion-label>
+      <ion-input
+        type="number"
+        placeholder="请输入整天设备运行时长/h"
+        [(ngModel)]="runlogReq.genHours"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label item-end>最高温度（℃）</ion-label>
+      <ion-input
+        type="text"
+        placeholder="请输入数值"
+        [(ngModel)]="runlogReq.maxTemp"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label item-end>最低温度（℃）</ion-label>
+      <ion-input
+        type="text"
+        placeholder="请输入数值"
+        [(ngModel)]="runlogReq.minTemp"
+      ></ion-input>
+    </ion-item>
+    <ion-item (click)="openMenu()">
+      <ion-label item-end>风向</ion-label>
+      <ion-note item-end>{{ getWindDirection() || "请选择风向" }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label item-end>风速（m/s）</ion-label>
+      <ion-input
+        type="text"
+        placeholder="请输入数值"
+        [(ngModel)]="runlogReq.windSpeed"
+      ></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <!-- <button ion-button color="light">Lsight</button> -->
+  <!-- <button ion-button color="secondary">Default</button> -->
+  <span (click)="prev()">{{ generating ? "取消" : "上一步" }}</span
+  ><span (click)="next()">{{ weather ? "保存" : "下一步" }}</span>
+</ion-footer>

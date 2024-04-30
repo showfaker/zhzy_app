@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-navbar>
+        <ion-searchbar class="mysearchbar"
+            [(ngModel)]="myInput"
+            placeholder="输入关键字"
+            (ionInput)="onInput($event)"
+            (ionCancel)="onCancel($event)">
+        </ion-searchbar>
+        <ion-buttons end style="color: #fff">
+            <button (click) = "cancel()">
+                取消
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+    
+</ion-header>
+<ion-content>
+    <p class="history">
+        搜索历史
+    </p>
+    <ion-list class="cango-list">
+        <ion-item class="cango-item">
+            <div class="wuliao-div">
+                <span class="wl-name">物料名称</span>
+                <span class="line1"></span>
+                <span class="wl-num">料号KJ-0001</span>
+            </div>
+            <div class="wl-detail_box">
+                <div class="wl-detail">所属仓库：仓库名称</div>
+                <div class="wl-detail">规格型号：规格型号1</div>
+                <div class="wl-detail">库存类别：<span class="color1">异常库存</span></div>
+                <div class="wl-detail">物料数量：2000件</div>
+            </div>
+        </ion-item>
+    </ion-list>
+    <ion-list class="cango-list">
+        <ion-item class="cango-item">
+            <div class="wuliao-div">
+                <span class="wl-name">物料名称</span>
+                <span class="line1"></span>
+                <span class="wl-num">料号KJ-0001</span>
+            </div>
+            <div class="wl-detail_box">
+                <div class="wl-detail">所属仓库：仓库名称</div>
+                <div class="wl-detail">规格型号：规格型号1</div>
+                <div class="wl-detail">库存类别：<span class="color2">异常库存</span></div>
+                <div class="wl-detail">物料数量：2000件</div>
+            </div>
+        </ion-item>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,59 @@
+page-common-teams {
+  .notice-list-box {
+    background: #f0f0f0;
+    margin-top: 5px;
+    .other-title {
+      background: #fff;
+      padding-bottom: 10px;
+    }
+  }
+  .new-notice-list {
+    height: 50px;
+    position: relative;
+    background: #fff;
+    margin-top: 3px;
+    .left-img {
+      width: 15%;
+      text-align: center;
+      padding-top: 10px;
+      img {
+        width: 30px;
+      }
+      .icon {
+        font-size: 30px;
+      }
+    }
+    .checked-icon {
+      position: absolute;
+      // width: 20px;
+      // height: 20px;
+      right: 20px;
+      top: 15px;
+      .ion-icon {
+        font-size: 18px;
+      }
+    }
+    .notice {
+      position: absolute;
+      left: 15%;
+      margin-top: 7px;
+      .notice-title {
+        color: #5daee5;
+      }
+      .notice-subtitle {
+        .notice-subtitle-content {
+          display: inline-block;
+          font-size: 12px;
+          :first-child {
+            color: #727272;
+            margin-right: 0.5em;
+          }
+          &.right {
+            margin-right: 0em;
+            // margin-left: 1.3em;
+          }
+        }
+      }
+    }
+  }
+}

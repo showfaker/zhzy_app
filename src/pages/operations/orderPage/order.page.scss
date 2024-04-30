@@ -1,0 +1,118 @@
+order-page {
+  ion-header .icon {
+    color: #5a6371;
+  }
+  ion-backdrop {
+    visibility: visible;
+    z-index: -1;
+  }
+  .my-back {
+    font-size: 30px;
+    color: #fff;
+  }
+  .scan {
+    width: 18px;
+    height: 18px;
+  }
+  .card-item {
+    // height: 130px;
+    .left-line {
+      .line-icon {
+        width: 10px;
+        height: 10px;
+        top: 5px;
+        left: -5px;
+        border-radius: 50%;
+        background-color: red;
+        // &.alarm01 {
+        //     background-image: url(../assets/imgs/list/alarm-01.png);
+        // }
+        // &.alarm02 {
+        //     background-image: url(../assets/imgs/list/alarm-02.png);
+        // }
+        // &.alarm03 {
+        //     background-image: url(../assets/imgs/list/alarm-03.png);
+        // }
+        // &.alarm04 {
+        //     background-image: url(../assets/imgs/list/alarm-04.png);
+        // }
+      }
+    }
+    .card-cd {
+      float: right;
+      padding: 1px 8px;
+      background: #5eade7;
+      color: #fff;
+      border-radius: 10px;
+    }
+  }
+
+  .my-custom-menu {
+    background-color: #fff;
+
+    .condition {
+      padding: 15px 30px;
+      border-bottom: 1px solid #dcdcdc;
+      overflow: hidden;
+      p {
+      }
+      span,
+      input {
+        text-align: center;
+        line-height: 30px;
+
+        border-radius: 20px;
+        color: #88898a;
+        width: 100%;
+        display: block;
+        height: 30px;
+        margin-top: 15px;
+        background: #f0f0f0;
+        border: 0;
+        .item-cover {
+          width: auto;
+          display: none;
+        }
+        .datetime-ios {
+          padding: 0;
+          .datetime-text {
+            line-height: 30px;
+            height: 30px;
+          }
+        }
+        &.had-endtime {
+          width: 45%;
+          float: left;
+          &:last-child {
+            float: right;
+          }
+          &.selected {
+            // border: 1px solid #5aa4db;
+            // background: #e1eff9;;
+            // color: #5aa4db;
+            background-color: #58a6f7;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .my-button {
+      position: fixed;
+      bottom: 0;
+      height: 60px;
+      width: 100%;
+      margin-left: 8%;
+      button {
+        height: 70%;
+        width: 40%;
+        border-radius: 30px;
+        &:last-child {
+          margin-left: 1%;
+          background-color: #58a6f7;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

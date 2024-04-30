@@ -1,0 +1,50 @@
+<ion-content>
+  <div class="logo">
+    <img [src]="'assets/imgs/login/'+logo" style="height: 120px" />
+  </div>
+
+  <form [formGroup]="form" (submit)="register($event)">
+    <ion-list no-lines>
+      <div class="autocomplete">
+        <ion-item>
+          <ion-input
+            type="text"
+            formControlName="tenantName"
+            (ionChange)="queryCustomers($event)"
+            (ionFocus)="queryCustomers($event,'focus')"
+            (ionBlur)="removeFocus()"
+            placeholder="公司"
+          ></ion-input>
+        </ion-item>
+        <ion-list [ngClass]="{show: showCustomers,hide:!showCustomers}">
+          <ion-item
+            *ngFor="let item of customers"
+            (click)="selectCustomer(item)"
+          >
+            {{item.customerAlias}}
+          </ion-item>
+        </ion-list>
+      </div>
+      <ion-item>
+        <input
+          formControlName="userName"
+          name="userName"
+          type="userName"
+          required
+          placeholder="账号"
+        />
+      </ion-item>
+      <ion-item class="hasImg">
+        <input
+          formControlName="password"
+          name="password"
+          type="password"
+          required
+          placeholder="密码"
+        />
+      </ion-item>
+    </ion-list>
+
+    <button type="submit" block>注册</button>
+  </form>
+</ion-content>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\dev\code_08\zyet_fore_code\nems-app\platforms\android\libs"><file name="AMap_Location_V3.7.0_20171218.jar" path="D:\dev\code_08\zyet_fore_code\nems-app\platforms\android\libs\AMap_Location_V3.7.0_20171218.jar"/></source></dataSet><dataSet config="debug"><source path="D:\dev\code_08\zyet_fore_code\nems-app\platforms\android\src\debug\jniLibs"/></dataSet></merger>

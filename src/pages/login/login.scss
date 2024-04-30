@@ -1,0 +1,100 @@
+page-login {
+  .content {
+    background: url(../assets/imgs/login/loginbg@2x.png) no-repeat center center;
+    background-size: cover;
+    background-color: #fff;
+  }
+  .logo {
+    padding: 5% 0 6% 0;
+    text-align: center;
+    margin: 23% 0 0;
+    height: 185px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  form {
+    width: 80%;
+    margin: 0 10%;
+  }
+
+  ion-item {
+    height: 48px;
+    // border: 1px solid rgba(204, 204, 204, 1) !important;
+    box-shadow: 0px 4px 26px 2px rgba(138, 169, 185, 0.3) !important;
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.8);
+    & + ion-item {
+      margin-top: 20px !important;
+    }
+  }
+
+  ion-list {
+    margin-bottom: 40px !important;
+  }
+
+  ion-label {
+    margin: 20px 0 0 0;
+  }
+
+  input {
+    border: 0;
+    font-size: 14px;
+    text-align: left;
+    width: 100%;
+    color: #6e8089;
+  }
+
+  ::-webkit-input-placeholder {
+    color: #b3bfc5 !important;
+  }
+
+  .hasImg {
+    input {
+      width: 80%;
+      display: inline-block;
+      float: left;
+      -webkit-box-flex: 0.8;
+      -webkit-flex: 0.8;
+      flex: 0.8;
+    }
+    img {
+      width: 21px;
+      float: right;
+      -webkit-box-flex: 0.2;
+      -webkit-flex: 0.2;
+      flex: 0.2;
+    }
+  }
+
+  button {
+    background-color: #2585cb;
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-align: center;
+    font-weight: 500;
+  }
+  .register {
+    margin-top: 33px;
+    font-size: 16px;
+    color: #212629;
+    letter-spacing: 0;
+    text-align: center;
+    font-weight: 400;
+  }
+  .version {
+    font-size: 14px;
+    color: #6e8089;
+    letter-spacing: 0;
+    text-align: right;
+    font-weight: 500;
+    margin-right: 43px;
+  }
+}

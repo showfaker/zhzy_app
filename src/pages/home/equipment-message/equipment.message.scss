@@ -1,0 +1,139 @@
+equipment-message {
+  ion-content {
+    background: url(../assets/imgs/my/bg/topbg4@2x.png) no-repeat top center;
+    background-size: contain;
+    background-color: #edf1f4 !important;
+  }
+
+  .toolbar-background-ios {
+    background: transparent;
+  }
+
+  .toolbar-title-ios {
+    font-size: 2rem;
+    color: #ffffff;
+    letter-spacing: 0;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .ion-ios-arrow-back::before {
+    background: url(../assets/imgs/back-white.png) no-repeat center center;
+  }
+
+  .segment-ios .segment-button {
+    height: 4.1rem;
+    line-height: 4rem;
+    font-size: 16px;
+    color: #5c6370;
+    letter-spacing: 0;
+    text-align: center;
+    font-weight: 400;
+    &:first-of-type {
+      border-radius: 0 !important;
+    }
+    &:last-of-type {
+      border-radius: 0 !important;
+    }
+    &.segment-activated {
+      font-size: 16px;
+      color: #262626;
+      letter-spacing: 0;
+      text-align: center;
+      font-weight: 500;
+    }
+  }
+  .equiment {
+    height: 126px;
+    font-size: 13px;
+    color: #ffffff;
+    letter-spacing: 0;
+    line-height: 28px;
+    font-weight: 400;
+    img {
+      float: left;
+      margin: 0 3%;
+      width: 100px;
+      margin-top: 16px;
+    }
+    p {
+      padding: 4px 0;
+      span {
+        opacity: 0.6;
+      }
+    }
+  }
+  .trend-chart {
+    height: 160px;
+  }
+  .telemetry {
+    background: #fff;
+    padding-left: 5%;
+    div {
+      padding: 5px 0;
+      span {
+        color: #5daee5;
+      }
+    }
+  }
+  .unfold {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    color: #aeafb3;
+    font-size: 1.6rem;
+    color: #7f848c !important;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    ion-icon {
+      vertical-align: sub;
+      font-size: 2.4rem;
+      font-weight: 600;
+    }
+  }
+  .list-ios {
+    margin: 0;
+    background: #edf1f4;
+  }
+
+  .item-block {
+    min-height: 5.4rem;
+    height: 5.4rem;
+    font-size: 1.6rem;
+    color: #43464d;
+  }
+
+  .dot {
+    width: 13px;
+    height: 13px;
+    display: inline-block;
+    border-radius: 100%;
+    margin-right: 3px;
+    &.one {
+      background: #e46c6d;
+    }
+    &.two {
+      background: #ebba92;
+    }
+    &.three {
+      background: #76c977;
+    }
+    &.four {
+      background: #5daee5;
+    }
+  }
+  .alarmCount {
+    min-width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background: #ed8256;
+    border-radius: 10px;
+    float: right;
+    font-size: 13px;
+    color: #ffffff;
+    letter-spacing: 0;
+    text-align: center;
+    font-weight: 600;
+    padding: 0 10px;
+  }
+}

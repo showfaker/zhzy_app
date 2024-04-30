@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>运行日志</ion-title>
+        <ion-buttons end>
+            <button style="color: #fff">电站列表</button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list no-lines>
+        <ion-item-sliding>
+            <ion-item>
+                <div class="date">
+                    <p>22</p>
+                    <p></p>
+                    <p>2018-05</p>
+                </div>
+                <div class="time-status">
+                    <span class="time">日上网电量</span>
+                    <span>7600.00KWh</span>
+                    <span class="time t-right">天气</span>
+                    <span>晴</span>
+                </div>
+                <div class="time-status">
+                    <span class="time">月上网电量</span>
+                    <span>120000KWh</span>
+                    <span class="time t-right">创建人</span>
+                    <span>赵永建</span>
+                </div>
+            </ion-item>
+            <ion-item-options>
+                <button ion-button class="delete">删除</button>
+                <button ion-button class="modify">修改</button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>
+<ion-footer>
+    <button ion-button full (click) = "newLog()">新建日志</button>
+</ion-footer>

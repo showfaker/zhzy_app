@@ -1,0 +1,64 @@
+allcompany {
+    // .segment-ios {
+    //     .segment-button {
+    //         border-color: #fff;
+    //         color: #fff;
+    //         font-size: 2rem;
+    //         &.segment-activated {
+    //             color: #000000;
+    //             background-color: #01a2e2;
+    //         }
+    //     }
+    // }
+    .list-ios {
+        margin: 0;
+        // .title {
+        //     background-color: #ececec;
+        //     border-top: none !important; 
+        // }
+        .item .item-inner {
+            padding-left: 10px;
+        }
+    }
+    .power-station {
+        .item-ios {
+            background-color: #f9f9f9;
+            &:first-child {
+                margin-top: -10px;
+            }
+            .item-inner {
+                padding-left: 64px;
+                
+            }
+        }
+    }
+    .active .item-inner{
+        background: #83b0e2;
+    }
+    ion-footer{
+        position: fixed;
+        
+        .bnt{
+            width: 100%;
+            height: 50px;
+            background: #87c15e;
+            float: left;
+            color: white;
+            .bnt-left{
+                float: left;
+                width: 50%;
+                line-height: 50px;
+                text-align: center;
+                border-right: 1px solid #8c9399;
+            }
+            .bnt-right{
+                float: left;
+                border: 0;
+            }
+        }
+    }
+    .popover-content{
+        padding-bottom: 50px;
+    }
+
+}   

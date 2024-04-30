@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title> 设备 </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="scan()">
+        <ion-icon name="scan" class="title-bar-icon"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-searchbar
+      [(ngModel)]="param.deviceNoOrName"
+      placeholder="设备名称或编号"
+      (ionInput)="onCancel($event)"
+    >
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ng-container>
+    <ng-container *ngIf="switch">
+      <div class="select-div">
+        <div class="other-title">
+          <span class="title">位置</span>
+        </div>
+        <div class="craft-div-box">
+          <ng-container *ngFor="let province of equipmentAreas;let i=index">
+            <div
+              *ngIf="i<5||moreEquipmentAreas"
+              class="craft-div"
+              [class.active]="province.id == param.areaIds"
+              (click)='select("areaIds",province.id)'
+            >
+              {{province.name}}
+            </div>
+            <div
+              *ngIf="i==5&&!moreEquipmentAreas"
+              class="craft-div craft-more"
+              (click)="moreEquipmentAreas=true"
+            >
+              更多
+            </div>
+          </ng-container>
+        </div>
+        <div class="other-title">
+          <span class="title">类型</span>
+        </div>
+        <div class="craft-div-box" *ngIf="type_switch">
+          <ng-container
+            *ngFor="let equipmentType of equipmentTypes;let i=index"
+          >
+            <div
+              *ngIf="i<5||moreEquipmentType"
+              class="device-div"
+              [class.active]="equipmentType.id == param.classIds"
+              (click)='select("classIds",equipmentType.id)'
+            >
+              {{equipmentType.name}}
+            </div>
+            <div
+              *ngIf="i==5&&!moreEquipmentType"
+              class="craft-div craft-more"
+              (click)="moreEquipmentType=true"
+            >
+              更多
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+    <div class="open" (click)="switch=!switch">
+      <div></div>
+    </div>
+  </ng-container>
+
+  <div class="notice-list-box">
+    <div
+      class="new-notice-list"
+      *ngFor="let equipment of equipmentList"
+      (click)="checkClick(equipment)"
+    >
+      <div class="notice">
+        <div class="notice-title">{{equipment.displayName}}</div>
+        <div class="notice-subtitle">
+          <div class="notice-subtitle-content">
+            <span>{{equipment.areaName}}</span>
+          </div>
+        </div>
+        <div class="notice-subtitle">
+          <div class="notice-subtitle-content">
+            <span>{{equipment.className}}</span>|
+            <span>{{equipment.modelNo}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="left-img">
+        <img src="assets/imgs/list/device.png" class="alarm-img" />
+        <!-- <ion-icon name="device" class="alarm-img"></ion-icon> -->
+        <div class="line"></div>
+      </div>
+    </div>
+    <ion-infinite-scroll
+      (ionInfinite)="doInfinite($event)"
+      *ngIf="!noDoInfinite"
+    >
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载更多数据..."
+      >
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+</ion-content>

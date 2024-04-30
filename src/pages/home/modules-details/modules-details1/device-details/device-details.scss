@@ -1,0 +1,212 @@
+page-device-details {
+  .scan {
+    width: 18px;
+    height: 18px;
+  }
+  .my-back {
+    font-size: 30px;
+    color: #fff;
+  }
+  .search {
+    .select-item {
+      margin-left: 16px;
+      display: inline-block;
+      width: 159px;
+      padding-left: 13px;
+      height: 36px;
+      line-height: 36px;
+      font-size: 1.6rem;
+      color: #2585cb;
+      letter-spacing: 0;
+      font-weight: 400;
+
+      border: 1px solid rgba(97, 168, 250, 1);
+      border-radius: 6px;
+      background: url('../assets/imgs/list/select-arrow.png') no-repeat
+        calc(100% - 12px) center;
+      background-color: #e7f2fd;
+    }
+
+    .sort-btns {
+      float: right;
+      margin-right: 16px;
+      span {
+        float: left;
+        width: 44px;
+        height: 36px;
+        background: #ffffff;
+        border: 1px solid rgba(213, 219, 228, 1);
+        &:first-child {
+          border-radius: 6px 0px 0px 6px;
+          border-right: none;
+          background: url('../assets/imgs/list/sort2-up.png') no-repeat center
+            center;
+          &.active {
+            background: url('../assets/imgs/list/sort1-up.png') no-repeat center
+              center;
+            background-color: #e7f2fd;
+          }
+        }
+        &:last-child {
+          border-radius: 0px 6px 6px 0px;
+          border-left: none;
+          background: url('../assets/imgs/list/sort2-down.png') no-repeat center
+            center;
+          &.active {
+            background: url('../assets/imgs/list/sort1-down.png') no-repeat
+              center center;
+            background-color: #e7f2fd;
+          }
+        }
+        &.active {
+          border: 1px solid rgba(97, 168, 250, 1);
+        }
+      }
+    }
+  }
+  .card-list {
+    padding: 21px 0;
+  }
+  .card {
+    margin: 15px 21px;
+    background: #ffffff;
+    box-shadow: 0 4px 10px 1px rgba(138, 169, 185, 0.15);
+    border-radius: 12px;
+    &:first-child {
+      margin-top: 0;
+    }
+    .card-content {
+      display: inline-block;
+      margin-left: 10px;
+      margin-right: 10px;
+      width: calc((100% - 100px));
+      h1 {
+        padding: 5px 0;
+        font-size: 18px;
+        border-bottom: 1px solid rgba(221, 225, 233, 1);
+        margin: 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+        // display: -webkit-box;
+        // -webkit-box-orient: vertical;
+        // -webkit-line-clamp: 1;
+      }
+      .card-content-list {
+        padding: 8px 0 0 0;
+        width: 100%;
+        display: inline-block;
+        font-size: 13px;
+        color: #919ba3;
+        letter-spacing: 0;
+        font-weight: 400;
+        &:last-child {
+          padding-bottom: 8px;
+        }
+      }
+      .info {
+        font-size: 28px;
+        margin-top: 40px;
+        right: 20px;
+        position: absolute;
+      }
+    }
+    img {
+      width: 50px;
+      margin: 10px;
+      margin-top: 20px;
+      vertical-align: top;
+    }
+  }
+
+  ion-backdrop {
+    visibility: visible;
+    z-index: -1;
+  }
+
+  .my-custom-menu {
+    background-color: #fff;
+
+    .condition {
+      padding: 15px 30px;
+      border-bottom: 1px solid #dcdcdc;
+      overflow: hidden;
+      p {
+      }
+      span,
+      input {
+        text-align: center;
+        line-height: 30px;
+
+        border-radius: 20px;
+        color: #88898a;
+        width: 100%;
+        display: block;
+        height: 30px;
+        margin-top: 15px;
+        background: #f0f0f0;
+        border: 0;
+        .item-cover {
+          width: auto;
+          display: none;
+        }
+        .datetime-ios {
+          padding: 0;
+          .datetime-text {
+            line-height: 30px;
+            height: 30px;
+          }
+        }
+        &.had-endtime {
+          width: 45%;
+          float: left;
+          &:last-child {
+            float: right;
+          }
+        }
+        &.select-box {
+          width: 45%;
+          float: left;
+          margin-right: 5%;
+          &.selected {
+            // border: 1px solid #5aa4db;
+            // background: #e1eff9;;
+            // color: #5aa4db;
+            background-color: #58a6f7;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .my-button {
+      position: fixed;
+      bottom: 0;
+      height: 60px;
+      width: 100%;
+      margin-left: 8%;
+      button {
+        height: 70%;
+        width: 40%;
+        border-radius: 30px;
+        &:last-child {
+          margin-left: 1%;
+          background-color: #58a6f7;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+.action-sheet-ios.modules-details1-sheetctrl
+  .action-sheet-wrapper
+  .action-sheet-container
+  .action-sheet-group:first-child {
+  height: auto;
+  max-height: 50%;
+}
+/**当你触摸并按住触摸目标时候，禁止系统默认菜单,时间标签滑动报错 **/
+.picker-columns {
+  touch-action: none;
+}

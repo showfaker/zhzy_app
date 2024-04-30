@@ -1,0 +1,58 @@
+<!-- <ion-header>
+    <ion-navbar>
+        <ion-title>运维</ion-title>
+    </ion-navbar>
+</ion-header> -->
+<ion-content>
+    <div class = 'operation-top'>
+        <div class = 'date-select font-my'>
+            <ion-datetime
+                cancelText="取消"
+                doneText="确定"
+                displayFormat="YYYY-MM"
+                [(ngModel)]="startDate"
+                [max]="toDate"
+                (ionChange)="changeDate()"
+            ></ion-datetime>
+        </div>
+        <div class = 'tab-my font-my'>
+            <span [class.unselected] = 'dataType === "1"' (click) = 'changeDataType("0")'>我的</span><span [class.unselected] = 'dataType === "0"' (click) = 'changeDataType("1")'>全部</span>
+        </div>
+        <div class = 'operation-echart'>
+            <div #echarts   class="echarts-content-div" ></div>
+        </div>
+        <div class = 'statistics font-my'>
+            <div (click) = 'toOrderDay(0)'>
+                <div>{{unexecuted }}</div>
+                <span>{{dataType==='0'?'待办':'未完成'}}</span>
+            </div>
+            <div (click) = 'toOrderDay(1)'>
+                <div>{{executed }}</div>
+                <span>{{dataType==='0'?'已办':'完成'}}</span>
+            </div>
+        </div>
+    </div>
+    <div class = 'operation-mid operation-card'>
+        <div class = 'operation-mid-table'>
+            <span>工单类型</span>
+            <span class = 'unexecuted-color'>{{dataType==='0'?'待办':'未完成'}}</span>
+            <span class = 'executed-color'>{{dataType==='0'?'已办':'完成'}}</span>
+            <span>完成率</span>
+        </div>
+        <div class = 'operation-mid-table' *ngFor = 'let ordersType of ordersTypeList;let i = index' >
+            <span>{{ordersType.orderTypeText}}</span>
+            <span class = 'unexecuted-color' (click) = 'toPage(ordersType,"01")'>{{ordersType.unexecuted}}</span>
+            <span class = 'executed-color' (click) = 'toPage(ordersType,"03")'>{{ordersType.executed}}</span>
+            <span>{{ordersType.rate}}{{ordersType.rate?'%':''}}</span>
+        </div>
+    </div>
+    <div class = 'operation-calendar operation-card'>
+        <div *ngFor = 'let calendar of calendarDateList'>
+            <span>{{calendar.v}}</span>
+        </div>
+        <div *ngFor = 'let calendar of calendarList' class = 'calendarV'  (click) = 'toOrderDay(calendar,true)'>
+            <span >{{calendar.v}}</span>
+            <span *ngIf = 'calendar.total' class = 'order-day-value'  [class.font-red] = 'calendar.style === "alarm"' [class.font-blue] = 'calendar.style === "normal"'>{{calendar.total}}</span>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>告警详情</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-list class="new-list">
+      <ion-item no-lines>
+        <ion-label> 告警电站 </ion-label>
+        <ion-input
+          type="text"
+          [readonly]="true"
+          text-right
+          formControlName="stationName"
+        ></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-label> 告警设备 </ion-label>
+        <ion-input
+          type="text"
+          [readonly]="true"
+          text-right
+          formControlName="deviceName"
+        ></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-label> 告警状态 </ion-label>
+        <ion-input
+          type="text"
+          [readonly]="true"
+          text-right
+          formControlName="alarmStatus"
+        ></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-label> 告警类别 </ion-label>
+        <ion-input
+          type="text"
+          [readonly]="true"
+          text-right
+          formControlName="alarmType"
+        ></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-label> 告警级别 </ion-label>
+        <ion-input
+          type="text"
+          [readonly]="true"
+          text-right
+          formControlName="alarmLevel"
+        ></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-label> 告警时间 </ion-label>
+        <ion-input
+          type="text"
+          [readonly]="true"
+          text-right
+          formControlName="startTime"
+        ></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-label> 告警内容 </ion-label>
+        <ion-input
+          type="text"
+          [readonly]="true"
+          text-right
+          formControlName="alarmText"
+        ></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-label> 告警状态 </ion-label>
+        <ion-input
+          type="text"
+          [readonly]="true"
+          text-right
+          formControlName="alarmCheckStatus"
+        ></ion-input>
+      </ion-item>
+      <ion-item detail-push no-lines>
+        <ion-label> 缺陷单 </ion-label>
+        <ion-input
+          *ngIf="alarmlogsDetail?.defectId"
+          type="text"
+          [readonly]="true"
+          text-right
+          formControlName="defectCode"
+          (tap)="defect({defectId:alarmlogsDetail.defectId})"
+        ></ion-input>
+        <ion-input
+          *ngIf="!alarmlogsDetail?.defectId"
+          type="text"
+          [readonly]="true"
+          text-right
+          formControlName="defectCode"
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
+<ion-footer *ngIf="buttons.length>0">
+  <ion-toolbar class="footer-bar">
+    <ion-grid>
+      <ion-row *ngIf="buttons.length==2">
+        <ion-col col-6 *ngFor="let item of buttons">
+          <div class="btn">
+            <!-- <img
+                            (tap)="actionFunction(item.function)"
+                            [src]="'assets/imgs/buttons/'+item.icon"
+                            alt=""
+                        /> -->
+            <ion-icon
+              (tap)="actionFunction(item.function)"
+              [name]="item.icon.split('.')[0]"
+            ></ion-icon>
+            <p>{{item.text}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="buttons.length==1">
+        <ion-col col-12 *ngFor="let item of buttons">
+          <div class="btn">
+            <!-- <img
+                            (tap)="actionFunction(item.function)"
+                            [src]="'assets/imgs/buttons/'+item.icon"
+                            alt=""
+                        /> -->
+            <ion-icon
+              (tap)="actionFunction(item.function)"
+              [name]="item.icon.split('.')[0]"
+            ></ion-icon>
+            <p>{{item.text}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

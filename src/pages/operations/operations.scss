@@ -1,0 +1,125 @@
+operations {
+    .operation-card {
+        background: #fff;
+        margin: 5px;
+    }
+    .operation-top {
+        background-color: #5daee5;
+        height: auto;
+        .font-my {
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+        }
+        .date-select {
+            overflow: hidden;
+            position: relative;
+            padding-top: 10px;
+        }
+        .tab-my {
+            >span {
+                display: inline-block;
+                width: 4em;
+                &:first-child {
+                    border-right: 1px solid #fff;
+                }
+                &:last-child {
+                    border-left: 1px solid #fff;
+                }
+                &.unselected {
+                    color : #d8d2d2;
+                }
+            }
+        }
+        .operation-echart {
+            margin-top: 20px;
+            height: 200px;
+            // border: 1px solid #000;
+            .echarts-content-div {
+                height: 100%;
+                width: 100%;
+            }
+        }
+        .statistics {
+            overflow: hidden;
+            margin-top: 20px;
+            padding-bottom: 20px;
+        
+            >div {
+               float: left;
+                width: 50%;
+             
+            }
+        }
+    }
+    .operation-mid {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        height: auto;
+        .operation-mid-table {
+            // height: 20px;
+            // line-height: 20px;
+            text-align: center;
+            padding: 10px 0;
+            >span {
+                display: inline-block;
+                width: 22%;
+                &.unexecuted-color {
+                    color : #5daee5;
+                }
+                &.executed-color {
+                    color : #7bfb51;;
+                }
+            }
+        }
+    }
+    .operation-calendar {
+        
+        height: auto;
+        padding: 10px 30px;
+        background: #fff;
+        >div {
+            width: 14%;
+            color: #000;
+            text-align: center;
+            display: inline-block;
+
+            vertical-align: middle;
+            &.calendarV {
+                height: 10vw;
+                
+            }
+            span {
+                padding: 3px;
+                width: 2em;
+                height: 2em;
+                display: inline-block;
+                line-height: 1.5em;
+                border-radius: 50%;
+                &.selected {
+                    background: #13A0A5;
+                }
+                &.order-day-value {
+                    height: 0;
+                    padding: 0;
+                    line-height: 0;
+                    &.font-red {
+                        color: red;
+                    }
+                    &.font-blue {
+                        color: #5daee5;
+                    }
+                }
+            }
+            >i {
+                width: 4px;
+                height: 4px;
+                border-radius: 50%;
+                background: #00FFFF;
+                display: block;
+                margin-left: 44%;
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,34 @@
+export class RunlogReq {
+  customerId?: string;
+  dailyEnergy?: number;
+  dailyLoss?: number;
+  genHours?: number;
+  genHoursCloudy?: number;
+  genHoursFine?: number;
+  genHoursPcloud?: number;
+  genHoursRain?: number;
+  genHoursWet?: number;
+  irradiation?: number;
+  maxPower?: number;
+  maxTemp?: number;
+  memo?: string;
+  meterRatio?: number;
+  meterValue?: number;
+  minTemp?: number;
+  monthEnergy?: string;
+  parallelCapacity?: number;
+  powerOutage?: string;
+  recordId?: number;
+  recordTime?: string;
+  recordType?: string;
+  recordTypeText?: string;
+  recorder?: string;
+  recorderName?: string;
+  reportDate?: string;
+  stationId?: string;
+  weatherInfo?: string;
+  weatherInfoName?: string;
+  windDirection?: string;
+  windSpeed?: number;
+  jobRecordLosses?: any;
+}

@@ -1,0 +1,15 @@
+page-common-radio-textarea {
+    ion-textarea {
+        border: 1px solid #ddd;
+        textarea {
+            height: 120px;
+        }
+    }
+}
+
+.commonRadioTextareaModal {
+    .modal-wrapper {
+        height: 320px;
+        margin-top: -160px;
+    }
+}

@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>运行日志</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="nl-title">
+    <div class="fadian">
+      <i></i>
+      <span>发电</span>
+    </div>
+    <div class="tingdian" [class.power-cut]="powerCut || weather">
+      <i [class.power-cut1]="powerCut || weather"></i>
+      <span>停电</span>
+    </div>
+    <div class="weather" [class.power-cut]="weather">
+      <i [class.power-cut1]="weather"></i>
+      <span>天气</span>
+    </div>
+  </div>
+  <!-- *************发电情况************-->
+  <ion-list no-lines *ngIf="generating">
+    <!-- <i [class.power-cut] = 'powerCut' [class.weather] = 'weather'></i> -->
+    <ion-item>
+      <ion-label>电表倍率</ion-label>
+      <ion-input item-end type="text" placeholder="输入电表倍率"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>当前并网装机容量（MW）</ion-label>
+      <ion-input item-end type="text" placeholder="输入容量"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>昨日计量表示值</ion-label>
+      <ion-note item-end>1</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>今日上网电量（KWh）</ion-label>
+      <ion-input item-end type="text" placeholder="输入电量"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>今日每MW上网电量（KWh）</ion-label>
+      <ion-input item-end type="text" placeholder="输入电量"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>今日最大负荷（KWh）</ion-label>
+      <ion-note item-end>1000</ion-note>
+    </ion-item>
+  </ion-list>
+  <!-- *************停电情况************-->
+  <ion-list no-lines *ngIf="powerCut">
+    <ion-item>停电情况</ion-item>
+    <textarea placeholder="输入停电情况"></textarea>
+    <ion-item>
+      <ion-label>约损失电量（KWh）</ion-label>
+      <ion-input item-end placeholder="输入电量"></ion-input>
+    </ion-item>
+  </ion-list>
+  <!-- *************天气情况************-->
+  <ion-list no-lines *ngIf="weather">
+    <ion-item>
+      <ion-label>日辐照量（MJ/㎡）</ion-label>
+      <ion-input item-end placeholder="输入辐照量"></ion-input>
+    </ion-item>
+    <button ion-item>
+      <ion-label>今日天气</ion-label>
+      <ion-note item-end>选择天气情况</ion-note>
+    </button>
+    <ion-item>
+      <ion-label>设备运行小时数</ion-label>
+      <ion-note item-end>1000</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>最高温度（℃）</ion-label>
+      <ion-input item-end placeholder="输入温度"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>最低温度（℃）</ion-label>
+      <ion-input item-end placeholder="输入温度"></ion-input>
+    </ion-item>
+    <button ion-item>
+      <ion-label>风向</ion-label>
+      <ion-note item-end>选择风向</ion-note>
+    </button>
+    <ion-item>
+      <ion-label>风速（m/s）</ion-label>
+      <ion-note item-end>1000</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <span (click)="prev()">{{ generating ? "取消" : "上一步" }}</span
+  ><span (click)="next()">{{ weather ? "保存" : "下一步" }}</span>
+</ion-footer>

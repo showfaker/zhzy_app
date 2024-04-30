@@ -1,0 +1,29 @@
+page-cameraList {
+  .location {
+    background-color: #ececec;
+  }
+  .list {
+    margin-top: 10px;
+    .item {
+      &.target {
+        background-color: #fff;
+      }
+    }
+    .title {
+      span {
+        color: #000 !important;
+        font-size: 18px;
+      }
+    }
+    .label-ios {
+      display: flex;
+      margin: 11px 0px;
+      span {
+        width: 25%;
+        text-align: center;
+        display: inline-block;
+        color: #525252;
+      }
+    }
+  }
+}

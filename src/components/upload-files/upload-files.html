@@ -1,0 +1,40 @@
+<ion-list-header no-lines>
+  文件
+  <button
+    ion-button
+    icon-only
+    item-end
+    clear
+    type="button"
+    (tap)="upload()"
+    *ngIf="docPermission!==0"
+  >
+    <ion-icon name="md-add"></ion-icon>
+  </button>
+</ion-list-header>
+
+<div class="doc-container" *ngIf="docs.length>0">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 *ngFor="let doc of docs" class="doc-col">
+        <ion-icon class="file-icon" [name]="'file'"></ion-icon>
+        <span (tap)="download(doc.docId,doc.docName)"
+          >{{decodeFileName(doc.docName)}}</span
+        >
+        <!-- <img
+                    src="assets/imgs/buttons/remove.png"
+                    alt=""
+                    class="remove-icon"
+                    (tap)="deleteDoc(doc.docId)"
+                    *ngIf="docPermission===2"
+                /> -->
+        <ion-icon
+          *ngIf="docPermission===2"
+          class="remove-icon"
+          (tap)="deleteDoc(doc.docId)"
+          [name]="'remove'"
+        ></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

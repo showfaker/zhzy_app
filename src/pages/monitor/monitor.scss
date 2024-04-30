@@ -1,0 +1,268 @@
+page-monitor {
+  ion-content {
+    background: url(../assets/imgs/monitor/bg/topbg2@2x.png) no-repeat top
+      center;
+    background-size: contain;
+    background-color: #edf1f4 !important;
+  }
+  .toolbar-background-ios {
+    background: transparent;
+  }
+  .toolbar-title-ios {
+    color: #fff;
+  }
+
+  .my-back,
+  .device-list {
+    font-size: 30px;
+    color: #fff;
+  }
+  .title-left {
+    color: #fff;
+  }
+  .gonglv {
+    position: relative;
+    .power-data {
+      position: absolute;
+      top: 17px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      // background: #fff;
+      // background: linear-gradient(#fff, #e8f5fd);
+      border-radius: 100%;
+      width: 107px;
+      height: 107px;
+      text-align: center;
+      padding-top: 27.5px;
+      font-size: 12px;
+      color: #717171;
+      .data {
+        font-size: 18px;
+        color: #5daee5;
+      }
+    }
+    .subTitle {
+      padding: 10px 0;
+      text-align: center;
+      font-size: 14px;
+      color: #ffffff;
+      letter-spacing: 0;
+      font-weight: 500;
+      span {
+        font-size: 13px;
+        color: #ffffff;
+        font-weight: 400;
+      }
+    }
+  }
+  .trend-chart {
+    width: 100%;
+    height: 170px;
+  }
+  .trend-chart1 {
+    width: 100%;
+    height: 284px;
+    padding-top: 20px;
+  }
+  .trend-chart2 {
+    width: 100%;
+    height: 305px;
+  }
+  .filter {
+    text-align: right;
+    padding-right: 8%;
+    padding-top: 10px;
+    img {
+      width: 22px;
+    }
+    ion-icon {
+      font-size: 20px;
+      color: #c0c0c0;
+    }
+  }
+  .all-fadian {
+    position: relative;
+    height: 98px;
+    background: rgba(0, 40, 88, 0.4);
+    padding: 12px 0;
+    .fadian {
+      display: flex;
+      text-align: center;
+      div {
+        width: 33.3%;
+      }
+      &.name {
+        font-size: 14px;
+        color: #c7d9e5;
+        letter-spacing: 0;
+        font-weight: 400;
+      }
+      &.sub {
+        font-size: 12px;
+        color: #dde8f9;
+        letter-spacing: 0;
+        font-weight: 400;
+      }
+      &.data {
+        color: #eeeff1;
+        line-height: 36px;
+        font-size: 15px;
+        color: #78e8ff;
+        letter-spacing: 0;
+        text-align: center;
+        font-weight: 600;
+        div span {
+          font-size: 15px;
+        }
+      }
+    }
+    .line {
+      width: 1px;
+      height: 54px;
+      background: rgba(52, 110, 157, 1);
+      position: absolute;
+      left: 33.3%;
+      top: 22px;
+      &.right {
+        left: 66.6%;
+      }
+    }
+  }
+  .list-ios {
+    margin: 10px 0 32px;
+  }
+  .label-ios {
+  }
+  .alarmCount {
+    min-width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background: #ed8256;
+    border-radius: 10px;
+    float: right;
+    font-size: 13px;
+    color: #ffffff;
+    letter-spacing: 0;
+    text-align: center;
+    font-weight: 600;
+    padding: 0 10px;
+  }
+  // .setting {
+  //     .popover-viewport {
+  //         width: 80%;
+  //         height: 40%;
+  //         left: 10%;
+  //         top: 20%;
+  //     }
+
+  // }
+
+  .item-ios {
+    font-size: 18px;
+    color: #43464d;
+    letter-spacing: 0;
+    font-weight: 400;
+  }
+}
+/******** 发电趋势图标样式 ********/
+.rankechart {
+  background: #edf1f4;
+  padding-bottom: 20px;
+  .e-title {
+    font-size: 12px;
+    height: 51px;
+    padding-top: 5px;
+    margin-bottom: 12px;
+    .fdl {
+      margin-right: 10%;
+      display: inline-block;
+    }
+    .danwei {
+      float: right;
+      margin-right: 5px;
+    }
+    .option {
+      width: 14px;
+      height: 6px;
+      display: inline-block;
+      background: #5daee5;
+      margin: 0 8px;
+      vertical-align: middle;
+      &.pink {
+        background: #f3a3ac;
+      }
+    }
+    .time-dl {
+      font-size: 12px;
+      padding-left: 8px;
+      margin-top: 10px;
+      span {
+        color: #5daee5;
+        &.time {
+          margin-right: 5%;
+        }
+      }
+    }
+  }
+  .date-classify {
+    text-align: center;
+    border: 1px solid rgba(213, 219, 228, 1);
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 5px;
+    margin-top: 16px;
+    display: flex;
+    color: #595e65;
+    font-size: 14px;
+    span {
+      width: 25%;
+      height: 36px;
+      line-height: 36px;
+      display: inline-block;
+      &:first-child {
+        &.active {
+          border-radius: 5px 0 0 5px;
+          border-right: 1px solid rgba(217, 223, 232, 1);
+        }
+      }
+      &:nth-child(2) {
+        &.active {
+          border-left: 1px solid rgba(217, 223, 232, 1);
+          border-right: 1px solid rgba(217, 223, 232, 1);
+        }
+      }
+      &:nth-child(3) {
+        &.active {
+          border-left: 1px solid rgba(217, 223, 232, 1);
+          border-right: 1px solid rgba(217, 223, 232, 1);
+        }
+      }
+      &:last-child {
+        &.active {
+          border-radius: 0px 5px 5px 0;
+          border-left: 1px solid rgba(217, 223, 232, 1);
+        }
+      }
+      &.active {
+        background: #e7f2fd;
+        color: #3b86f6;
+        font-weight: 600;
+      }
+    }
+  }
+}
+.echart-tab .segment-ios .segment-button {
+  line-height: 41px;
+  height: 41px;
+  border-radius: 0 !important;
+  font-size: 16px;
+  color: #5c6370;
+  letter-spacing: 0;
+  text-align: center;
+  font-weight: 400;
+  &.segment-activated {
+    color: #262626;
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,17 @@
+<!--
+  Generated template for the InventorisMenusPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content no-scroll>
+    <ion-list>
+        <ng-container *ngFor="let inspectionsType of inspectionsTypes">
+            <ion-item no-lines (tap)="addInspection($event,inspectionsType.id)">
+                <ion-icon [name]="'inspection'+inspectionsType.id" item-start></ion-icon>
+                {{inspectionsType.name}}
+            </ion-item>
+        </ng-container>
+    </ion-list>
+</ion-content>

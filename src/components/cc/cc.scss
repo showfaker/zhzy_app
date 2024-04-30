@@ -1,0 +1,33 @@
+cc {
+  .user-container {
+    background: #fff;
+  }
+  [col-3] {
+    width: 20%;
+    max-width: 20%;
+    text-align: center;
+    .img-container {
+      position: relative;
+      text-align: center;
+      .delete-user {
+        font-size: 12px;
+        position: absolute;
+        right: 10px;
+        top: -6px;
+      }
+    }
+    img {
+      width: 40px;
+    }
+
+    .add {
+      color: #ccc;
+    }
+    p {
+      color: #727272;
+      height: 20px;
+      line-height: 20px;
+      font-size: 12px;
+    }
+  }
+}

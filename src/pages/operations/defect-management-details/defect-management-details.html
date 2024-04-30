@@ -1,0 +1,881 @@
+<!--
+  Generated template for the JobRecordDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content
+  [ngClass]="{'h0': buttons.length==0,'h44': buttons.length>4&&buttonToggle==false,'h88': buttons.length<=4&&buttons.length>0,'h180':buttons.length>4&&buttons.length<=8&&buttonToggle==true,'h240':buttons.length>8&&buttons.length<=12&&buttonToggle==true,'h300':buttons.length>12&&buttons.length<=16&&buttonToggle==true}"
+>
+  <form [formGroup]="form">
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleBaseInfo = !toggleBaseInfo">
+        基础信息
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleBaseInfo?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <!-- 基础信息 -->
+      <ng-container *ngIf="toggleBaseInfo">
+        <!--电站名称  -->
+        <ion-item
+          *ngIf="fields?.stationId.show"
+          [attr.detail-push]="fields?.stationId.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.stationId.nullable">*</b
+            >{{fields?.stationId.name}}</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.stationId.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            (tap)="selectStation($event)"
+            formControlName="stationName"
+          ></ion-input>
+          <ion-input
+            *ngIf="!fields?.stationId.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="stationName"
+          ></ion-input>
+        </ion-item>
+        <!-- 发现人 -->
+        <ion-item
+          *ngIf="fields?.reporter.show"
+          [attr.detail-push]="fields?.reporter.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.reporter.nullable">*</b
+            >{{fields?.reporter.name}}</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.reporter.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            (tap)="selectUser($event)"
+            formControlName="reporterName"
+          ></ion-input>
+          <ion-input
+            *ngIf="!fields?.reporter.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="reporterName"
+          ></ion-input>
+        </ion-item>
+        <!--发现时间  -->
+        <ion-item
+          *ngIf="fields?.reportTime.show"
+          [attr.detail-push]="fields?.reportTime.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.reportTime.nullable">*</b
+            >{{fields?.reportTime.name}}</ion-label
+          >
+          <ion-datetime
+            *ngIf="fields?.reportTime.editable"
+            doneText="确定"
+            cancelText="清除"
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="reportTime"
+          ></ion-datetime>
+          <ion-input
+            *ngIf="!fields?.reportTime.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="reportTime"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 缺陷类型 -->
+        <ion-item
+          *ngIf="fields?.defectType.show"
+          [attr.detail-push]="fields?.defectType.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.defectType.nullable">*</b
+            >{{fields?.defectType.name}}</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.defectType.editable"
+            (tap)="openSheetModal('defectType','defectTypeText')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="defectTypeText"
+          ></ion-input>
+          <ion-input
+            *ngIf="!fields?.defectType.editable"
+            (tap)="openSheetModal('defectType','defectTypeText')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="defectTypeText"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 缺陷发生时间  -->
+        <ion-item
+          *ngIf="fields?.originTime.show"
+          [attr.detail-push]="fields?.originTime.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.originTime.nullable">*</b
+            >{{fields?.originTime.name}}</ion-label
+          >
+          <ion-datetime
+            *ngIf="fields?.originTime.editable"
+            doneText="确定"
+            cancelText="清除"
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="originTime"
+          ></ion-datetime>
+          <ion-input
+            *ngIf="!fields?.originTime.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="originTime"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 缺陷来源 -->
+        <ion-item
+          *ngIf="fields?.defectSource.show"
+          [attr.detail-push]="fields?.defectSource.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.defectSource.nullable">*</b
+            >{{fields?.defectSource.name}}</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.defectSource.editable"
+            (tap)="openSheetModal('defectSource','defectSourceText')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="defectSourceText"
+          ></ion-input>
+          <ion-input
+            *ngIf="!fields?.defectSource.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="defectSourceText"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 缺陷等级 -->
+        <ion-item
+          *ngIf="fields?.defectLevel.show"
+          [attr.detail-push]="fields?.defectLevel.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.defectLevel.nullable">*</b
+            >{{fields?.defectLevel.name}}</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.defectLevel.editable"
+            (tap)="openSheetModal('defectLevel','defectLevelText')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="defectLevelText"
+          ></ion-input>
+          <ion-input
+            *ngIf="!fields?.defectLevel.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="defectLevelText"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 缺陷现象 -->
+        <ion-item
+          *ngIf="fields?.defectDesc.show"
+          [attr.detail-push]="fields?.defectDesc.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.defectDesc.nullable">*</b
+            >{{fields?.defectDesc.name}}</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.defectDesc.editable"
+            (tap)="addTextarea(fields?.defectDesc.name,'defectDesc',fields?.defectDesc.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            class="ell"
+            formControlName="defectDesc"
+          ></ion-input>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <ion-list class="new-list" style="margin: 0">
+      <ion-list-header class="defect-devices-header" no-lines
+        >缺陷设备</ion-list-header
+      >
+      <ion-grid class="defect-devices" formArrayName="defectDevices">
+        <ion-row
+          *ngFor="let device of getDevices(form); let i = index"
+          [formGroupName]="i"
+        >
+          <ion-col
+            col-6
+            (tap)="operateDefectDevices('edit',fields?.defectDevices.editable,i)"
+          >
+            <div class="ell">{{ device.value.objName }}</div>
+          </ion-col>
+          <ion-col col-1>
+            <div text-center *ngIf="device.value.workHours">
+              <span class="ell">{{ device.value.workHours }}</span>
+              <span>h</span>
+            </div>
+          </ion-col>
+          <ion-col col-2>
+            <div text-center *ngIf="device.value.lossEnergy">
+              <span class="ell">{{ device.value.lossEnergy }}</span>
+              <span>kWh</span>
+            </div>
+          </ion-col>
+          <ion-col col-2>
+            <div text-center *ngIf="device.value.objCost">
+              <span class="ell">{{ device.value.objCost }}</span>
+              <span>元</span>
+            </div>
+          </ion-col>
+          <ion-col col-1>
+            <img
+              src="assets/imgs/buttons/delete-grey.png"
+              (tap)="deleteDefectDevices(i,fields?.defectDevices.editable)"
+            />
+          </ion-col>
+        </ion-row>
+        <ion-row class="add-row" *ngIf="fields?.defectDevices.editable">
+          <ion-col col-12>
+            <ion-icon
+              name="md-add-circle"
+              (tap)="operateDefectDevices('add',fields?.defectDevices.editable)"
+            ></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleProcess = !toggleProcess">
+        处理过程
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon name="{{toggleProcess?'arrow-up':'arrow-down'}}"></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleProcess">
+        <!-- 抢修单 -->
+        <ion-item
+          *ngIf="form.value.repairTickets.length>0"
+          [attr.detail-push]="true"
+          no-lines
+          class="more-lines"
+        >
+          <ion-label>抢修单</ion-label>
+          <div
+            item-content
+            class="more-line-block"
+            formArrayName="repairTickets"
+          >
+            <ng-container
+              *ngFor="let item of getRepairTickets(form);let i =index"
+              [formGroupName]="i"
+            >
+              <div class="item-inner">
+                <ion-input
+                  (tap)="viewRepairTicket(item.value.orderId)"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="orderCode"
+                ></ion-input>
+              </div>
+            </ng-container>
+          </div>
+        </ion-item>
+        <!-- 工作票 -->
+        <ion-item
+          *ngIf="form.value.workTickets.length>0"
+          [attr.detail-push]="true"
+          no-lines
+          class="more-lines"
+        >
+          <ion-label>工作票</ion-label>
+          <div item-content class="more-line-block" formArrayName="workTickets">
+            <ng-container
+              *ngFor="let item of getWorkTickets(form);let i =index"
+              [formGroupName]="i"
+            >
+              <div class="item-inner">
+                <ion-input
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="orderCode"
+                ></ion-input>
+              </div>
+            </ng-container>
+          </div>
+        </ion-item>
+        <!-- 操作票 -->
+        <ion-item
+          *ngIf="form.value.operationTickets.length>0"
+          [attr.detail-push]="true"
+          no-lines
+          class="more-lines"
+        >
+          <ion-label>操作票</ion-label>
+          <div
+            item-content
+            class="more-line-block"
+            formArrayName="operationTickets"
+          >
+            <ng-container
+              *ngFor="let item of getOperationTickets(form);let i =index"
+              [formGroupName]="i"
+            >
+              <div class="item-inner">
+                <ion-input
+                  (tap)="viewOperateTicket(item.value.orderId)"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="orderCode"
+                ></ion-input>
+              </div>
+            </ng-container>
+          </div>
+        </ion-item>
+        <!-- 备品备件 -->
+        <ion-item
+          *ngIf="form.value.materials.length>0"
+          [attr.detail-push]="true"
+          no-lines
+          class="more-lines"
+        >
+          <ion-label>备品备件</ion-label>
+          <div item-content class="more-line-block" formArrayName="materials">
+            <ng-container
+              *ngFor="let item of getMaterials(form);let i =index"
+              [formGroupName]="i"
+            >
+              <div class="item-inner">
+                <ion-input
+                  (tap)="viewMaterial(item.value.detailId)"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="materialName"
+                ></ion-input>
+              </div>
+            </ng-container>
+          </div>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <ion-list class="new-list">
+      <ion-list-header
+        no-lines
+        (tap)="toggleProcessResult = !toggleProcessResult"
+      >
+        处理结果
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleProcessResult?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <!-- 处理结果 -->
+      <ng-container *ngIf="toggleProcessResult">
+        <!-- 负责人 -->
+        <ion-item
+          *ngIf="fields?.responsiblePerson.show"
+          [attr.detail-push]="fields?.responsiblePerson.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.responsiblePerson.nullable">*</b
+            >{{fields?.responsiblePerson.name}}</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.responsiblePerson.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            (tap)="selectResponsiblePerson($event)"
+            formControlName="responsiblePersonName"
+          ></ion-input>
+          <ion-input
+            *ngIf="!fields?.responsiblePerson.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="responsiblePersonName"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 参与人 -->
+        <ion-item
+          *ngIf="fields?.players.show"
+          [attr.detail-push]="fields?.players.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.players.nullable">*</b
+            >{{fields?.players.name}}</ion-label
+          >
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            (tap)="selectplayers($event,fields?.players.editable)"
+            formControlName="playersText"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 开始时间 -->
+        <ion-item
+          *ngIf="fields?.startTime.show"
+          [attr.detail-push]="fields?.startTime.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.startTime.nullable">*</b
+            >{{fields?.startTime.name}}</ion-label
+          >
+          <ion-datetime
+            *ngIf="fields?.startTime.editable"
+            doneText="确定"
+            cancelText="清除"
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="startTime"
+          ></ion-datetime>
+          <ion-input
+            *ngIf="!fields?.startTime.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="startTime"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 完成时间 -->
+        <ion-item
+          *ngIf="fields?.endTime.show"
+          [attr.detail-push]="fields?.endTime.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.endTime.nullable">*</b
+            >{{fields?.endTime.name}}</ion-label
+          >
+          <ion-datetime
+            *ngIf="fields?.endTime.editable"
+            doneText="确定"
+            cancelText="清除"
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="endTime"
+          ></ion-datetime>
+          <ion-input
+            *ngIf="!fields?.endTime.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="endTime"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 工作量 -->
+        <ion-item
+          *ngIf="fields?.workHours.show"
+          [attr.detail-push]="fields?.workHours.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.workHours.nullable">*</b
+            >{{fields?.workHours.name}}</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('workHours',fields?.workHours.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="workHours"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 损失电量 -->
+        <ion-item
+          *ngIf="fields?.lossEnergy.show"
+          [attr.detail-push]="fields?.lossEnergy.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.lossEnergy.nullable">*</b
+            >{{fields?.lossEnergy.name}}</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('lossEnergy',fields?.lossEnergy.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="lossEnergy"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 消缺费用 -->
+        <ion-item
+          *ngIf="fields?.defectCost.show"
+          [attr.detail-push]="fields?.defectCost.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.defectCost.nullable">*</b
+            >{{fields?.defectCost.name}}</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('defectCost',fields?.defectCost.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="defectCost"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 缺陷状态 -->
+        <ion-item
+          *ngIf="fields?.defectStatus.show"
+          [attr.detail-push]="fields?.defectStatus.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.defectStatus.nullable">*</b
+            >{{fields?.defectStatus.name}}</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.defectStatus.editable"
+            (tap)="openSheetModal('defectStatus','defectStatusText')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="defectStatusText"
+          ></ion-input>
+          <ion-input
+            *ngIf="!fields?.defectStatus.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="defectStatusText"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 处理结果说明 -->
+        <ion-item
+          *ngIf="fields?.resultDesc.show"
+          [attr.detail-push]="fields?.resultDesc.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.resultDesc.nullable">*</b
+            >{{fields?.resultDesc.name}}</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.resultDesc.editable"
+            (tap)="addTextarea(fields?.resultDesc.name,'resultDesc',fields?.resultDesc.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="resultDesc"
+          ></ion-input>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <!-- 照片 -->
+    <ion-list class="new-list">
+      <upload-pics
+        [orderId]="orderId"
+        [picPermission]="picPermission"
+        [pics]="form.value.pics"
+        (picsEvent)="setPics($event)"
+      ></upload-pics>
+    </ion-list>
+
+    <!-- 附件 -->
+    <ion-list class="new-list">
+      <upload-files
+        [orderId]="orderId"
+        [docPermission]="docPermission"
+        [docs]="form.value.docs"
+        (docsEvent)="setDocs($event)"
+      ></upload-files>
+    </ion-list>
+
+    <!-- 缺陷检查 -->
+    <ion-list class="new-list">
+      <ion-list-header
+        no-lines
+        (tap)="toggleDefectInspection = !toggleDefectInspection"
+      >
+        缺陷检查
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleDefectInspection?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleDefectInspection">
+        <!-- 检查结果 -->
+        <ion-item
+          *ngIf="fields?.checkStatus.show"
+          [attr.detail-push]="fields?.checkStatus.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.checkStatus.nullable">*</b
+            >{{fields?.checkStatus.name}}</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.checkStatus.editable"
+            (tap)="openSheetModal('checkStatus','checkStatusText')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="checkStatusText"
+          ></ion-input>
+          <ion-input
+            *ngIf="!fields?.checkStatus.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="checkStatusText"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 检查人 -->
+        <ion-item
+          *ngIf="fields?.checker.show"
+          [attr.detail-push]="fields?.checker.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.checker.nullable">*</b
+            >{{fields?.checker.name}}</ion-label
+          >
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="checkerName"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 检查时间 -->
+        <ion-item
+          *ngIf="fields?.checkTime.show"
+          [attr.detail-push]="fields?.checkTime.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.checkTime.nullable">*</b
+            >{{fields?.checkTime.name}}</ion-label
+          >
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="checkTime"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 检查备注 -->
+        <ion-item
+          *ngIf="fields?.checkMemo.show"
+          [attr.detail-push]="fields?.checkMemo.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.checkMemo.nullable">*</b
+            >{{fields?.checkMemo.name}}</ion-label
+          >
+          <ion-input
+            (tap)="addTextarea(fields?.checkMemo.name,'checkMemo',fields?.checkMemo.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="checkMemo"
+          ></ion-input>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <!-- 工作流程 -->
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleWorkFlow = !toggleWorkFlow">
+        工作流程
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleWorkFlow?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleWorkFlow">
+        <div echarts #echart [options]="options" class="workflow-chart"></div>
+      </ng-container>
+    </ion-list>
+
+    <!-- 流程日志 -->
+    <ion-list class="new-list">
+      <ion-list-header
+        no-lines
+        (tap)="toggleWorkflowLogs = !toggleWorkflowLogs"
+      >
+        流程日志
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleWorkflowLogs?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleWorkflowLogs">
+        <ng-container formArrayName="workflowLogs">
+          <ng-container
+            *ngFor="let item of getWorkflowLogs(form); let i = index"
+            [formGroupName]="i"
+          >
+            <div class="workflow-log">
+              <p>
+                {{item.value.executeTime | date:'yyyy-MM-dd HH:mm'}}
+                {{item.value.userName }}
+              </p>
+              <div class="action-content">{{item.value.action}}</div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+
+    <!-- 抄送 -->
+    <ion-list class="new-list">
+      <cc
+        [ccPermission]="ccPermission"
+        [users]="ccUsers"
+        (userEvent)="ccUserEvent($event)"
+      ></cc>
+    </ion-list>
+
+    <!-- 评论  -->
+    <ion-list class="new-list" *ngIf="defectId!==0">
+      <ion-list-header no-lines (tap)="toggleComment = !toggleComment">
+        评论
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon name="{{toggleComment?'arrow-up':'arrow-down'}}"></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleComment">
+        <comment [orderId]="orderId" [commentsList]="commentsList"></comment>
+      </ng-container>
+    </ion-list>
+  </form>
+</ion-content>
+
+<ion-footer *ngIf="buttons.length>0">
+  <ion-toolbar class="footer-bar">
+    <ng-container *ngIf="buttons.length<=4">
+      <ion-grid>
+        <ion-row>
+          <ion-col
+            *ngFor="let button of buttons"
+            class="{{buttonFlex(buttons.length)}}"
+          >
+            <div class="btn">
+              <!-- <img
+                (tap)="buttonFunction(button)"
+                src="assets/imgs/buttons/{{button.buttonIcon}}"
+                alt=""
+              /> -->
+              <ion-icon
+                (tap)="buttonFunction(button)"
+                [name]="button.buttonIcon.split('.')[0]"
+              ></ion-icon>
+              <p>{{button.buttonText}}</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-container>
+    <ng-container *ngIf="buttons.length>4">
+      <button
+        ion-button
+        block
+        (tap)="showMoreButtons()"
+        *ngIf="buttonToggle==false"
+        style="background-color: #54a4e4"
+      >
+        <span style="margin-right: 5px">处理</span
+        ><ion-icon name="arrow-up"></ion-icon>
+      </button>
+      <ng-container *ngIf="buttonToggle==true">
+        <ion-grid>
+          <ion-row>
+            <ion-col *ngFor="let button of buttons" class="col-3">
+              <div class="btn">
+                <!-- <img
+                  (tap)="buttonFunction(button)"
+                  src="assets/imgs/buttons/{{button.buttonIcon}}"
+                  alt=""
+                /> -->
+                <ion-icon
+                  (tap)="buttonFunction(button)"
+                  [name]="button.buttonIcon.split('.')[0]"
+                ></ion-icon>
+                <p>{{button.buttonText}}</p>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12 style="padding-top: 10px">
+              <ion-icon
+                name="arrow-down"
+                (tap)="showMoreButtons()"
+                style="font-size: 1.6em"
+              ></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ng-container>
+    </ng-container>
+  </ion-toolbar>
+</ion-footer>

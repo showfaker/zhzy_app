@@ -1,0 +1,30 @@
+page-common-check-memos {
+    b {
+        color: #f00;
+    }
+    ion-textarea {
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        textarea {
+            height: 120px;
+            resize: none;
+        }
+    }
+    .check-memo {
+        position: relative;
+        ion-icon {
+            position: absolute;
+            top: 0;
+            right: 6px;
+            font-size: 2em;
+            height: 40px;
+            line-height: 40px;
+            color: #ddd;
+        }
+    }
+}
+
+.commonCheckMemosModal .modal-wrapper {
+    height: 330px;
+    margin-top: -165px;
+}

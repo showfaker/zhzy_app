@@ -1,0 +1,38 @@
+check-warehouse{
+    .mysearchbar{
+        background: #fff;
+        .searchbar-input-container{
+            border: 0.8px solid rgba(0, 0, 0, .2);
+            border-radius: 3px;
+        }
+    }
+    .checkList{
+        padding-top: 2%;
+        margin: 0;
+    }
+    .oneCheck{
+        ion-icon{
+            color: rgba(0, 0, 0, .3);
+        }
+    }
+    .twoCheck{
+        .input-wrapper{
+            margin-left: 8%;
+        }
+        ion-icon{
+            color: rgba(0, 0, 0, .3);
+        }
+    }
+    .threeCheck{
+        .input-wrapper{
+            margin-left: 15%;
+        }
+        ion-icon{
+            color: rgba(0, 0, 0, .3);
+        }
+    }
+    .buttonfull{
+        position: absolute;
+        bottom: 0;
+    }
+}

@@ -1,0 +1,33 @@
+page-more-menu {
+    .content {
+        background: #333;
+        .list-ios {
+            margin-bottom: 0;
+            ion-item {
+                color: #fff;
+                background: none;
+                padding: 0;
+                text-align: center;
+                &.item-block {
+                    height: 40px;
+                    min-height: 40px;
+                }
+                & .item-inner {
+                    padding: 0;
+                }
+                .label-ios {
+                    margin: 8px 5px;
+                }
+            }
+        }
+    }
+}
+
+.maintainsMenus.popover-ios {
+    .popover-content {
+        width: 140px;
+    }
+    .popover-arrow::after {
+        background: #333;
+    }
+}

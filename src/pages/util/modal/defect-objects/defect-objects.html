@@ -1,0 +1,26 @@
+<!--
+  Generated template for the DefectObjectsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content no-scroll>
+  <ion-icon name="close" (tap)="close()"></ion-icon>
+  <form [formGroup]="form">
+    <h6>设施名称<b>*</b></h6>
+    <ion-input type="text" formControlName="objName"></ion-input>
+    <h6>厂家</h6>
+    <ion-input type="text" formControlName="objCompany"></ion-input>
+    <h6>供应商</h6>
+    <ion-input type="text" formControlName="objProvider"></ion-input>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12>
+          <button type="button" ion-button small class="ok-btn" (tap)="ok()">
+            确定
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

@@ -1,0 +1,99 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>工具器</ion-title>
+    </ion-navbar>
+    <ion-icon name="search" class="search-icon" (click)='tomodal()'></ion-icon>
+</ion-header>
+<ion-content>
+    <div class="sort-div-box">
+        <div class="sort-div" (click)="toWarehouse()">
+            <span class="sort_name">仓库筛选</span>
+            <span class="tirangle"></span>
+        </div>
+        <div class="sort-div" (click)="wltoggle()">
+            <span class="sort_name">工具类别</span>
+            <span class="tirangle"></span>
+        </div>
+        <div class="sort-div" (click)="kctoggle()">
+            <span class="sort_name">库存类别</span>
+            <span class="tirangle"></span>
+        </div>
+    </div>
+    <div class="mask" *ngIf="kckind||wlkind" (click)="masktoggle()"></div>
+    <div class="kucun-pop" *ngIf="kckind">
+        <ion-item>正常库存</ion-item>
+        <ion-item>异常库存</ion-item>
+    </div>
+    <div class="kucun-pop" *ngIf="wlkind">
+        <ion-item>物料类别1</ion-item>
+        <ion-item>物料类别2</ion-item>
+        <ion-item>物料类别3</ion-item>
+    </div>
+
+    <div>
+        <ion-list class="cango-list">
+            <ion-item-sliding #item>
+                <ion-item class="cango-item">
+                    <div class="wuliao-div">
+                        <span class="wl-name">物料名称</span>
+                        <span class="line1"></span>
+                        <span class="wl-num">料号KJ-0001</span>
+                    </div>
+                    <div class="wl-detail_box">
+                        <div class="wl-detail">所属仓库：仓库名称</div>
+                        <div class="wl-detail">规格型号：规格型号1</div>
+                        <div class="wl-detail">库存类别：<span class="color1">异常库存</span></div>
+                        <div class="wl-detail">物料数量：2000件</div>
+                    </div>
+                </ion-item>
+                <ion-item-options >
+                    <button ion-button class="chrku" (click)="toBorrow()">借用</button>
+                    <button ion-button class="chrku chkco" (click)="toReturn()">归还</button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-list class="cango-list">
+                <ion-item-sliding #item>
+                    <ion-item class="cango-item">
+                        <div class="wuliao-div">
+                            <span class="wl-name">物料名称</span>
+                            <span class="line1"></span>
+                            <span class="wl-num">料号KJ-0001</span>
+                        </div>
+                        <div class="wl-detail_box">
+                            <div class="wl-detail">所属仓库：仓库名称</div>
+                            <div class="wl-detail">规格型号：规格型号1</div>
+                            <div class="wl-detail">库存类别：<span class="color2">异常库存</span></div>
+                            <div class="wl-detail">物料数量：2000件</div>
+                        </div>
+                    </ion-item>
+                    <ion-item-options >
+                        <button ion-button class="chrku">借用</button>
+                        <button ion-button class="chrku chkco">归还</button>
+                    </ion-item-options>
+                </ion-item-sliding>
+            </ion-list>
+            <ion-list class="cango-list">
+                    <ion-item-sliding #item>
+                        <ion-item class="cango-item">
+                            <div class="wuliao-div">
+                                <span class="wl-name">物料名称</span>
+                                <span class="line1"></span>
+                                <span class="wl-num">料号KJ-0001</span>
+                            </div>
+                            <div class="wl-detail_box">
+                                <div class="wl-detail">所属仓库：仓库名称</div>
+                                <div class="wl-detail">规格型号：规格型号1</div>
+                                <div class="wl-detail">库存类别：<span class="color1">异常库存</span></div>
+                                <div class="wl-detail">物料数量：2000件</div>
+                            </div>
+                        </ion-item>
+                        <ion-item-options >
+                            <button ion-button class="chrku">借用</button>
+                            <button ion-button class="chrku chkco">归还</button>
+                        </ion-item-options>
+                    </ion-item-sliding>
+                </ion-list>
+    </div>
+
+</ion-content>

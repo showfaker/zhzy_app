@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="serchMenu()">
+        <ion-icon name="search" class="title-bar-icon"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #reportProductionMonthlyLySearch>
+  <div>
+    <p text-center>电站信息</p>
+    <ion-list>
+      <ion-item detail-none>
+        <ion-label> 电站名称： </ion-label>
+        <ion-note item-end> {{reportInfo?.stationName}} </ion-note>
+      </ion-item>
+      <ion-item detail-none>
+        <ion-label> 地区： </ion-label>
+        <ion-note item-end> {{reportInfo?.region}} </ion-note>
+      </ion-item>
+      <ion-item detail-none>
+        <ion-label> 设计装机容量-MW： </ion-label>
+        <ion-note item-end> {{reportInfo?.capacity}} </ion-note>
+      </ion-item>
+      <ion-item detail-none>
+        <ion-label> 并网装机容量-MW： </ion-label>
+        <ion-note item-end> {{reportInfo?.parallelCapacity}} </ion-note>
+      </ion-item>
+    </ion-list>
+    <ion-list class="report-header">
+      <ion-item>
+        <ion-note item-end>
+          <ion-grid>
+            <ion-row>
+              <div col-6 text-right>{{month}}月</div>
+              <div col-6 text-right>全年</div>
+            </ion-row>
+          </ion-grid>
+        </ion-note>
+      </ion-item>
+    </ion-list>
+    <ng-container *ngFor="let groups of reportInfo?.groups;let i = index">
+      <p text-center *ngIf="i===0||i===4">
+        {{i===0?'一、电量指标':'二、经济技术指标'}}
+      </p>
+      <ion-list class="report-body">
+        <ng-container *ngFor="let data of groups.datas">
+          <ion-item>
+            <ion-label> {{data.itemName}}： </ion-label>
+            <ion-note item-end>
+              <ion-grid>
+                <ion-row>
+                  <div col-6 text-right>{{data.value1}}</div>
+                  <div col-6 text-right>{{data.valueYear}}</div>
+                </ion-row>
+              </ion-grid>
+            </ion-note>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+    </ng-container>
+  </div>
+</ion-content>
+<ng-container *ngIf="showMenu">
+  <ion-menu
+    [content]="reportProductionMonthlyLySearch"
+    side="right"
+    (ionOpen)="menuInit()"
+    id="reportProductionMonthlyLySearch"
+    type="overlay"
+    [swipeEnabled]="true"
+    class="search-menu"
+    [persistent]="true"
+  >
+    <ion-content class="outer-content" no-bounce class="my-custom-menu">
+      <div class="common-search-container">
+        <div class="common-search">
+          <div class="button-picker border-bottom">
+            <div class="query-label">电站</div>
+            <button
+              ion-button
+              round
+              small
+              color="light"
+              (click)="selectStation()"
+            >
+              {{(searchParams?.station?.title)||'未选择'}}
+              <!-- <img
+                                *ngIf="searchParams?.station"
+                                (click)="clearStation($event)"
+                                class="clear-icon"
+                                src="assets/imgs/buttons/delete.png"
+                                alt=""
+                            /> -->
+              <ion-icon
+                *ngIf="searchParams?.station"
+                (click)="clearStation($event)"
+                class="clear-icon"
+                name="delete"
+              ></ion-icon>
+            </button>
+          </div>
+          <div class="time-picker full-time-picker border-bottom">
+            <div class="query-label">月份</div>
+            <ion-datetime
+              displayFormat="YYYY-MM"
+              doneText="确定"
+              cancelText="取消"
+              [(ngModel)]="searchParams.settleMonth"
+            ></ion-datetime>
+          </div>
+          <ion-list>
+            <ion-row class="fix-bottom">
+              <ion-col col-6 text-center>
+                <button
+                  ion-button
+                  round
+                  small
+                  class="reset-btn"
+                  color="light"
+                  (click)="reset()"
+                >
+                  重置
+                </button>
+              </ion-col>
+              <ion-col col-6 text-center>
+                <button ion-button round small class="query-btn" (click)="ok()">
+                  查询
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-list>
+        </div>
+      </div>
+    </ion-content>
+  </ion-menu>
+</ng-container>

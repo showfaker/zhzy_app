@@ -1,0 +1,150 @@
+<ion-content>
+  <div class="common-search-container">
+    <div class="common-search">
+      <div class="select-picker border-bottom">
+        <div class="query-label">快速查询</div>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-4 *ngFor="let item of aQueryFlag">
+              <div
+                class="select-option ell"
+                [ngClass]="{'active-option': searchParams.myOperate===item.first}"
+                (click)="selectQuickSearch(item.first)"
+              >
+                {{item.second}}
+              </div></ion-col
+            >
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div class="select-picker border-bottom">
+        <div class="query-label">状态</div>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-4 *ngFor="let item of ioStatus">
+              <div
+                class="select-option"
+                [ngClass]="{'active-option': searchParams.ioStatus.indexOf(item.first)!==-1}"
+                (click)="selectStatusOption(item.first)"
+              >
+                {{item.second}}
+              </div></ion-col
+            >
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div class="button-picker border-bottom">
+        <div class="query-label">操作类型</div>
+        <button ion-button round small color="light" (click)="setIoSubType()">
+          {{searchParams?.ioSubTypes.length?'已选'+(searchParams?.ioSubTypes.length)+'项':'未选择'}}
+        </button>
+      </div>
+      <div class="button-picker border-bottom">
+        <div class="query-label">仓库</div>
+        <button
+          ion-button
+          round
+          small
+          color="light"
+          (click)="selectWarehouses()"
+        >
+          {{(warehouses?.warehouseName)||'未选择'}}
+          <ion-icon
+            *ngIf="warehouses"
+            (click)="clearWarehouses($event)"
+            class="clear-icon"
+            name="delete"
+          ></ion-icon>
+        </button>
+      </div>
+      <div class="button-picker border-bottom">
+        <div class="query-label">物料</div>
+        <button
+          ion-button
+          round
+          small
+          color="light"
+          (click)="selectMaterials()"
+        >
+          {{searchParams?.materia?.length?'已选'+(searchParams?.materia?.length)+'项':'未选择'}}
+        </button>
+      </div>
+      <div class="time-picker border-bottom">
+        <div class="query-label">出入库时间</div>
+        <ion-datetime
+          displayFormat="YYYY-MM-DD"
+          pickerFormat="YYYY/MM/DD"
+          doneText="确定"
+          [(ngModel)]="searchParams.startTime"
+          [pickerOptions]="customStartTimePickerOptions"
+        ></ion-datetime>
+        <div class="line">-</div>
+        <ion-datetime
+          displayFormat="YYYY-MM-DD"
+          pickerFormat="YYYY/MM/DD"
+          doneText="确定"
+          [pickerOptions]="customEndTimePickerOptions"
+          [(ngModel)]="searchParams.endTime"
+        ></ion-datetime>
+      </div>
+
+      <div class="button-picker border-bottom">
+        <div class="query-label">出入库人</div>
+        <button
+          ion-button
+          round
+          small
+          color="light"
+          (click)="selectUser('operator')"
+        >
+          {{(searchParams['operator']?.realName)||'未选择'}}
+          <ion-icon
+            *ngIf="searchParams['operator']"
+            (click)="clearUser($event,'operator')"
+            class="clear-icon"
+            name="delete"
+          ></ion-icon>
+        </button>
+      </div>
+      <div class="button-picker border-bottom">
+        <div class="query-label">审批/确认人</div>
+        <button
+          ion-button
+          round
+          small
+          color="light"
+          (click)="selectUser('approver')"
+        >
+          {{(searchParams['approver']?.realName)||'未选择'}}
+          <ion-icon
+            *ngIf="searchParams['approver']"
+            (click)="clearUser($event, 'approver')"
+            class="clear-icon"
+            name="delete"
+          ></ion-icon>
+        </button>
+      </div>
+    </div>
+    <ion-list>
+      <ion-row class="fix-bottom">
+        <ion-col col-6 text-center>
+          <button
+            ion-button
+            round
+            small
+            class="reset-btn"
+            color="light"
+            (click)="reset()"
+          >
+            重置
+          </button>
+        </ion-col>
+        <ion-col col-6 text-center>
+          <button ion-button round small class="query-btn" (click)="ok()">
+            查询
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+  </div>
+</ion-content>

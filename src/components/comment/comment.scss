@@ -1,0 +1,31 @@
+comment {
+    .comment-container {
+        background: #fff;
+    }
+    .comment-info {
+        color: #727272;
+    }
+    .comment-content {
+        padding: 5px 10px;
+        border-radius: 10px;
+        background-color: #f1f1f1;
+        margin: 5px 0 10px 0;
+    }
+    .comment-icon {
+        width: 40px;
+    }
+    .delete-icon {
+        float: right;
+        line-height: 20px;
+    }
+    textarea {
+        width: 100%;
+        border: 1px solid #ccc;
+    }
+    .comment-btn {
+        text-align: right;
+        .button-ios {
+            height: 2em;
+        }
+    }
+}

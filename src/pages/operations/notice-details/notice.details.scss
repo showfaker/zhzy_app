@@ -1,0 +1,30 @@
+notice-details {
+    .not-detai {
+        text-align: center;
+        background: #fff;
+        height: 85%;
+        color: #aaaaad;
+        font-size: 13px;
+        .n-title {
+            font-size: 16px;
+            color: #000;
+            padding-top: 10px;
+        }
+        .attachment {
+            position: absolute;
+            bottom: 17%;
+            width: 100%;
+            div {
+                float: left;
+                width: 33%;
+                .att-img {
+                    display: block;
+                    margin: 0 auto;
+                }
+                a {color: #7f8084;}
+            }
+           
+        }
+        
+    }
+}

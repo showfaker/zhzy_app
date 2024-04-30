@@ -1,0 +1,23 @@
+pow-sta-records {
+    .records {
+        background: #fff;
+        margin-bottom: 8px;
+        .records-message {
+            // float: left;
+            display: inline-block;
+            width: 49%;
+            padding-left: 3%;
+            height: 25px;
+            .name {
+                color: #77787d;
+            }
+            .xing {
+                color: #d66559;
+                vertical-align: middle;
+    
+            }
+        }
+    }
+    
+
+}

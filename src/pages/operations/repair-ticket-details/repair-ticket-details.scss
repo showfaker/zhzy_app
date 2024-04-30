@@ -1,0 +1,132 @@
+page-repair-ticket-details {
+  ion-content {
+    &.h0 > div {
+      margin-bottom: 0 !important;
+    }
+    &.h44 > div {
+      margin-bottom: 44px !important;
+    }
+    &.h88 > div {
+      margin-bottom: 88px !important;
+    }
+    &.h180 > div {
+      margin-bottom: 180px !important;
+    }
+    &.h240 > div {
+      margin-bottom: 240px !important;
+    }
+    &.h300 > div {
+      margin-bottom: 300px !important;
+    }
+  }
+  b {
+    color: #f00;
+  }
+  .list-ios > .item-block:last-child {
+    border-bottom: 0;
+  }
+  .check-in-item {
+    min-height: 100px;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    .p-header {
+      padding: 5px;
+      text-align: center;
+    }
+    [col-3] {
+      width: 20%;
+      max-width: 20%;
+      text-align: center;
+      .img-container {
+        position: relative;
+        text-align: center;
+        .delete-user {
+          font-size: 12px;
+          position: absolute;
+          right: 10px;
+        }
+      }
+      img {
+        width: 40px;
+      }
+      .icon {
+        font-size: 30px;
+      }
+      .add {
+        color: #ccc;
+      }
+      p {
+        color: #727272;
+      }
+    }
+  }
+  ion-toolbar {
+    .toolbar-background-ios {
+      background: #fff;
+    }
+    .col-12 {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      width: 100%;
+      max-width: 100%;
+    }
+    .col-6 {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+      flex: 0 0 50%;
+      width: 50%;
+      max-width: 50%;
+    }
+    .col-4 {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(100% / 3);
+      flex: 0 0 calc(100% / 3);
+      width: calc(100% / 3);
+      max-width: calc(100% / 3);
+    }
+    .col-3 {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 25%;
+      flex: 0 0 25%;
+      width: 25%;
+      max-width: 25%;
+    }
+    ion-col {
+      text-align: center;
+      font-size: 12px;
+      color: #727272;
+      img {
+        width: 40px;
+      }
+      .icon {
+        font-size: 30px;
+      }
+    }
+  }
+  .workflow-chart {
+    background: #fff;
+    height: 300px;
+  }
+  .workflow-log {
+    padding: 10px 20px 0;
+    background: #fff;
+    color: #727272;
+    &:last-child {
+      padding-bottom: 15px;
+    }
+    .action-content {
+      padding: 5px 10px;
+      border-radius: 10px;
+      background-color: rgba(241, 241, 239, 1);
+    }
+  }
+  .hideComment {
+    display: none;
+  }
+  .footer-bar {
+    .toolbar-background-ios {
+      background: rgba(248, 248, 246, 1);
+    }
+  }
+}

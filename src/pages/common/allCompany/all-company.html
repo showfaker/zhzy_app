@@ -1,0 +1,26 @@
+<ion-header *ngIf = 'type !== "notitle"'>
+    <ion-navbar>
+        <ion-title>电站列表</ion-title>
+    </ion-navbar>
+</ion-header>
+    
+<ion-content>
+  <ion-searchbar placeholder="输入电站名称" [(ngModel)]=  'search' *ngIf = 'type !== "notitle"'></ion-searchbar>
+  <div [ngSwitch]="pet">
+    <!-- 公司 -->
+    <ion-list >
+      <!--  *ngSwitchCase="'company'" -->
+      <!-- <ion-item ion-item class="title" (click) = "returnMonitor()">林阳集团</ion-item> -->
+      <div *ngFor = 'let station of stationList;let i = index'>
+        <button ion-item  (click) = "powerStation(i)">
+          {{station.provinceName}}({{getStationNumber(station)}})
+        </button> 
+        <ion-list   *ngIf="station['hidePower']" class="power-station" >
+          <ng-container *ngFor = 'let content of station["content"]'>
+              <ion-item  ion-item *ngIf = 'searchShow(content.shortName)' (click) = "returnMonitor(content)">{{content.shortName}}</ion-item>
+          </ng-container>
+        </ion-list>
+    </div>
+    </ion-list>
+  </div>
+</ion-content>

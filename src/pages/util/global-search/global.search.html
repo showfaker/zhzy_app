@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-title>Subheader</ion-title> -->
+
+    <ion-buttons start>
+      <button ion-button icon-only (click)="onCancel()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-searchbar
+      class="mysearchbar"
+      [(ngModel)]="myInput"
+      placeholder="搜索"
+      [showCancelButton]="true"
+      cancelButtonText="取消"
+      (ionInput)="onInput()"
+      (ionCancel)="onCancel()"
+    >
+    </ion-searchbar>
+  </ion-toolbar>
+
+  <ion-toolbar class="segment-toolbar">
+    <div>
+      <ion-segment [(ngModel)]="searResult" (ionChange)="segmentChanged()">
+        <ion-segment-button value="dianzhan">电站</ion-segment-button>
+        <ion-segment-button value="shebei">设备</ion-segment-button>
+        <!-- <ion-segment-button value="qita">其他</ion-segment-button> -->
+      </ion-segment>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ng-container>
+    <div [ngSwitch]="searResult" class="list-container">
+      <div *ngSwitchCase=" 'dianzhan' " class="notice-list">
+        <div
+          class="notice-bg"
+          *ngFor="let equipment of searchInfo"
+          (click)="stationClick(equipment)"
+        >
+          <div class="notice">
+            <div class="notice-title">{{equipment.title}}</div>
+            <div class="notice-subtitle value">
+              <div class="notice-subtitle-content">
+                <span>{{equipment.text3}}</span>
+              </div>
+            </div>
+            <div class="notice-subtitle">
+              <div class="notice-subtitle-content">
+                <span>{{equipment.text2}}</span>
+                <span>{{equipment.text1}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="left-img">
+            <img src="assets/imgs/home/station.png" class="alarm-img" />
+            <div class="notice-line"></div>
+          </div>
+        </div>
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="加载更多数据..."
+          >
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </div>
+      <div *ngSwitchCase=" 'shebei' " class="notice-list">
+        <div
+          class="notice-bg"
+          *ngFor="let equipment of searchInfo"
+          (click)="equipmentClick(equipment)"
+        >
+          <div class="notice">
+            <div class="notice-title">{{equipment.title}}</div>
+            <div class="notice-subtitle value">
+              <div class="notice-subtitle-content">
+                <span>{{equipment.text3}}</span>
+              </div>
+            </div>
+            <div class="notice-subtitle">
+              <div class="notice-subtitle-content">
+                <span>{{equipment.text2}}</span>
+                <span>{{equipment.text1}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="left-img">
+            <img src="assets/imgs/home/device.png" class="alarm-img" />
+          </div>
+          <div class="notice-line"></div>
+        </div>
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="加载更多数据..."
+          >
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </div>
+      <!-- <div *ngSwitchCase=" 'qita' " class="notice-list">
+                <div class="notice-bg" *ngFor='let equipment of searchInfo'>
+                    <div class="notice">
+                        <div class='notice-title'>{{equipment.title}}</div>
+                        <div class='notice-subtitle'>
+                            <div class="notice-subtitle-content">
+                                <span>{{equipment.text1}}</span>
+                            </div>
+                        </div>
+                        <div class='notice-subtitle'>
+                            <div class="notice-subtitle-content">
+                                <span>{{equipment.text2}}</span>
+                                <span>{{equipment.text3}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left-img">
+                        <img src="assets/imgs/home/alarm_new.png" class="alarm-img" />
+                    </div>
+                    <div class="notice-line"></div>
+                </div>
+            </div> -->
+    </div>
+  </ng-container>
+</ion-content>

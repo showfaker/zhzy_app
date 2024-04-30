@@ -1,0 +1,77 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons start >
+            <button (click) = 'close()'  class = 'qz-back'> 返回</button>
+        </ion-buttons>
+        <ion-title>电站档案</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <!-- ****** 基本信息 ****** -->
+    <div class="records">
+        <div class="rank">
+            <span class="line"></span>
+            <span class="r-title">基本信息</span>
+            <span class="line"></span>
+        </div>
+        <div class="records-message" *ngFor = "let mes of jibenMessage">
+            <span class="xing">*</span>
+            <span class="name">{{mes.name}}</span>
+            <span>{{mes.data}}</span>
+        </div>
+    </div>
+    <div></div>
+     <!-- ****** 地理位置信息 ****** -->
+    <div class="records">
+        <div class="rank">
+            <span class="line"></span>
+            <span class="r-title">地理位置信息</span>
+            <span class="line"></span>
+        </div>
+        <div class="records-message">
+            <span class="xing">*</span>
+            <span>国家:</span>
+            <span>中国</span>
+        </div>
+        <div class="records-message">
+            <span class="xing">*</span>
+            <span>省份:</span>
+            <span>江苏</span>
+        </div>
+        <div class="records-message">
+            <span class="xing">*</span>
+            <span>市/县:</span>
+            <span>南靖市/启东县</span>
+        </div>
+        <div class="records-message">
+            <span class="xing">*</span>
+            <span>经度:</span>
+            <span>124.32445</span>
+        </div>
+    </div>
+     <!-- ****** 其他信息 ****** -->
+    <div class="records">
+        <div class="rank">
+            <span class="line"></span>
+            <span class="r-title">其他信息</span>
+            <span class="line"></span>
+        </div>
+        <div class="records-message">
+            <span>占地面积:</span>
+            <span>800㎡</span>
+        </div>
+        <div class="records-message">
+            <span>海拔:</span>
+            <span>800</span>
+        </div>
+        <div class="records-message">
+            <span class="xing">*</span>
+            <span>产权单位:</span>
+            <span>单位名称</span>
+        </div>
+        <div class="records-message">
+            <span>设计单位:</span>
+            <span>单位名称</span>
+        </div>
+    </div>
+</ion-content>

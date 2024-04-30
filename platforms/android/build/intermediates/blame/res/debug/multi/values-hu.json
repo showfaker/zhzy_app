@@ -1,0 +1,520 @@
+[
+    {
+        "outputFile": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hu\\values-hu.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 105,
+                    "endColumn": 107,
+                    "endOffset": 208
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 105,
+                        "endColumn": 107,
+                        "endOffset": 208
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 213,
+                    "endColumn": 104,
+                    "endOffset": 313
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 213,
+                        "endColumn": 104,
+                        "endOffset": 313
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 318,
+                    "endColumn": 114,
+                    "endOffset": 428
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 318,
+                        "endColumn": 114,
+                        "endOffset": 428
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 433,
+                    "endColumn": 83,
+                    "endOffset": 512
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 433,
+                        "endColumn": 83,
+                        "endOffset": 512
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 517,
+                    "endColumn": 111,
+                    "endOffset": 624
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 517,
+                        "endColumn": 111,
+                        "endOffset": 624
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 629,
+                    "endColumn": 129,
+                    "endOffset": 754
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 629,
+                        "endColumn": 129,
+                        "endOffset": 754
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 759,
+                    "endColumn": 75,
+                    "endOffset": 830
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 759,
+                        "endColumn": 75,
+                        "endOffset": 830
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 835,
+                    "endColumn": 75,
+                    "endOffset": 906
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 835,
+                        "endColumn": 75,
+                        "endOffset": 906
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 911,
+                    "endColumn": 82,
+                    "endOffset": 989
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 911,
+                        "endColumn": 82,
+                        "endOffset": 989
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 994,
+                    "endColumn": 109,
+                    "endOffset": 1099
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 994,
+                        "endColumn": 109,
+                        "endOffset": 1099
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 1104,
+                    "endColumn": 110,
+                    "endOffset": 1210
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 1104,
+                        "endColumn": 110,
+                        "endOffset": 1210
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 1215,
+                    "endColumn": 99,
+                    "endOffset": 1310
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 1215,
+                        "endColumn": 99,
+                        "endOffset": 1310
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 1315,
+                    "endColumn": 110,
+                    "endOffset": 1421
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 1315,
+                        "endColumn": 110,
+                        "endOffset": 1421
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1426,
+                    "endColumn": 107,
+                    "endOffset": 1529
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1426,
+                        "endColumn": 107,
+                        "endOffset": 1529
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 1534,
+                    "endColumn": 118,
+                    "endOffset": 1648
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1534,
+                        "endColumn": 118,
+                        "endOffset": 1648
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1653,
+                    "endColumn": 181,
+                    "endOffset": 1830
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1653,
+                        "endColumn": 181,
+                        "endOffset": 1830
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1835,
+                    "endColumn": 102,
+                    "endOffset": 1933
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1835,
+                        "endColumn": 102,
+                        "endOffset": 1933
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1938,
+                    "endColumn": 110,
+                    "endOffset": 2044
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-hu\\multiimagechooser_strings_hu.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 201,
+                        "endColumn": 110,
+                        "endOffset": 307
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 2049,
+                    "endColumn": 84,
+                    "endOffset": 2129
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-hu\\multiimagechooser_strings_hu.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 116,
+                        "endColumn": 84,
+                        "endOffset": 196
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 2134,
+                    "endColumn": 60,
+                    "endOffset": 2190
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-hu\\multiimagechooser_strings_hu.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 60,
+                        "endOffset": 111
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 2195,
+                    "endColumn": 95,
+                    "endOffset": 2286
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-hu\\multiimagechooser_strings_hu.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 312,
+                        "endColumn": 95,
+                        "endOffset": 403
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 2291,
+                    "endColumn": 82,
+                    "endOffset": 2369
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1938,
+                        "endColumn": 82,
+                        "endOffset": 2016
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 2374,
+                    "endColumn": 100,
+                    "endOffset": 2470
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\support-compat\\27.1.1\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 100,
+                        "endOffset": 151
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 2475,
+                    "endColumn": 58,
+                    "endOffset": 2529
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.journeyapps\\zxing-android-embedded\\3.3.0\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 58,
+                        "endOffset": 109
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 2534,
+                    "endColumn": 46,
+                    "endOffset": 2576
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.journeyapps\\zxing-android-embedded\\3.3.0\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 114,
+                        "endColumn": 46,
+                        "endOffset": 156
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 2581,
+                    "endColumn": 125,
+                    "endOffset": 2702
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.journeyapps\\zxing-android-embedded\\3.3.0\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 161,
+                        "endColumn": 125,
+                        "endOffset": 282
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 2707,
+                    "endColumn": 115,
+                    "endOffset": 2818
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.journeyapps\\zxing-android-embedded\\3.3.0\\res\\values-hu\\values-hu.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 287,
+                        "endColumn": 115,
+                        "endOffset": 398
+                    }
+                }
+            }
+        ]
+    }
+]

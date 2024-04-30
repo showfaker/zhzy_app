@@ -1,0 +1,187 @@
+page-modules-details3 {
+  .scan {
+    width: 18px;
+    height: 18px;
+  }
+  .down-me {
+    color: #525862;
+    font-size: 23px;
+    margin-left: 10px;
+    margin-right: 5px;
+  }
+  .my-back {
+    font-size: 30px;
+    color: #525862;
+  }
+  .search {
+    padding: 4px;
+    span {
+      padding: 5px 60px;
+      border: 1px solid #88898a;
+      margin-left: calc((100% - 195px) / 2);
+      text-align: center;
+      line-height: 40px;
+      border-radius: 20px;
+      color: #88898a;
+    }
+    .sort {
+      font-size: 25px;
+      vertical-align: middle;
+      color: #fff;
+      margin-left: 10px;
+      background: #88898a;
+      padding: 0px 4.5px;
+      border-radius: 50%;
+    }
+  }
+  .slide-zoom {
+    height: 100%;
+  }
+  .echart-sss {
+    height: 300px;
+    margin-top: 10px;
+    // border: 1px solid;
+    .echarts-content {
+      width: 100%;
+      height: 100%;
+      // border: 1px solid;
+    }
+    .echarts-content-div {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .card {
+    margin: 21px;
+    background: #ffffff;
+    box-shadow: 0 4px 10px 1px rgba(138, 169, 185, 0.15);
+    border-radius: 12px;
+    &:first-child {
+      margin-top: 0;
+    }
+    .card-content {
+      display: inline-block;
+      margin-right: 10px;
+      width: 100%;
+      // height: 190px;
+      h1 {
+        // padding: 5px 0;
+        font-size: 16px;
+        border-bottom: 1px solid #dedbdb;
+        margin: 0;
+        height: 40px;
+        line-height: 40px;
+        text-indent: 10px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        font-size: 16px;
+        color: #2b2e30;
+        letter-spacing: 0;
+        font-weight: 500;
+      }
+
+      .card-content-test-list {
+        padding: 10px;
+        font-size: 13px;
+        color: #919ba3;
+        letter-spacing: 0;
+        font-weight: 400;
+        span {
+          // float: left;
+          width: 20%;
+          display: inline-block;
+          white-space: nowrap;
+          &:first-child {
+            width: 40%;
+          }
+          &:last-child {
+            width: 35%;
+          }
+        }
+      }
+    }
+  }
+
+  ion-backdrop {
+    visibility: visible;
+    z-index: -1;
+  }
+
+  .my-custom-menu {
+    background-color: #fff;
+
+    .condition {
+      padding: 15px 30px;
+      border-bottom: 1px solid #dcdcdc;
+      overflow: hidden;
+      p {
+      }
+      span,
+      input {
+        text-align: center;
+        line-height: 30px;
+
+        border-radius: 20px;
+        color: #88898a;
+        width: 100%;
+        display: block;
+        height: 30px;
+        margin-top: 15px;
+        background: #f0f0f0;
+        border: 0;
+        .item-cover {
+          width: auto;
+          display: none;
+        }
+        .datetime-ios {
+          padding: 0;
+          .datetime-text {
+            line-height: 30px;
+            height: 30px;
+          }
+        }
+        &.had-endtime {
+          width: 45%;
+          float: left;
+          &:last-child {
+            float: right;
+          }
+        }
+      }
+    }
+
+    .my-button {
+      position: fixed;
+      bottom: 0;
+      height: 60px;
+      width: 100%;
+      margin-left: 8%;
+      button {
+        height: 70%;
+        width: 40%;
+        border-radius: 30px;
+        &:last-child {
+          margin-left: 1%;
+          background-color: #58a6f7;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+.action-sheet-ios.modules-details1-sheetctrl
+  .action-sheet-wrapper
+  .action-sheet-container
+  .action-sheet-group:first-child {
+  height: auto;
+  max-height: 50%;
+}
+/**当你触摸并按住触摸目标时候，禁止系统默认菜单,时间标签滑动报错 **/
+.picker-columns {
+  touch-action: none;
+}

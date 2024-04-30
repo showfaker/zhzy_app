@@ -1,0 +1,32 @@
+<!-- Generated template for the CommentComponent component -->
+<div class="comment-container">
+    <ion-grid>
+        <ion-row *ngFor="let comment of commentsList">
+            <ion-col col-2 style="text-align: right;">
+                <img class="comment-icon" src="assets/imgs/avatar/{{comment.userIcon||'00.png'}}" />
+            </ion-col>
+            <ion-col col-10>
+                <p class="comment-info">
+                    {{comment.updaterName}}丨{{comment.updateTime | date:'yyyy-MM-dd HH:mm'}}
+                </p>
+                <div class="comment-content">
+                    {{comment.comment}}
+                    <ion-icon
+                        *ngIf="comment.deleteBtn"
+                        name="md-close"
+                        class="delete-icon"
+                        (tap)="deleteComment(comment.commentId)"
+                    ></ion-icon>
+                </div>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <textarea cols="30" rows="3" [(ngModel)]="commentContent"></textarea>
+            </ion-col>
+            <ion-col col-12 class="comment-btn">
+                <button ion-button (tap)="addComment()">评论</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>

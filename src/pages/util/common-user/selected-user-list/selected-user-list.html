@@ -1,0 +1,20 @@
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let user of selectedItem" no-lines>
+      <ion-avatar item-start>
+        <img src="assets/imgs/avatar/{{user.icon||'00.png'}}" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{user.realName}}</h2>
+        <p><span>{{user.userName}}</span>|<span>{{user.deptName}}</span></p>
+      </ion-label>
+      <div
+        item-content
+        class="delete-icon"
+        (click)="deleteSelectedItem(user.userId)"
+      >
+        <!-- <img src="assets/imgs/buttons/delete-grey.png" /> -->
+        <ion-icon name="delete-grey"></ion-icon>
+      </div>
+    </ion-item> </ion-list
+></ion-content>

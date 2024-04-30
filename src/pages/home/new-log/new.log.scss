@@ -1,0 +1,72 @@
+new-log {
+    .text-input {
+        text-align: end;
+    }
+    .nl-title {
+        display: flex;
+        justify-content: center;
+        margin-top: 9px;
+        margin-bottom: 14px;
+        div {
+            border-top: 1px solid #ccc;
+            margin-top: 5px;
+            width: 27%;
+            position: relative;
+            padding-top: 7px;
+            &.fadian {
+                border-top: 1px solid #5daee5;
+                i {
+                    background: #5daee5;
+                    box-shadow: 0 0 10px #1381cc;
+                }
+            }
+            &.power-cut {
+                border-top: 1px solid #5daee5;
+            }
+            &.tingdian {
+                text-align: center;
+                width: 35%;
+            }
+            &.weather {
+                text-align: right;
+                i {right: 0;}
+            }
+            i {
+                position: absolute;
+                width: 8px;
+                height: 8px;
+                background: #ccc;
+                border-radius: 100%;
+                top: -5px;
+                box-shadow: 0 0 10px #a29f9f;
+                &.power-cut1 {
+                    background: #5daee5;
+                    box-shadow: 0px 0px 17px #2075af;
+                }
+            }
+        }
+    }
+    textarea {
+        width: 100%;
+        border: none;
+        padding-left: 16px;
+        height: 90px;
+    }
+    .footer {
+        span {
+            display: inline-block;
+            width: 50%;
+            height: 45px;
+            font-size: 1.7rem;
+            color: #fff;
+            text-align: center;
+            padding-top: 10px;
+            &:first-child {
+                background-color: #ccc;
+            }
+            &:last-child {
+                background-color: #5daee5;
+            }
+        }
+    }
+}

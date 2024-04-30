@@ -1,0 +1,7 @@
+# 忽略node_modules
+node_modules/
+.sourcemaps/*
+# www/build/*
+ionic.config.json
+.idea/workspace.xml
+# platforms/

@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button (click)="goBack()">
+        <ion-icon name="ios-arrow-back" class="my-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{modulesDetails && modulesDetails.title || ''}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="serchMenu()">
+        <ion-icon name="ios-search" class="title-bar-icon"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar>
+    <div class="search">
+      <span class="select-item" (click)='select("defaultSort")'
+        >{{modulesDetails && modulesDetails.defaultSort &&
+        modulesDetails.defaultSort.second || ''}}</span
+      >
+      <div class="sort-btns">
+        <span
+          [ngClass]="{active: (modulesDetails && modulesDetails.direction === 'asc')}"
+          (click)='select("asc")'
+        ></span>
+        <span
+          [ngClass]="{active: (modulesDetails && modulesDetails.direction === 'desc')}"
+          (click)='select("desc")'
+        ></span>
+      </div>
+      <!-- 
+      <ion-icon
+        name="md-arrow-round-up"
+        class="sort"
+        *ngIf='!(modulesDetails && modulesDetails.direction === "desc")'
+        (click)='select("desc")'
+      ></ion-icon>
+      <ion-icon
+        name="md-arrow-round-down"
+        class="sort"
+        *ngIf='modulesDetails && modulesDetails.direction === "desc"'
+        (click)='select("asc")'
+      ></ion-icon> -->
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #deivcesearch>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="刷新..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="card-list">
+    <div
+      class="card"
+      *ngFor="let modules of modulesList"
+      (click)="checkClick(modules)"
+    >
+      <img [src]="getImg(modules.icon)" alt="" />
+      <div class="card-content">
+        <div class="info">{{modules.info}}</div>
+        <h1>{{modules.title}}</h1>
+        <div class="card-content-list" *ngFor="let item of modules.items">
+          {{item}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <ion-infinite-scroll
+    (ionInfinite)="doInfinite($event)"
+    threshold="5%"
+    *ngIf="canInfinite"
+  >
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<ion-menu
+  [content]="deivcesearch"
+  side="right"
+  (ionOpen)="menuInit()"
+  (ionClose)="ionClose()"
+  id="deivcesearch"
+  type="overlay"
+  swipeEnabled="true"
+  class="search-menu"
+>
+  <ion-content class="outer-content" no-bounce class="my-custom-menu">
+    <div>
+      <div class="condition">
+        <p>电站</p>
+        <span (click)="selectStation()"
+          >{{station && station['title'] || '请选择'}}</span
+        >
+        <!-- <input type="text"  placeholder="请输入" [(ngModel)]="modulesDetails['stationName']" *ngIf = 'modulesDetails' > -->
+      </div>
+
+      <div class="condition" *ngIf="modulesDetails && modulesDetails.status">
+        <p>状态</p>
+        <span
+          class="select-box"
+          (click)='select("status",status)'
+          *ngFor="let status of modulesDetails.status"
+          [class.selected]="status.selected"
+          >{{status.name}}</span
+        >
+      </div>
+      <div
+        class="condition"
+        *ngIf="modulesDetails && modulesDetails.deviceTypes"
+      >
+        <p>设备类型</p>
+        <span
+          class="select-box"
+          (click)='select("deviceTypes",deviceTypes)'
+          *ngFor="let deviceTypes of modulesDetails.deviceTypes"
+          [class.selected]="deviceTypes.selected"
+          >{{deviceTypes.name}}</span
+        >
+      </div>
+      <div class="condition">
+        <p>设备编号或名称</p>
+        <input
+          type="text"
+          placeholder="请输入"
+          [(ngModel)]="modulesDetails['deviceName']"
+          *ngIf="modulesDetails"
+        />
+      </div>
+    </div>
+    <div class="my-button">
+      <button (click)="reset()">重置</button>
+      <button (click)="submit()">查询</button>
+    </div>
+  </ion-content>
+</ion-menu>

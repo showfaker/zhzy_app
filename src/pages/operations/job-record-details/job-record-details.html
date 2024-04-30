@@ -1,0 +1,1001 @@
+<!--
+  Generated template for the JobRecordDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleBaseInfo = !toggleBaseInfo">
+        基础信息
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleBaseInfo?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <!-- 基础信息 -->
+      <ng-container *ngIf="toggleBaseInfo">
+        <!-- 日报时间 -->
+        <ion-item
+          *ngIf="fields?.reportDate.show"
+          [attr.detail-push]="fields?.reportDate.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.reportDate.nullable">*</b
+            >{{fields?.reportDate.name}}：</ion-label
+          >
+          <ion-datetime
+            doneText="确定"
+            cancelText="清除"
+            displayFormat="YYYY-MM-DD"
+            formControlName="reportDate"
+          ></ion-datetime>
+        </ion-item>
+        <!--电站名称  -->
+        <ion-item
+          *ngIf="fields?.stationId.show"
+          [attr.detail-push]="fields?.stationId.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.stationId.nullable">*</b
+            >{{fields?.stationId.name}}：</ion-label
+          >
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="stationName"
+          ></ion-input>
+        </ion-item>
+        <!-- 电站类型 -->
+        <ion-item
+          *ngIf="fields?.stationType.show"
+          [attr.detail-push]="fields?.stationType.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.stationType.nullable">*</b
+            >{{fields?.stationType.name}}：</ion-label
+          >
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="stationTypeText"
+          ></ion-input>
+        </ion-item>
+        <!--并网时间  -->
+        <ion-item
+          *ngIf="fields?.operationDate.show"
+          [attr.detail-push]="fields?.operationDate.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.operationDate.nullable">*</b
+            >{{fields?.operationDate.name}}：</ion-label
+          >
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="operationDate"
+          ></ion-input>
+        </ion-item>
+        <!-- 设计容量(MW) -->
+        <ion-item
+          *ngIf="fields?.capacity.show"
+          [attr.detail-push]="fields?.capacity.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.capacity.nullable">*</b
+            >{{fields?.capacity.name}}：</ion-label
+          >
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="capacity"
+          ></ion-input>
+        </ion-item>
+        <!-- 并网容量(MW) -->
+        <ion-item
+          *ngIf="fields?.parallelCapacity.show"
+          [attr.detail-push]="fields?.parallelCapacity.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.parallelCapacity.nullable">*</b
+            >{{fields?.parallelCapacity.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('parallelCapacity',fields?.parallelCapacity.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="parallelCapacity"
+          ></ion-input>
+        </ion-item>
+        <!-- 关口表倍率 -->
+        <ion-item
+          *ngIf="fields?.meterRatio.show"
+          [attr.detail-push]="fields?.meterRatio.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.meterRatio.nullable">*</b
+            >{{fields?.meterRatio.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('meterRatio',fields?.meterRatio.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="meterRatio"
+          ></ion-input>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <ion-list class="new-list">
+      <ion-list-header
+        no-lines
+        (tap)="togglePowerGeneration = !togglePowerGeneration"
+      >
+        发电情况
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{togglePowerGeneration?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <!-- 发电情况 -->
+      <ng-container *ngIf="togglePowerGeneration">
+        <!-- 昨日计量表示数 -->
+        <ion-item
+          *ngIf="fields?.lastMeterValue.show"
+          [attr.detail-push]="fields?.lastMeterValue.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.lastMeterValue.nullable">*</b
+            >{{fields?.lastMeterValue.name}}：</ion-label
+          >
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="lastMeterValue"
+          ></ion-input>
+        </ion-item>
+        <!--昨日上网电量(KWh)  -->
+        <ion-item
+          *ngIf="fields?.lastDailyEnergy.show"
+          [attr.detail-push]="fields?.lastDailyEnergy.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.lastDailyEnergy.nullable">*</b
+            >{{fields?.lastDailyEnergy.name}}：</ion-label
+          >
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="lastDailyEnergy"
+          ></ion-input>
+        </ion-item>
+        <!-- 今日计量表示数 -->
+        <ion-item
+          *ngIf="fields?.meterValue.show"
+          [attr.detail-push]="fields?.meterValue.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.meterValue.nullable">*</b
+            >{{fields?.meterValue.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('meterValue',fields?.meterValue.editable, 'number')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="meterValue"
+          ></ion-input>
+        </ion-item>
+        <!-- 今日上网电量(KWh) -->
+        <ion-item
+          *ngIf="fields?.dailyEnergy.show"
+          [attr.detail-push]="fields?.dailyEnergy.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.dailyEnergy.nullable">*</b
+            >{{fields?.dailyEnergy.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('dailyEnergy',fields?.dailyEnergy.editable, 'number')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="dailyEnergy"
+          ></ion-input>
+        </ion-item>
+        <!-- 今日每MW上网电量(KWh) -->
+        <ion-item
+          *ngIf="fields?.dailyKwhkwp.show"
+          [attr.detail-push]="fields?.dailyKwhkwp.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.dailyKwhkwp.nullable">*</b
+            >{{fields?.dailyKwhkwp.name}}：</ion-label
+          >
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="dailyKwhkwp"
+          ></ion-input>
+        </ion-item>
+        <!-- 今日最大负荷(MW) -->
+        <ion-item
+          *ngIf="fields?.maxPower.show"
+          [attr.detail-push]="fields?.maxPower.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.maxPower.nullable">*</b
+            >{{fields?.maxPower.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('maxPower',fields?.maxPower.editable, 'number')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="maxPower"
+          ></ion-input>
+        </ion-item>
+        <!-- 本月上网电量(KWh) -->
+        <ion-item
+          *ngIf="fields?.monthEnergy.show"
+          [attr.detail-push]="fields?.monthEnergy.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.monthEnergy.nullable">*</b
+            >{{fields?.monthEnergy.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('monthEnergy',fields?.monthEnergy.editable, 'number')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="monthEnergy"
+          ></ion-input>
+        </ion-item>
+        <!-- 本月计划完成率(%) -->
+        <ion-item
+          *ngIf="fields?.monthRate.show"
+          [attr.detail-push]="fields?.monthRate.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.monthRate.nullable">*</b
+            >{{fields?.monthRate.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('monthRate',fields?.monthRate.editable, 'number')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="monthRate"
+          ></ion-input>
+        </ion-item>
+        <!-- 本年上网电量(KWh) -->
+        <ion-item
+          *ngIf="fields?.yearEnergy.show"
+          [attr.detail-push]="fields?.yearEnergy.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.yearEnergy.nullable">*</b
+            >{{fields?.yearEnergy.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('yearEnergy',fields?.yearEnergy.editable, 'number')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="yearEnergy"
+          ></ion-input>
+        </ion-item>
+        <!-- 本年计划完成率(%) -->
+        <ion-item
+          *ngIf="fields?.yearRate.show"
+          [attr.detail-push]="fields?.yearRate.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.yearRate.nullable">*</b
+            >{{fields?.yearRate.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('yearRate',fields?.yearRate.editable, 'number')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="yearRate"
+          ></ion-input>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleWeatherInfo = !toggleWeatherInfo">
+        天气情况
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleWeatherInfo?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleWeatherInfo">
+        <!-- 天气情况 -->
+        <ion-item
+          *ngIf="fields?.weatherInfo.show"
+          [attr.detail-push]="fields?.weatherInfo.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.weatherInfo.nullable">*</b
+            >{{fields?.weatherInfo.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openSheetModal('weatherInfo','weatherInfoText')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="weatherInfoText"
+          ></ion-input>
+        </ion-item>
+        <!-- 日辐照量(MJ/㎡) -->
+        <ion-item
+          *ngIf="fields?.irradiation.show"
+          [attr.detail-push]="fields?.irradiation.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.irradiation.nullable">*</b
+            >{{fields?.irradiation.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('irradiation',fields?.irradiation.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="irradiation"
+          ></ion-input>
+        </ion-item>
+        <!-- 空气质量 -->
+        <ion-item
+          *ngIf="fields?.airQuality.show"
+          [attr.detail-push]="fields?.airQuality.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.airQuality.nullable">*</b
+            >{{fields?.airQuality.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openSheetModal('airQuality','airQualityText')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="airQualityText"
+          ></ion-input>
+        </ion-item>
+        <!-- 最高气温(℃) -->
+        <ion-item
+          *ngIf="fields?.maxTemp.show"
+          [attr.detail-push]="fields?.maxTemp.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.maxTemp.nullable">*</b
+            >{{fields?.maxTemp.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('maxTemp',fields?.maxTemp.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="maxTemp"
+          ></ion-input>
+        </ion-item>
+        <!-- 最低气温(℃) -->
+        <ion-item
+          *ngIf="fields?.minTemp.show"
+          [attr.detail-push]="fields?.minTemp.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.minTemp.nullable">*</b
+            >{{fields?.minTemp.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('minTemp',fields?.minTemp.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="minTemp"
+          ></ion-input>
+        </ion-item>
+        <!-- 风向 -->
+        <ion-item
+          *ngIf="fields?.windDirection.show"
+          [attr.detail-push]="fields?.windDirection.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.windDirection.nullable">*</b
+            >{{fields?.windDirection.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openSheetModal('windDirection','windDirectionText')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="windDirectionText"
+          ></ion-input>
+        </ion-item>
+        <!-- 风速(m/s) -->
+        <ion-item
+          *ngIf="fields?.windSpeed.show"
+          [attr.detail-push]="fields?.windSpeed.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.windSpeed.nullable">*</b
+            >{{fields?.windSpeed.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('windSpeed',fields?.windSpeed.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="windSpeed"
+          ></ion-input>
+        </ion-item>
+        <!-- PM10 -->
+        <ion-item
+          *ngIf="fields?.pm10.show"
+          [attr.detail-push]="fields?.pm10.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.pm10.nullable">*</b
+            >{{fields?.pm10.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('pm10',fields?.pm10.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="pm10"
+          ></ion-input>
+        </ion-item>
+        <!-- 晴(h) -->
+        <ion-item
+          *ngIf="fields?.genHoursFine.show&&false"
+          [attr.detail-push]="fields?.genHoursFine.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.genHoursFine.nullable">*</b
+            >{{fields?.genHoursFine.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('genHoursFine',fields?.genHoursFine.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="genHoursFine"
+          ></ion-input>
+        </ion-item>
+        <!-- 少云(h) -->
+        <ion-item
+          *ngIf="fields?.genHoursPcloud.show&&false"
+          [attr.detail-push]="fields?.genHoursPcloud.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.genHoursPcloud.nullable">*</b
+            >{{fields?.genHoursPcloud.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('genHoursPcloud',fields?.genHoursPcloud.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="genHoursPcloud"
+          ></ion-input>
+        </ion-item>
+        <!-- 多云(h) -->
+        <ion-item
+          *ngIf="fields?.genHoursCloudy.show&&false"
+          [attr.detail-push]="fields?.genHoursCloudy.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.genHoursCloudy.nullable">*</b
+            >{{fields?.genHoursCloudy.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('genHoursCloudy',fields?.genHoursCloudy.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="genHoursCloudy"
+          ></ion-input>
+        </ion-item>
+        <!-- 阴雾(h) -->
+        <ion-item
+          *ngIf="fields?.genHoursWet.show&&false"
+          [attr.detail-push]="fields?.genHoursWet.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.genHoursWet.nullable">*</b
+            >{{fields?.genHoursWet.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('genHoursWet',fields?.genHoursWet.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="genHoursWet"
+          ></ion-input>
+        </ion-item>
+        <!-- 雨雪(h) -->
+        <ion-item
+          *ngIf="fields?.genHoursRain.show&&false"
+          [attr.detail-push]="fields?.genHoursRain.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.genHoursRain.nullable">*</b
+            >{{fields?.genHoursRain.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('genHoursRain',fields?.genHoursRain.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="genHoursRain"
+          ></ion-input>
+        </ion-item>
+        <!-- 设备运行小时数(h) -->
+        <ion-item
+          *ngIf="fields?.genHours.show&&false"
+          [attr.detail-push]="fields?.genHours.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.genHours.nullable">*</b
+            >{{fields?.genHours.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('genHours',fields?.genHours.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="genHours"
+          ></ion-input>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+    <!-- 电量损失情况 -->
+    <ion-list class="new-list">
+      <ion-list-header
+        no-lines
+        (tap)="toggleJobRecordLosses = !toggleJobRecordLosses"
+      >
+        电量损失情况
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleJobRecordLosses?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleJobRecordLosses">
+        <ng-container formArrayName="loss">
+          <ng-container
+            *ngFor="let item of getJobRecordLosses(form); let i = index"
+            [formGroupName]="i"
+          >
+            <ion-item
+              *ngIf="fields?.loss.show"
+              [attr.detail-push]="fields?.loss.editable"
+              no-lines
+              (tap)="editJobRecordLoss(i)"
+            >
+              <ion-input
+                type="text"
+                [readonly]="true"
+                text-left
+                formControlName="memo"
+              ></ion-input>
+            </ion-item>
+          </ng-container>
+          <ion-item (tap)="addJobRecordLosses()">
+            <ion-label text-right>点击添加：</ion-label>
+            <button ion-button icon-only item-end clear type="button">
+              <ion-icon name="add-new"></ion-icon>
+            </button>
+          </ion-item>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+
+    <!--逆变器运行情况-->
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleInverter = !toggleInverter">
+        逆变器运行情况
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleInverter?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleInverter">
+        <!-- 开始发电时间 -->
+        <ion-item
+          *ngIf="fields?.inverterStart.show"
+          [attr.detail-push]="fields?.inverterStart.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.inverterStart.nullable">*</b
+            >{{fields?.inverterStart.name}}：</ion-label
+          >
+          <ion-datetime
+            doneText="确定"
+            cancelText="清除"
+            displayFormat="HH:mm"
+            (ionChange)="setInverterHours('inverterStart')"
+            formControlName="inverterStart"
+          ></ion-datetime>
+        </ion-item>
+        <!-- 停止发电时间 -->
+        <ion-item
+          *ngIf="fields?.inverterStop.show"
+          [attr.detail-push]="fields?.inverterStop.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.inverterStop.nullable">*</b
+            >{{fields?.inverterStop.name}}：</ion-label
+          >
+          <ion-datetime
+            doneText="确定"
+            cancelText="清除"
+            displayFormat="HH:mm"
+            (ionChange)="setInverterHours('inverterStop')"
+            formControlName="inverterStop"
+          ></ion-datetime>
+        </ion-item>
+        <!-- 设备运行小数数 -->
+        <ion-item
+          *ngIf="fields?.inverterHours.show"
+          [attr.detail-push]="fields?.inverterHours.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.inverterHours.nullable">*</b
+            >{{fields?.inverterHours.name}}：</ion-label
+          >
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="inverterHours"
+          ></ion-input>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <!-- 出勤情况 -->
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleCheckIn = !toggleCheckIn">
+        出勤情况
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon name="{{toggleCheckIn?'arrow-up':'arrow-down'}}"></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleCheckIn">
+        <ng-container formArrayName="checkIn">
+          <ng-container
+            *ngFor="let item of getCheckIn(form); let i = index"
+            [formGroupName]="i"
+          >
+            <div class="check-in-item">
+              <p class="p-header">{{item.value.name}}</p>
+              <ion-grid>
+                <ion-row formArrayName="users">
+                  <ion-col
+                    col-3
+                    *ngFor="let user_item of getUsersItem(item); let j = index"
+                    [formGroupName]="j"
+                  >
+                    <div class="img-container">
+                      <img
+                        src="assets/imgs/avatar/{{user_item.value.icon||'00.png'}}"
+                      />
+                      <!-- <img
+                        (tap)="deleteUser(i,j)"
+                        class="delete-user"
+                        src="assets/imgs/buttons/delete.png"
+                      /> -->
+                      <ion-icon
+                        class="delete-user"
+                        (tap)="deleteUser(i,j)"
+                        name="delete"
+                      ></ion-icon>
+                    </div>
+
+                    <p>{{user_item.value.userName}}</p>
+                  </ion-col>
+                  <ion-col col-3>
+                    <button
+                      ion-button
+                      icon-only
+                      clear
+                      type="button"
+                      (tap)="addUser(i)"
+                    >
+                      <ion-icon name="add-new" class="add"></ion-icon>
+                    </button>
+                    <p>&nbsp;</p>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+
+    <!-- 今日完成工作 -->
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleWork01 = !toggleWork01">
+        今日完成工作
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon name="{{toggleWork01?'arrow-up':'arrow-down'}}"></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleWork01">
+        <ng-container formGroupName="works">
+          <ng-container formArrayName="01">
+            <ng-container
+              *ngFor="let item of getWordItem(form,'01'); let k = index"
+              [formGroupName]="k"
+            >
+              <ion-item
+                *ngIf="fields['works.01']?.show"
+                [attr.detail-push]="fields['works.01']?.editable"
+                no-lines
+                (tap)="editWork('works.01','01',k)"
+              >
+                <ion-input
+                  type="text"
+                  [readonly]="true"
+                  text-left
+                  formControlName="workDesc"
+                ></ion-input>
+              </ion-item>
+            </ng-container>
+          </ng-container>
+
+          <ion-item (tap)="addWork('works.01','01')">
+            <ion-label text-right>点击添加：</ion-label>
+            <button ion-button icon-only item-end clear type="button">
+              <ion-icon name="add-new"></ion-icon>
+            </button>
+          </ion-item>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+
+    <!-- 未完成工作 -->
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleWork02 = !toggleWork02">
+        未完成工作
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon name="{{toggleWork02?'arrow-up':'arrow-down'}}"></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleWork02">
+        <ng-container formGroupName="works">
+          <ng-container formArrayName="02">
+            <ng-container
+              *ngFor="let item of getWordItem(form,'02'); let k = index"
+              [formGroupName]="k"
+            >
+              <ion-item
+                *ngIf="fields['works.02']?.show"
+                [attr.detail-push]="fields['works.02']?.editable"
+                no-lines
+                (tap)="editWork('works.02','02',k)"
+              >
+                <ion-input
+                  type="text"
+                  [readonly]="true"
+                  text-left
+                  formControlName="workDesc"
+                ></ion-input>
+              </ion-item>
+            </ng-container>
+          </ng-container>
+
+          <ion-item (tap)="addWork('works.02','02')">
+            <ion-label text-right>点击添加：</ion-label>
+            <button ion-button icon-only item-end clear type="button">
+              <ion-icon name="add-new"></ion-icon>
+            </button>
+          </ion-item>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+
+    <!-- 需协调工作 -->
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleWork03 = !toggleWork03">
+        需协调工作
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon name="{{toggleWork03?'arrow-up':'arrow-down'}}"></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleWork03">
+        <ng-container formGroupName="works">
+          <ng-container formArrayName="03">
+            <ng-container
+              *ngFor="let item of getWordItem(form,'03'); let k = index"
+              [formGroupName]="k"
+            >
+              <ion-item
+                *ngIf="fields['works.03']?.show"
+                [attr.detail-push]="fields['works.03']?.editable"
+                no-lines
+                (tap)="editWork('works.03','03',k)"
+              >
+                <ion-input
+                  type="text"
+                  [readonly]="true"
+                  text-left
+                  formControlName="workDesc"
+                ></ion-input>
+              </ion-item>
+            </ng-container>
+          </ng-container>
+
+          <ion-item (tap)="addWork('works.03','03')">
+            <ion-label text-right>点击添加：</ion-label>
+            <button ion-button icon-only item-end clear type="button">
+              <ion-icon name="add-new"></ion-icon>
+            </button>
+          </ion-item>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+
+    <!-- 明日工作计划 -->
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleWork04 = !toggleWork04">
+        明日工作计划
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon name="{{toggleWork04?'arrow-up':'arrow-down'}}"></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleWork04">
+        <ng-container formGroupName="works">
+          <ng-container formArrayName="04">
+            <ng-container
+              *ngFor="let item of getWordItem(form,'04'); let k = index"
+              [formGroupName]="k"
+            >
+              <ion-item
+                *ngIf="fields['works.04']?.show"
+                [attr.detail-push]="fields['works.04']?.editable"
+                no-lines
+                (tap)="editWork('works.04','04',k)"
+              >
+                <ion-input
+                  type="text"
+                  [readonly]="true"
+                  text-left
+                  formControlName="workDesc"
+                ></ion-input>
+              </ion-item>
+            </ng-container>
+          </ng-container>
+
+          <ion-item (tap)="addWork('works.04','04')">
+            <ion-label text-right>点击添加：</ion-label>
+            <button ion-button icon-only item-end clear type="button">
+              <ion-icon name="add-new"></ion-icon>
+            </button>
+          </ion-item>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+
+    <!-- 备注 -->
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleMemo = !toggleMemo">
+        备注
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon name="{{toggleMemo?'arrow-up':'arrow-down'}}"></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleMemo">
+        <ion-item
+          *ngIf="form.value.memo"
+          [attr.detail-push]="true"
+          no-lines
+          (tap)="editMemo()"
+        >
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-left
+            formControlName="memo"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!form.value.memo" (tap)="addMemo()">
+          <ion-label text-right>点击添加：</ion-label>
+          <button ion-button icon-only item-end clear type="button">
+            <ion-icon name="add-new"></ion-icon>
+          </button>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="footer-bar">
+    <ion-grid>
+      <ion-row>
+        <ion-col
+          *ngFor="let button of buttons"
+          class="{{buttons.length==1?'col-12':'col-6'}}"
+        >
+          <div class="btn">
+            <!-- <img
+                            (tap)="buttonFunction(button.function)"
+                            src="assets/imgs/buttons/{{button.icon}}"
+                            alt=""
+                        /> -->
+            <ion-icon
+              (tap)="buttonFunction(button.function)"
+              [name]="button.icon.split('.')[0]"
+            ></ion-icon>
+            <p>{{button.text}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

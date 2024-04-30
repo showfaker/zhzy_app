@@ -1,0 +1,27 @@
+<!-- Generated template for the Homepage2ModulesComponent component -->
+<div>
+  <div class="home-page2-modules2" *ngFor="let module of modules;let i = index">
+    <h1 class="divider-dashed">
+      <div class="left-line">
+        <img src="assets/imgs/home/title-icon.png" alt="" />
+      </div>
+      <span class="divider-inner-text"> {{module && module.name || ''}} </span>
+      <div class="right-line"></div>
+    </h1>
+    <div class="modules-list">
+      <ng-container>
+        <ng-container *ngFor="let m of module.modules;let i = index">
+          <div
+            class="modules"
+            [ngClass]="{'no-right-line': (i+1)%4===0}"
+            (click)="toSearchPage(m)"
+          >
+            <img [src]="getImg(m.icon)" />
+            <p>{{m.name}}</p>
+          </div>
+          <div *ngIf="(i+1)%4===0" class="divider-line"></div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>

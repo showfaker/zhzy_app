@@ -1,0 +1,52 @@
+page-selected-user-list {
+    ion-content.content-ios {
+        background: #fff;
+    }
+    ion-item {
+    }
+    .item-block {
+        height: auto;
+        &[no-lines] {
+            border-bottom: 1px solid #f0f0f0 !important;
+        }
+    }
+    .item-ios ion-avatar {
+        min-width: 60px;
+        img {
+            width: 40px;
+        }
+    }
+    ion-label {
+        p {
+            span {
+                &:first-child {
+                    margin-right: 5px;
+                }
+                &:last-child {
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+    .delete-icon {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: 20px;
+        top: 22px;
+    }
+}
+
+.selectedUserList {
+    height: calc(100% - 68px);
+    ion-backdrop {
+        visibility: visible;
+    }
+    .modal-wrapper {
+        height: 100%;
+        top: 0;
+        width: 100%;
+        position: absolute;
+        display: block;
+    }
+}

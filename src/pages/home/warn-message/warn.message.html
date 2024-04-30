@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openSearchBar()">
+        <ion-icon name="search" style="font-size: 1.4em"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="card-list">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="正在刷新..."
+    ></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <div class="card-item" *ngFor="let alarm of alarmList">
+      <div class="left-line">
+        <div class="line-icon"></div>
+      </div>
+      <div class="right-content">
+        <div class="title">{{alarm.time}}</div>
+        <ion-card (click)="editAlarm(alarm.id)">
+          <ion-card-header>
+            {{alarm.title}}
+            <span
+              class="status-info"
+              [ngClass]="{'status-01': getIcon(alarm.icon,'01'),'status-02': getIcon(alarm.icon,'02'),'status-03': getIcon(alarm.icon,'03'),'status-04': getIcon(alarm.icon,'04')}"
+              >{{alarm.status}}</span
+            ></ion-card-header
+          >
+          <ul class="ion-card-content">
+            <li class="ell">{{alarm.item1}}</li>
+            <li class="ell">{{alarm.item2}}</li>
+            <li class="ell">{{alarm.item3}}</li>
+            <li class="ell">{{alarm.item4}}</li>
+            <li class="ell" *ngIf="alarm.item5">{{alarm.item5}}</li>
+          </ul>
+        </ion-card>
+      </div>
+    </div>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="crescent"
+      loadingText="加载更多数据..."
+    ></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

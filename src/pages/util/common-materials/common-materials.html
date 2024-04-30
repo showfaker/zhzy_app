@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="arrow-back" style="color: #fff"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title> 库存物料 </ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top class="page-search">
+    <ion-searchbar
+      (ionInput)="searchMaterials($event)"
+      placeholder="料号/名称/规格型号"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item
+      *ngFor="let material of materialList"
+      no-lines
+      (click)="selectMaterial(material)"
+    >
+      <ion-avatar item-start>
+        <!-- <img src="assets/imgs/list/material.png" /> -->
+        <ion-icon name="material"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        <h2 class="list-content-name">{{material.materialName}}</h2>
+        <p>物资料号：{{material.materialNo}}</p>
+        <p>规格型号：{{material.materialSpec}}</p>
+        <p *ngIf="material.inventoryNum">
+          库存数量：{{material.inventoryNum}}{{material.unit}}
+        </p>
+        <p *ngIf="material.freezeNum">
+          冻结库存：{{material.freezeNum}}{{material.unit}}
+        </p>
+      </ion-label>
+      <div
+        item-content
+        class="checked-icon"
+        *ngIf="showIcon(material.materialId)"
+      >
+        <ion-icon name="ok"></ion-icon>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ng-container *ngIf="selectType==='single'">
+  <ion-footer>
+    <ion-toolbar no-border-top class="page-bottom">
+      <ion-input
+        type="text"
+        [(ngModel)]="ioNum"
+        [placeholder]="ioType=='01'?'请输入出库数量':'请输入入库数量'"
+      ></ion-input>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <button
+              ion-button
+              block
+              class="clear"
+              color="light"
+              (click)="close()"
+            >
+              取消
+            </button>
+          </ion-col>
+          <ion-col col-6>
+            <button ion-button block class="ok-btn" (click)="commitMaterials()">
+              确定
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-footer>
+</ng-container>
+
+<ion-footer *ngIf="selectType==='multi'">
+  <ion-toolbar no-border-top class="page-bottom">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <button
+            ion-button
+            block
+            class="clear"
+            color="light"
+            (click)="clearAll()"
+          >
+            清除
+          </button>
+        </ion-col>
+        <ion-col col-6>
+          <button ion-button block class="ok-btn" (click)="ok()">确定</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

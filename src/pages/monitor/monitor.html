@@ -1,0 +1,156 @@
+<ion-header class="page-header">
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button (click)="goBack()">
+        <ion-icon name="ios-arrow-back" class="my-back white-icon"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title (click)="toPowerStation()">
+      {{summary&&summary.stationName}}
+      <ion-icon name="ios-arrow-down-outline"></ion-icon>
+    </ion-title>
+    <ion-buttons end>
+      <button (click)="toEquipmentList()" class="title-left">
+        <ion-icon name="md-more" class="device-list"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="monitor-container">
+    <div class="monitor-bg">
+      <div class="gonglv" *ngIf="summary">
+        <div
+          echarts
+          #echart
+          [options]="trendChartOption"
+          class="trend-chart"
+        ></div>
+        <div class="subTitle">
+          <span>{{summary.summaries[0]?.subTitle||''}}：</span
+          >{{summary.summaries[0]?.subValue||''}}{{summary.summaries[0]?.subUnit||''}}
+        </div>
+      </div>
+
+      <div class="all-fadian" *ngIf="summary">
+        <div class="fadian name">
+          <div>{{summary.summaries[1]?.title||''}}</div>
+          <div>{{summary.summaries[2]?.title||''}}</div>
+          <div>{{summary.summaries[3]?.title||''}}</div>
+        </div>
+        <div class="line"></div>
+        <div class="fadian data">
+          <div>
+            {{summary.summaries[1]?.value||''}}<span
+              >{{summary.summaries[1]?.unit||''}}</span
+            >
+          </div>
+          <div>
+            {{summary.summaries[2]?.value||''}}<span
+              >{{summary.summaries[2]?.unit||''}}</span
+            >
+          </div>
+          <div>
+            {{summary.summaries[3]?.value||''}}<span
+              >{{summary.summaries[3]?.unit||''}}</span
+            >
+          </div>
+        </div>
+        <div class="line right"></div>
+        <div class="fadian sub">
+          <div>
+            {{summary.summaries[1]?.subTitle||''}}：{{summary.summaries[1]?.subValue||''}}{{summary.summaries[1]?.subUnit||''}}
+          </div>
+          <div>
+            {{summary.summaries[2]?.subTitle||''}}：{{summary.summaries[2]?.subValue||''}}{{summary.summaries[2]?.subUnit||''}}
+          </div>
+          <div>
+            {{summary.summaries[3]?.subTitle||''}}：{{summary.summaries[3]?.subValue||''}}{{summary.summaries[3]?.subUnit||''}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--******** 图表切换 ********-->
+  <div class="echart-tab">
+    <ion-segment [(ngModel)]="rankechart">
+      <ion-segment-button value="fadian">发电趋势</ion-segment-button>
+      <ion-segment-button value="dianzhan">逆变器排名</ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [ngSwitch]="rankechart" class="rankechart">
+    <div *ngSwitchCase=" 'fadian' ">
+      <!-- <div class="e-title">
+                <i class="option"></i>
+                <span class="fdl">发电量</span>
+                <i class="option pink"></i>
+                <span>计划发电量</span>
+                <span class="danwei">（单位:万kwh）</span>
+                <div class="time-dl">日期：<span class="time">05/15</span> 电量：<span>1600</span></div>
+            </div> -->
+      <div
+        echarts
+        #echart
+        [options]="trendChartOption1"
+        class="trend-chart1"
+      ></div>
+      <div class="date-classify">
+        <span
+          [class.active]='energiesActive == "hour"'
+          (click)="selectenergiesActive('hour')"
+          >时</span
+        >
+        <span
+          [class.active]='energiesActive == "day"'
+          (click)="selectenergiesActive('day')"
+          >日</span
+        >
+        <span
+          [class.active]='energiesActive == "month"'
+          (click)="selectenergiesActive('month')"
+          >月</span
+        >
+        <span
+          [class.active]='energiesActive == "year"'
+          (click)="selectenergiesActive('year')"
+          >年</span
+        >
+      </div>
+    </div>
+    <div *ngSwitchCase=" 'dianzhan' ">
+      <div class="filter" (click)="openSetting()">
+        <!-- <img src="assets/imgs/jiance/set.png"/> -->
+        <ion-icon name="ios-settings-outline"></ion-icon>
+      </div>
+      <div
+        echarts
+        #echart
+        [options]="trendChartOption2"
+        class="trend-chart2"
+      ></div>
+    </div>
+  </div>
+  <ion-list no-lines>
+    <button ion-item detail-none (click)="towarnMessage()">
+      <ion-avatar item-start>
+        <img src="assets/imgs/jiance/dzgj.png" class="smile-img" />
+      </ion-avatar>
+      电站告警
+      <span item-end class="alarmCount">{{alarmCount}}</span>
+    </button>
+    <button ion-item (click)="camera()">
+      <ion-avatar item-start>
+        <img src="assets/imgs/jiance/jiankong.png" class="smile-img" />
+      </ion-avatar>
+      视频监视
+    </button>
+    <!-- <button ion-item (click)="powStaRecords()">
+      <ion-avatar item-start>
+        <img src="assets/imgs/jiance/dzda.png" class="smile-img" />
+      </ion-avatar>
+      电站档案
+    </button> -->
+  </ion-list>
+</ion-content>

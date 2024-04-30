@@ -1,0 +1,105 @@
+cargo-manage {
+    .search-icon{
+        color: #fff;
+        position: absolute;
+        right: 10px;
+        top: 16px;
+    }
+    .sort-div-box{
+        display: flex;
+        justify-content: space-around;
+        background: #5daee5;
+    }
+    .sort-div{
+        color: #fff;
+        height: 40px;
+        line-height: 40px;
+        .tirangle{
+            width: 0;
+            height: 0;
+            border-top: 4px solid #fff;
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 3px;
+        }
+    }
+    .cango-list{
+        height: 100px;
+        background: #fff;
+        margin: 0;
+        margin-bottom: 5px;
+        .cango-item{
+            height: 100px;
+            padding-left: 0;        
+            .label-ios {
+                margin: 0;
+                white-space: normal;
+             }
+             .item-inner{
+                 padding-right: 0;
+             }
+            .wuliao-div{
+                text-indent: 10px;  
+                padding-bottom: 10px;
+                border-bottom: 1px solid #c8c7cc;
+                .wl-name{
+                    font-size: 16px;
+                }
+                .line1{
+                    width: 1px;
+                    height: 10px;
+                    background: #c8c7cc;
+                    display: inline-block;
+                    margin: 0 5px;
+                }
+                .wl-num{
+                    font-size: 12px;
+                }
+             }
+            .wl-detail{
+                width: 49%;  
+                text-indent: 10px;  
+                font-size: 12px;
+                display: inline-block;
+                margin-top: 8px;
+                .color1{
+                    color: #f8a4a3;
+                }
+                .color2{
+                    color: #80bfec;
+                }
+            }
+        }
+        .chrku{
+            width: 84px;
+            padding: 0;
+            background: #c5c5c5;
+        }    
+        .chrku.chkco{
+            background: #5daee5;
+        }
+    }
+    .list-ios > .item-wrapper:last-child .item-block {
+        border-bottom: none;
+    }
+    .mask{
+        width: 100%;
+        position: fixed;
+        top: 86px;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 998;
+    }
+    .kucun-pop{
+        width: 100%;
+        position: fixed;
+        top: 86px;
+        background-color: #fff;
+        z-index: 999;
+        ion-item:last-child .item-inner{
+            border-bottom: none;
+        }
+    }
+}

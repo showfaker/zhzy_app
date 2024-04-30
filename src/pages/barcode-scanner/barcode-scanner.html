@@ -1,0 +1,29 @@
+<ion-content no-scroll [ngClass]="{'qrscanner':isShow}">
+    <!-- <div [ngClass]="{'qrscanner-area':isShow}"></div>
+    <div [ngClass]="{'through-line':isShow}"></div>
+    <div class="button-bottom">
+        <button
+            (click)="toggleLight()"
+            ion-fab
+            class="icon-camera"
+            margin-right
+        >
+            <ion-icon name="flash"></ion-icon>
+        </button>
+        <button (click)="toggleCamera()" ion-fab class="icon-camera">
+            <ion-icon name="reverse-camera"></ion-icon>
+        </button>
+    </div> -->
+    <div class="scanner-container">
+        <div class="close-scanner" (tap)="closeScanner()">关闭</div>
+        <div class="scanner-box">
+            <span (click)="toggleLight()" class="toggle-light">
+                <ion-icon
+                    name="{{light?'flashlight-open':'flashlight-close'}}"
+                ></ion-icon>
+                <span>{{light?'轻点关闭':'轻点照亮'}} </span>
+            </span>
+            <p class="loading-text">正在扫码，请耐心等待</p>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,72 @@
+pow-setting {
+  .scroll-content {
+    background: #fff;
+  }
+  .model {
+    .qz-content {
+      height: 95%;
+      width: 100%;
+      position: relative;
+    }
+    .select-item {
+      float: unset !important;
+      width: 28% !important;
+      height: 32px !important;
+      margin-top: 10px !important;
+      background: #edf1f4;
+      border-radius: 5px;
+      color: #27292a !important;
+      letter-spacing: 0;
+      text-align: center;
+      font-weight: 500;
+      &.active {
+        background: #2585cb;
+        color: #ffffff !important;
+      }
+      & + .select-item {
+        margin-left: 2%;
+      }
+      &:nth-of-type(4) {
+        margin-left: 0;
+      }
+    }
+
+    .submit-button {
+      width: 40% !important;
+      height: 40px !important;
+      line-height: 40px !important;
+      &:first-child {
+        background: #edf1f4;
+        border-radius: 5px;
+        color: #27292a;
+      }
+      &:last-child {
+        background: #2585cb;
+        border-radius: 5px;
+        float: right;
+      }
+    }
+
+    .submit {
+      position: absolute;
+      width: 100%;
+      bottom: 5px;
+    }
+  }
+  .list-button {
+    padding: 10px 0;
+    p {
+      font-size: 14px;
+      color: #27292a;
+      letter-spacing: 0;
+      font-weight: 500;
+    }
+  }
+}
+
+.settingModel {
+  .modal-wrapper {
+    height: 280px !important;
+    margin-top: -140px !important;
+  }
+}

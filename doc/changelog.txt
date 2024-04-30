@@ -1,0 +1,34 @@
+[version] 2.1.5.200511
+[Released] 2020-05-10
+
+[Features]
+
+[Bug Fixes]
+1. app巡检、检修预示、表单调整
+2. 缺陷增加“我的发现”查询
+
+
+[code optimization]
+
+[Known issues]
+------------------------------------------------------------------------------
+说明：
+[version] 2.1.2.200508
+			版本号，格式a.b.c.d
+			a：重大版本升级+1，目前为2
+			b：新增功能或某功能做重大修改时+1
+			c：修复bug或小的功能调整优化时+1
+			d：yyMMdd格式，每次发布时取当前日期
+[Released] 2020-05-01
+			程序发布日期，未发布则为空
+
+[Features]		功能改动清单，[]中xxx为禅道上对应的需求ID
+1. [xxx]XXXXX
+
+[Bug Fixes]		bug修复清单，[]中xxx为禅道上对应的bug ID
+1. [xxx]XXXXX
+
+[code optimization]		代码优化清单
+1. XXXXXX
+
+[Known issues]		已知的重要问题，需要在下一个版本修复的，再此记录备忘

@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>电量日报</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ul>
+      <li
+        *ngFor="let report of reports;let i = index"
+        (click)="reportDetail(report)"
+      >
+        <div class="date">
+          <!-- <img
+            src="assets/imgs/daily-report/icon_clock.png"
+            style="height: 15px"
+          /> -->
+          <ion-icon name="time" style="font-size: 12px"></ion-icon>
+          <span>{{report.date}}</span>
+          <img
+            src="assets/imgs/daily-report/icon_go.png"
+            style="width: 10px; height: 14px"
+          />
+        </div>
+        <div class="detail clearfix">
+          <div>
+            <span class="num">{{report.stationNum.value}}</span><br />
+            <span class="dis">电站数量(个)</span>
+          </div>
+          <div>
+            <span class="num">{{report.capacity.value}}</span><br />
+            <span class="dis">并网容量(MW)</span>
+          </div>
+          <div>
+            <span class="num">{{report.dayEnergy.value}}</span><br />
+            <span class="dis">当日电量(万kWh)</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      style="min-height: 32px"
+      loadingSpinner="bubbles"
+      loadingText="加载完成..."
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

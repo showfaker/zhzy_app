@@ -1,0 +1,253 @@
+<!--
+  Generated template for the RepairTicketPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>抢修单</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="serchMenu()">
+        <ion-icon name="search" style="font-size: 1.4em"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="addRepairTicker()">
+        <ion-icon name="add-square" style="font-size: 1.4em"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="card-list" #search>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="正在刷新..."
+    ></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <div class="card-item" *ngFor="let repairTicket of repairTicketList">
+      <div class="left-line">
+        <div class="line-icon"></div>
+      </div>
+      <div class="right-content">
+        <div class="title">{{repairTicket.time}}</div>
+        <ion-card (click)="editRepairTicket(repairTicket.id)">
+          <ion-card-header>
+            {{repairTicket.title}}<span
+              class="remind-icon"
+              *ngIf="repairTicket.button==='remind'"
+              (click)="remind($event,repairTicket.id)"
+              >催单</span
+            >
+          </ion-card-header>
+          <ul class="ion-card-content">
+            <li class="ell">{{repairTicket.item1}}</li>
+            <li class="ell">{{repairTicket.item2}}</li>
+            <li class="ell">{{repairTicket.item3}}</li>
+          </ul>
+          <div
+            *ngIf="repairTicket.status"
+            class="card-tip"
+            [style.background-color]="repairTicket.statusStyle"
+          >
+            {{repairTicket.status}}
+          </div>
+        </ion-card>
+      </div>
+    </div>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="crescent"
+      loadingText="加载更多数据..."
+    ></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<ng-container *ngIf="showMenu">
+  <ion-menu
+    [content]="search"
+    side="right"
+    id="search"
+    type="overlay"
+    [swipeEnabled]="true"
+    class="search-menu"
+  >
+    <ion-content class="outer-content" no-bounce>
+      <div class="common-search-container">
+        <div class="common-search">
+          <div class="select-picker border-bottom">
+            <div class="query-label">快速查询</div>
+            <ion-grid>
+              <ion-row>
+                <ion-col col-4 *ngFor="let item of aQueryFlag">
+                  <div
+                    class="select-option"
+                    [ngClass]="{'active-option': searchParams.queryFlag===item.first}"
+                    (click)="selectQuickSearch(item.first)"
+                  >
+                    {{item.second}}
+                  </div></ion-col
+                >
+              </ion-row>
+            </ion-grid>
+          </div>
+          <div class="input-picker border-bottom">
+            <div class="query-label">抢修单号</div>
+            <ion-input
+              type="text"
+              [(ngModel)]="searchParams.ticketCode"
+            ></ion-input>
+          </div>
+          <div class="button-picker border-bottom">
+            <div class="query-label">电站</div>
+            <button
+              ion-button
+              round
+              small
+              color="light"
+              (click)="selectStation()"
+            >
+              {{(station?.title)||'未选择'}}
+              <!-- <img
+                                *ngIf="station"
+                                (click)="clearStation($event)"
+                                class="clear-icon"
+                                src="assets/imgs/buttons/delete.png"
+                                alt=""
+                            /> -->
+              <ion-icon
+                *ngIf="station"
+                (click)="clearStation($event)"
+                class="clear-icon"
+                name="delete"
+              ></ion-icon>
+            </button>
+          </div>
+          <div class="time-picker border-bottom">
+            <div class="query-label">填报时间</div>
+            <ion-datetime
+              displayFormat="YYYY-MM-DD"
+              pickerFormat="YYYY/MM/DD"
+              doneText="确定"
+              [(ngModel)]="searchParams.startReportTime"
+              [pickerOptions]="customStartReportPickerOptions"
+            ></ion-datetime>
+            <div class="line">-</div>
+            <ion-datetime
+              displayFormat="YYYY-MM-DD"
+              pickerFormat="YYYY/MM/DD"
+              doneText="确定"
+              [pickerOptions]="customEndReportPickerOptions"
+              [(ngModel)]="searchParams.endReportTime"
+            ></ion-datetime>
+          </div>
+          <div class="time-picker border-bottom">
+            <div class="query-label">完成时间</div>
+            <ion-datetime
+              displayFormat="YYYY-MM-DD"
+              pickerFormat="YYYY/MM/DD"
+              doneText="确定"
+              [(ngModel)]="searchParams.startEndTime"
+              [pickerOptions]="customStartEndReportPickerOptions"
+            ></ion-datetime>
+            <div class="line">-</div>
+            <ion-datetime
+              displayFormat="YYYY-MM-DD"
+              pickerFormat="YYYY/MM/DD"
+              doneText="确定"
+              [pickerOptions]="customEndEndReportPickerOptions"
+              [(ngModel)]="searchParams.endEndTime"
+            ></ion-datetime>
+          </div>
+          <div class="select-picker border-bottom">
+            <div class="query-label">抢修状态</div>
+            <ion-grid>
+              <ion-row>
+                <ion-col col-4 *ngFor="let item of aRepairStatus">
+                  <div
+                    class="select-option"
+                    [ngClass]="{'active-option': searchParams.repairStatus.indexOf(item.first)!==-1}"
+                    (click)="selectRepairStatusOption(item.first)"
+                  >
+                    {{item.second}}
+                  </div></ion-col
+                >
+              </ion-row>
+            </ion-grid>
+          </div>
+          <div class="button-picker border-bottom">
+            <div class="query-label">负责人</div>
+            <button ion-button round small color="light" (click)="selectUser()">
+              {{(responsiblePerson?.realName)||'未选择'}}
+              <!-- <img
+                *ngIf="responsiblePerson"
+                (click)="clearUser($event)"
+                class="clear-icon"
+                src="assets/imgs/buttons/delete.png"
+                alt=""
+              /> -->
+              <ion-icon
+                *ngIf="responsiblePerson"
+                (click)="clearUser($event)"
+                class="clear-icon"
+                name="delete"
+              ></ion-icon>
+            </button>
+          </div>
+          <div class="button-picker">
+            <div class="query-label">抢修设备</div>
+            <button
+              class="ell"
+              ion-button
+              round
+              small
+              color="light"
+              (click)="selectEquipment()"
+            >
+              {{(equipment?.deviceName)||'未选择'}}
+              <!-- <img
+                *ngIf="equipment"
+                (click)="clearEquipment($event)"
+                class="clear-icon"
+                src="assets/imgs/buttons/delete.png"
+                alt=""
+              /> -->
+              <ion-icon
+                *ngIf="equipment"
+                (click)="clearEquipment($event)"
+                class="clear-icon"
+                name="delete"
+              ></ion-icon>
+            </button>
+          </div>
+        </div>
+        <ion-list>
+          <ion-row class="fix-bottom">
+            <ion-col col-6 text-center>
+              <button
+                ion-button
+                round
+                small
+                class="reset-btn"
+                color="light"
+                (click)="reset()"
+              >
+                重置
+              </button>
+            </ion-col>
+            <ion-col col-6 text-center>
+              <button ion-button round small class="query-btn" (click)="ok()">
+                查询
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+      </div>
+    </ion-content>
+  </ion-menu>
+</ng-container>

@@ -1,0 +1,68 @@
+daily-report {
+    .scroll-content {
+        font-family: 'PingFangSC-Regular';
+        background: #F3F3F3;
+        ul {
+            margin: 0;
+            padding: 0;
+            li {
+                background: #fff;
+                list-style: none;
+                height: 105px;
+                margin-bottom:10px;
+                .date {
+                    position: relative;
+                    display: inline-flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width:100%;
+                    height: 32.5px;
+                    font-size: 1rem;
+                    padding: 0 14px 0 17px;
+                    border-bottom: 1px solid #eee;
+                    span{
+                        position: absolute;
+                        top: 50%;
+                        left: 10%;
+                        transform: translateY(-50%);
+                    }
+                }
+                .clearfix:after {
+                    content: "";
+                    height: 0;
+                    line-height: 0;
+                    display: block;
+                    visibility: hidden;
+                    clear: both
+                }
+                .detail {
+                    height: 72px;
+                    padding: 10px 0 10px 0;
+                    div {
+                        width: 33.33%;
+                        height: 100%;
+                        // padding: 0 5px;
+                        border-right:1px solid #eee;
+                        float: left;
+                        text-align: center;
+                        span {
+                            display: inline-block;
+                        }
+                        .num {
+                            color: #333;
+                            font-size: 2rem;
+                        }
+                        .dis{
+                            color:#aaa;
+                            font-size: .9rem;
+                            -webkit-transform: scale(0.9)
+                        }
+                    }
+                    div:last-child{
+                        border: none;
+                    }
+                }
+            }
+        }
+    }
+}

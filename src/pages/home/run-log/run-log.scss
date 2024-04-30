@@ -1,0 +1,46 @@
+run-log {
+
+    .list {
+        .item-ios {
+            padding: 0px 4%;
+            height: auto;
+            ion-label {
+                white-space: inherit;
+               
+                .time {
+                    margin-bottom: 5px;
+                    .name {
+                        float: right;
+                        font-size: 15px;
+                        // color: #696969;
+                    }
+                    .hour {font-size: 15px}
+                    i {
+                        @include dot();
+                        margin-right: 7px;
+                        @include backg-color();
+                    }
+                }
+                .content {
+                    width: 100%;
+                    font-size: 14px;
+                    color: #696969;
+                    margin-bottom: 5px;
+                    &.alarm {margin-left: 26px}
+                }
+                .area {
+                    text-align: right;
+                    font-size: 15px;
+                    color: #696969;
+                }
+            }
+            &.target {background-color: #eeeded;}
+        }
+    }
+    
+    ion-footer .button-ios {
+        margin: 0;
+        background-color: #87c15e;
+        &.activated {background-color: #87c15e;}
+    }
+}

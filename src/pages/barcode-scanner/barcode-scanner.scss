@@ -1,0 +1,187 @@
+page-barcode-scanner {
+    .close-scanner {
+        color: #fff;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 101;
+    }
+    .qrscanner {
+        background: none;
+        &-area {
+            width: 100%;
+            height: 100%;
+            background: url(../assets/scanner.svg) no-repeat center center;
+            background-size: contain;
+        }
+    }
+    .through-line {
+        left: 25%;
+        width: 50%;
+        height: 2px;
+        background: red;
+        position: absolute;
+        -webkit-animation: myfirst 2s linear infinite alternate;
+        animation: myfirst 2s linear infinite alternate;
+    }
+    @-webkit-keyframes myfirst {
+        0% {
+            background: red;
+            top: 30%;
+        }
+        25% {
+            background: yellow;
+            top: 35%;
+        }
+        50% {
+            background: blue;
+            top: 40%;
+        }
+        75% {
+            background: green;
+            top: 45%;
+        }
+        100% {
+            background: red;
+            top: 50%;
+        }
+    }
+    @keyframes myfirst {
+        0% {
+            background: red;
+            top: 30%;
+        }
+        25% {
+            background: yellow;
+            top: 35%;
+        }
+        50% {
+            background: blue;
+            top: 40%;
+        }
+        75% {
+            background: green;
+            top: 45%;
+        }
+        100% {
+            background: red;
+            top: 50%;
+        }
+    }
+    .button-bottom {
+        width: 128px;
+        position: absolute;
+        left: 50%;
+        bottom: 80px;
+        margin-left: -64px;
+        .icon-camera {
+            float: left;
+        }
+    }
+    .scanner-container {
+        height: 100%;
+        width: 100%;
+        background: transparent;
+        overflow: hidden;
+    }
+    .scanner-box {
+        position: relative;
+        left: 50%;
+        top: 50%;
+        margin-top: -140px;
+        margin-left: -140px;
+        width: 280px;
+        height: 280px;
+        -webkit-box-shadow: white 0 0 0 2017px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0 0 0 2017px;
+        z-index: 100;
+        background: -webkit-gradient(
+                    linear,
+                    left top,
+                    left bottom,
+                    from(#5aa4db),
+                    to(#5aa4db)
+                )
+                left top,
+            -webkit-gradient(
+                    linear,
+                    left top,
+                    left bottom,
+                    from(#5aa4db),
+                    to(#5aa4db)
+                ) left top,
+            -webkit-gradient(
+                    linear,
+                    left top,
+                    left bottom,
+                    from(#5aa4db),
+                    to(#5aa4db)
+                ) right top,
+            -webkit-gradient(
+                    linear,
+                    left top,
+                    left bottom,
+                    from(#5aa4db),
+                    to(#5aa4db)
+                ) right top,
+            -webkit-gradient(
+                    linear,
+                    left top,
+                    left bottom,
+                    from(#5aa4db),
+                    to(#5aa4db)
+                ) right bottom,
+            -webkit-gradient(
+                    linear,
+                    left top,
+                    left bottom,
+                    from(#5aa4db),
+                    to(#5aa4db)
+                ) right bottom,
+            -webkit-gradient(
+                    linear,
+                    left top,
+                    left bottom,
+                    from(#5aa4db),
+                    to(#5aa4db)
+                ) left bottom,
+            -webkit-gradient(
+                    linear,
+                    left top,
+                    left bottom,
+                    from(#5aa4db),
+                    to(#5aa4db)
+                ) left bottom;
+        background: linear-gradient(#5aa4db, #5aa4db) left top,
+            linear-gradient(#5aa4db, #5aa4db) left top,
+            linear-gradient(#5aa4db, #5aa4db) right top,
+            linear-gradient(#5aa4db, #5aa4db) right top,
+            linear-gradient(#5aa4db, #5aa4db) right bottom,
+            linear-gradient(#5aa4db, #5aa4db) right bottom,
+            linear-gradient(#5aa4db, #5aa4db) left bottom,
+            linear-gradient(#5aa4db, #5aa4db) left bottom;
+        background-repeat: no-repeat;
+        background-size: 4px 20px, 20px 4px;
+        border: 1px solid #5aa4db;
+
+        .loading-text {
+            position: absolute;
+            bottom: -40px;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+    }
+
+    .toggle-light {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        span {
+            display: block;
+        }
+    }
+}

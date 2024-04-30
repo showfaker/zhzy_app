@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{this.meterialCondition.classType=='03'?'工具':'备件'}}列表
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-option>
+    <div class="top">
+      <div class="options options-diff" (click)="presentPopoverOne('CK')">
+        <p>仓库</p>
+        <div class="box"></div>
+      </div>
+      <div class="options" (click)="presentPopoverOne('CLASS')">
+        <p> {{this.meterialCondition.classType=='03'?'工具':'备件'}}类别</p>
+        <div class="box"></div>
+      </div>
+      <div class="options" (click)="presentPopoverOne('INVENTORY')">
+        <p>库存类别</p>
+        <div class="box"></div>
+      </div>
+      <div class="options" (click)="presentPopoverTwo()">
+        <p>工具名称</p>
+        <div class="box"></div>
+      </div>
+    </div>
+  </ion-option>
+  <ion-list>
+    <div class="number" *ngFor='let meterial of meterials;let i = index' [class.number-diff]='i%2 == 0'>
+      <p>{{meterial.materialNo}}{{meterial.materialName}}</p>
+      <div class="massage">
+        <!-- <div></div> -->
+        <p>{{meterial.warehouseName}}</p>
+        <!-- <div class="massage-diff"></div> -->
+        <p>{{meterial.inventoryCateText}}</p>
+        <!-- <div class="massage-diff"></div> -->
+        <p>数量：<span>{{meterial.inventoryNum}}</span>{{meterial.unitText}}</p>
+      </div>
+      <div class="massage">
+        <p>{{meterial.materialSpec}}</p>
+        <p>{{meterial.materialDesc}}</p>
+        <p>{{meterial.companyName}}</p>
+      </div>
+      <!-- <div class="word"><p></p></div> -->
+    </div>
+    <!-- <div class="number">
+              <p>XXXXXXXXX（物料号）</p>
+              <div class="massage">
+                <div></div>
+                <p>仓库名称</p>
+                <div class="massage-diff"></div>
+                <p>库存类别</p>
+                <div class="massage-diff"></div>
+                <p>数量：<span>25</span>个</p>
+              </div>
+              <div class="word"><p>工具名称</p><span>工具名称工具</span></div>
+              <div class="word"><p>规格型号</p><span>规格型号规格型号规格型号规格型号规格型号工具名称工具名称工具名称</span></div>
+            </div> -->
+
+  </ion-list>
+
+</ion-content>

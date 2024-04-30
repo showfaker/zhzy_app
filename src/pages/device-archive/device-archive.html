@@ -1,0 +1,33 @@
+<!--
+  Generated template for the DeviceArchivePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="device-type" *ngIf="pic">
+        <img src="{{pic}}" style="height:120px" alt="" />
+    </div>
+    <ion-list class="new-list" *ngFor="let info of showInfos">
+        <ion-list-header no-lines (click)="info.toggleBaseInfo = !info.toggleBaseInfo">
+            {{info.groupName}}
+            <button ion-button icon-only item-end clear>
+                <ion-icon name="{{!info.toggleBaseInfo?'arrow-up':'arrow-down'}}"></ion-icon>
+            </button>
+        </ion-list-header>
+        <ng-container *ngIf="!info.toggleBaseInfo">
+            <ng-container *ngFor="let item of getKeys(info.datas,info.groupName)">
+                <ion-item no-lines *ngIf="item.show">
+                    <ion-label>{{item.name}}：</ion-label>
+                    <ion-input type="text" [readonly]="true" [(ngModel)]="item.value"></ion-input>
+                </ion-item>
+            </ng-container>
+        </ng-container>
+    </ion-list>
+</ion-content>

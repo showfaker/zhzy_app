@@ -1,0 +1,193 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>运维任务</ion-title>
+    </ion-navbar>
+    <ion-icon name="search" class="search-icon "></ion-icon>
+</ion-header>
+
+<ion-content>
+    <div class="sort-div-box">
+        <div class="sort-div" (click)="toPowerStation()">
+            <span class="sort_name">电站筛选</span>
+            <span class="tirangle"></span>
+        </div>
+        <div class="sort-div" (click)="qxkindtoggle()">
+            <span class="sort_name">任务类型</span>
+            <span class="tirangle"></span>
+        </div>
+        <div class="sort-div" (click)="qxstatetoggle()">
+            <span class="sort_name">任务状态</span>
+            <span class="tirangle"></span>
+        </div>
+        <div class="sort-div" (click)="othertoggle()">
+            <span class="sort_name">其他条件</span>
+            <span class="tirangle"></span>
+        </div>
+    </div>
+    <div class="mask" *ngIf="qxkind||qxstate||others" (click)="masktoggle()"></div>
+    <div class="kucun-pop" *ngIf="qxkind">
+        <ion-item>任务类型1</ion-item>
+        <ion-item>任务类型2</ion-item>
+    </div>
+    <div class="kucun-pop" *ngIf="qxstate">
+        <ion-item>待分配</ion-item>
+        <ion-item>带执行</ion-item>
+        <ion-item>已完成</ion-item>
+    </div>
+    <div class="other-pop" *ngIf="others">
+        <div class="other-title">
+            <span class="line1"></span>
+            <span class="title1">工艺类型</span>
+            <span class="line1"></span>
+        </div>
+        <div class="craft-div-box">
+            <div
+                class="craft-div"
+                [class.active]="hero.checked"
+                *ngFor="let hero of heroes"
+                (click)="checkCraft(hero.id)"
+            >
+                {{hero.name}}
+            </div>
+            <!-- <div class="craft-div active">土建类</div>
+            <div class="craft-div">安装类</div>
+            <div class="craft-div">施工、设备类</div>
+            <div class="craft-div">施工类</div>
+            <div class="craft-div">清洗系统</div>
+            <div class="craft-div">设别类</div> -->
+        </div>
+        <div class="other-title">
+            <span class="line1"></span>
+            <span class="title1">设备类型</span>
+            <span class="line1"></span>
+        </div>
+        <div class="craft-div-box">
+            <div class="device-div active">SVG</div>
+            <div class="device-div">一次</div>
+            <div class="device-div">供水系统</div>
+            <div class="device-div">光伏区</div>
+            <div class="device-div">光功率预测</div>
+            <div class="device-div">分站房</div>
+            <div class="device-div">后台</div>
+            <div class="device-div">土建</div>
+            <div class="device-div">开关柜</div>
+            <div class="device-div">开关站</div>
+            <div class="device-div">汇流箱</div>
+            <div class="device-div">箱变</div>
+        </div>
+        <div class="other-title">
+            <span class="line1"></span>
+            <span class="title1">其他</span>
+            <span class="line1"></span>
+        </div>
+        <div class="input-div">
+            <span class="title2">负责人</span>
+            <input type="text" class="input1" />
+        </div>
+        <div class="input-div">
+            <span class="title2">报告时间</span>
+            <ion-item class="date-box">
+                <ion-datetime displayFormat="MM/D" cancelText="取消" doneText="确定"></ion-datetime>
+            </ion-item>
+            <span class="date-line"></span>
+            <ion-item class="date-box">
+                <ion-datetime displayFormat="MM/D" cancelText="取消" doneText="确定"></ion-datetime>
+            </ion-item>
+        </div>
+        <div class="button1-box">
+            <div class="button1">清空</div>
+            <div class="button1" style="background: #5daee5;color: #fff;">确定</div>
+        </div>
+    </div>
+
+    <div>
+        <ion-list class="cango-list">
+            <ion-item-sliding #item>
+                <ion-item class="cango-item">
+                    <div class="wuliao-div">
+                        <span class="wl-name">任务名称</span>
+                    </div>
+                    <div class="wl-detail_box">
+                        <div class="wl-detail">提报时间：2018-05-23 14:00</div>
+                        <div class="wl-detail">
+                            缺陷状态：
+                            <span class="color2">待分配</span>
+                        </div>
+                        <div class="wl-detail">任务类型：巡检</div>
+                        <div class="wl-detail">执行人：李建国</div>
+                    </div>
+                </ion-item>
+                <ion-item-options>
+                    <button ion-button class="chrku">删除</button>
+                    <button ion-button class="chrku chkco">修改</button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-list class="cango-list">
+            <ion-item-sliding #item>
+                <ion-item class="cango-item">
+                    <div class="wuliao-div">
+                        <span class="wl-name">任务名称</span>
+                    </div>
+                    <div class="wl-detail_box">
+                        <div class="wl-detail">提报时间：2018-05-23 14:00</div>
+                        <div class="wl-detail">
+                            缺陷状态：
+                            <span class="color4">已完成</span>
+                        </div>
+                        <div class="wl-detail">任务类型：巡检</div>
+                        <div class="wl-detail">执行人：李建国</div>
+                    </div>
+                </ion-item>
+                <ion-item-options>
+                    <button ion-button class="chrku">删除</button>
+                    <button ion-button class="chrku chkco">修改</button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-list class="cango-list">
+            <ion-item-sliding #item>
+                <ion-item class="cango-item">
+                    <div class="wuliao-div">
+                        <span class="wl-name">任务名称</span>
+                    </div>
+                    <div class="wl-detail_box">
+                        <div class="wl-detail">提报时间：2018-05-23 14:00</div>
+                        <div class="wl-detail">
+                            缺陷状态：
+                            <span class="color1">待执行</span>
+                        </div>
+                        <div class="wl-detail">任务类型：巡检</div>
+                        <div class="wl-detail">执行人：李建国</div>
+                    </div>
+                </ion-item>
+                <ion-item-options>
+                    <button ion-button class="chrku">删除</button>
+                    <button ion-button class="chrku chkco">修改</button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-list class="cango-list">
+            <ion-item-sliding #item>
+                <ion-item class="cango-item">
+                    <div class="wuliao-div">
+                        <span class="wl-name">任务名称</span>
+                    </div>
+                    <div class="wl-detail_box">
+                        <div class="wl-detail">提报时间：2018-05-23 14:00</div>
+                        <div class="wl-detail">
+                            缺陷状态：
+                            <span class="color2">待分配</span>
+                        </div>
+                        <div class="wl-detail">任务类型：巡检</div>
+                        <div class="wl-detail">执行人：李建国</div>
+                    </div>
+                </ion-item>
+                <ion-item-options>
+                    <button ion-button class="chrku">删除</button>
+                    <button ion-button class="chrku chkco">修改</button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+    </div>
+</ion-content>

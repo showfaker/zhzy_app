@@ -1,0 +1,743 @@
+<!--
+  Generated template for the RepairTicketDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content
+  [ngClass]="{'h0': buttons.length==0,'h44': buttons.length>4&&buttonToggle==false,'h88': buttons.length<=4&&buttons.length>0,'h180':buttons.length>4&&buttons.length<=8&&buttonToggle==true,'h240':buttons.length>8&&buttons.length<=12&&buttonToggle==true,'h300':buttons.length>12&&buttons.length<=16&&buttonToggle==true}"
+>
+  <form [formGroup]="form">
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleBaseInfo = !toggleBaseInfo">
+        基础信息
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleBaseInfo?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <!-- 基础信息 -->
+      <ng-container *ngIf="toggleBaseInfo">
+        <!--电站名称  -->
+        <ion-item
+          *ngIf="fields?.stationId.show"
+          [attr.detail-push]="fields?.stationId.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.stationId.nullable">*</b
+            >{{fields?.stationId.name}}：</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.stationId.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            (tap)="selectStation($event)"
+            formControlName="stationName"
+          ></ion-input>
+          <ion-input
+            *ngIf="!fields?.stationId.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="stationName"
+          ></ion-input>
+        </ion-item>
+        <!-- 工作负责人 -->
+        <ion-item
+          *ngIf="fields?.responsiblePerson.show"
+          [attr.detail-push]="fields?.responsiblePerson.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.responsiblePerson.nullable">*</b
+            >{{fields?.responsiblePerson.name}}：</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.responsiblePerson.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            (tap)="selectUser('responsiblePerson','responsiblePersonName')"
+            formControlName="responsiblePersonName"
+          ></ion-input>
+          <ion-input
+            *ngIf="!fields?.responsiblePerson.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="responsiblePersonName"
+          ></ion-input>
+        </ion-item>
+        <!-- 工作布置人 -->
+        <ion-item
+          *ngIf="fields?.creater.show"
+          [attr.detail-push]="fields?.creater.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.creater.nullable">*</b
+            >{{fields?.creater.name}}：</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.creater.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            (tap)="selectUser('creater','createrName')"
+            formControlName="createrName"
+          ></ion-input>
+          <ion-input
+            *ngIf="!fields?.creater.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="createrName"
+          ></ion-input>
+        </ion-item>
+        <!-- 班组 -->
+        <ion-item
+          *ngIf="fields?.teamId.show"
+          [attr.detail-push]="fields?.teamId.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.teamId.nullable">*</b
+            >{{fields?.teamId.name}}：</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.teamId.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            (tap)="selectTeam('teamId','teamName')"
+            formControlName="teamName"
+          ></ion-input>
+          <ion-input
+            *ngIf="!fields?.teamId.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="teamName"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 班组人员 -->
+        <ion-item *ngIf="fields?.teamUsers.show" detail-push no-lines>
+          <ion-label
+            ><b *ngIf="!fields?.teamUsers.nullable">*</b
+            >{{fields?.teamUsers.name}}：</ion-label
+          >
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            (tap)="selectTeamUsers($event,fields?.teamUsers.editable)"
+            formControlName="teamUsersText"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 抢修设备 -->
+        <ion-item *ngIf="fields?.repairDevices.show" detail-push no-lines>
+          <ion-label>
+            <b *ngIf="!fields?.repairDevices.nullable">*</b
+            >{{fields?.repairDevices.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="selectEquipment(fields?.repairDevices.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="repairDevicesText"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 抢修任务 -->
+        <ion-item
+          *ngIf="fields?.repairDesc.show"
+          [attr.detail-push]="fields?.repairDesc.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.repairDesc.nullable">*</b
+            >{{fields?.repairDesc.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="addTextarea(fields?.repairDesc.name,'repairDesc',fields?.repairDesc.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            class="ell"
+            formControlName="repairDesc"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 安全措施 -->
+        <ion-item
+          *ngIf="fields?.precautions.show"
+          [attr.detail-push]="fields?.precautions.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.precautions.nullable">*</b
+            >{{fields?.precautions.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="addTextarea(fields?.precautions.name,'precautions',fields?.precautions.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            class="ell"
+            formControlName="precautions"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 注意事项 -->
+        <ion-item
+          *ngIf="fields?.attentions.show"
+          [attr.detail-push]="fields?.attentions.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.attentions.nullable">*</b
+            >{{fields?.attentions.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="addTextarea(fields?.attentions.name,'attentions',fields?.attentions.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            class="ell"
+            formControlName="attentions"
+          ></ion-input>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleProcess = !toggleProcess">
+        抢修许可
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon name="{{toggleProcess?'arrow-up':'arrow-down'}}"></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleProcess">
+        <!-- 注意事项 -->
+        <ion-item
+          *ngIf="fields?.extrPrecautions.show"
+          [attr.detail-push]="fields?.extrPrecautions.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.extrPrecautions.nullable">*</b
+            >{{fields?.extrPrecautions.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="addTextarea(fields?.extrPrecautions.name,'extrPrecautions',fields?.extrPrecautions.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            class="ell"
+            formControlName="extrPrecautions"
+          ></ion-input>
+        </ion-item>
+        <!-- 许可人 -->
+        <ion-item
+          *ngIf="fields?.permitUser.show"
+          [attr.detail-push]="fields?.permitUser.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.permitUser.nullable">*</b
+            >{{fields?.permitUser.name}}：</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.permitUser.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            (tap)="selectUser('permitUser','permitUserName')"
+            formControlName="permitUserName"
+          ></ion-input>
+          <ion-input
+            *ngIf="!fields?.permitUser.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="permitUserName"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 许可同意时间 -->
+        <ion-item
+          *ngIf="fields?.permitTime.show"
+          [attr.detail-push]="fields?.permitTime.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.permitTime.nullable">*</b
+            >{{fields?.permitTime.name}}：</ion-label
+          >
+          <ion-datetime
+            *ngIf="fields?.permitTime.editable"
+            doneText="确定"
+            cancelText="清除"
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="permitTime"
+          ></ion-datetime>
+          <ion-datetime
+            *ngIf="!fields?.permitTime.editable"
+            doneText="确定"
+            cancelText="清除"
+            [disabled]="true"
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="permitTime"
+          ></ion-datetime>
+        </ion-item>
+        <!-- 许可抢修时间 -->
+        <ion-item
+          *ngIf="fields?.permitWorkTime.show"
+          [attr.detail-push]="fields?.permitWorkTime.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.permitWorkTime.nullable">*</b
+            >{{fields?.permitWorkTime.name}}：</ion-label
+          >
+          <ion-datetime
+            *ngIf="fields?.permitWorkTime.editable"
+            doneText="确定"
+            cancelText="清除"
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="permitWorkTime"
+          ></ion-datetime>
+          <ion-datetime
+            *ngIf="!fields?.permitWorkTime.editable"
+            doneText="确定"
+            cancelText="清除"
+            [disabled]="true"
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="permitWorkTime"
+          ></ion-datetime>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <ion-list class="new-list">
+      <ion-list-header
+        no-lines
+        (tap)="toggleProcessResult = !toggleProcessResult"
+      >
+        结果汇报
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleProcessResult?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <!-- 结果汇报 -->
+      <ng-container *ngIf="toggleProcessResult">
+        <!-- 开始时间 -->
+        <ion-item
+          *ngIf="fields?.startTime.show"
+          [attr.detail-push]="fields?.startTime.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.startTime.nullable">*</b
+            >{{fields?.startTime.name}}：</ion-label
+          >
+          <ion-datetime
+            *ngIf="fields?.startTime.editable"
+            doneText="确定"
+            cancelText="清除"
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="startTime"
+          ></ion-datetime>
+          <ion-datetime
+            *ngIf="!fields?.startTime.editable"
+            doneText="确定"
+            cancelText="清除"
+            [disabled]="true"
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="startTime"
+          ></ion-datetime>
+        </ion-item>
+
+        <!-- 完成时间 -->
+        <ion-item
+          *ngIf="fields?.endTime.show"
+          [attr.detail-push]="fields?.endTime.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.endTime.nullable">*</b
+            >{{fields?.endTime.name}}：</ion-label
+          >
+          <ion-datetime
+            *ngIf="fields?.endTime.editable"
+            doneText="确定"
+            cancelText="清除"
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="endTime"
+          ></ion-datetime>
+          <ion-datetime
+            *ngIf="!fields?.endTime.editable"
+            doneText="确定"
+            cancelText="清除"
+            [disabled]="true"
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="endTime"
+          ></ion-datetime>
+        </ion-item>
+
+        <!-- 工作量 -->
+        <ion-item
+          *ngIf="fields?.workHours.show"
+          [attr.detail-push]="fields?.workHours.editable"
+          no-lines
+        >
+          <ion-label
+            ><b *ngIf="!fields?.workHours.nullable">*</b
+            >{{fields?.workHours.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="openInputModal('workHours',fields?.workHours.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="workHours"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 处理结果 -->
+        <ion-item
+          *ngIf="fields?.repairStatus.show"
+          [attr.detail-push]="fields?.repairStatus.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.repairStatus.nullable">*</b
+            >{{fields?.repairStatus.name}}：</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.repairStatus.editable"
+            (tap)="openSheetModal('repairStatus','repairStatusText')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="repairStatusText"
+          ></ion-input>
+          <ion-input
+            *ngIf="!fields?.repairStatus.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="repairStatusText"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 现场设备状态 -->
+        <ion-item
+          *ngIf="fields?.resultDesc.show"
+          [attr.detail-push]="fields?.resultDesc.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.resultDesc.nullable">*</b
+            >{{fields?.resultDesc.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="addTextarea(fields?.resultDesc.name,'resultDesc',fields?.resultDesc.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="resultDesc"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 完成时间 -->
+        <ion-item
+          *ngIf="fields?.reportTime.show"
+          [attr.detail-push]="fields?.reportTime.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.reportTime.nullable">*</b
+            >{{fields?.reportTime.name}}：</ion-label
+          >
+          <ion-datetime
+            *ngIf="fields?.reportTime.editable"
+            doneText="确定"
+            cancelText="清除"
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="reportTime"
+          ></ion-datetime>
+          <ion-datetime
+            *ngIf="!fields?.reportTime.editable"
+            type="text"
+            [disabled]="true"
+            text-right
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="reportTime"
+          ></ion-datetime>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <!-- 照片 -->
+    <ion-list class="new-list">
+      <upload-pics
+        [orderId]="orderId"
+        [picPermission]="picPermission"
+        [pics]="form.value.pics"
+        (picsEvent)="setPics($event)"
+      ></upload-pics>
+    </ion-list>
+
+    <!-- 附件 -->
+    <ion-list class="new-list">
+      <upload-files
+        [orderId]="orderId"
+        [docPermission]="docPermission"
+        [docs]="form.value.docs"
+        (docsEvent)="setDocs($event)"
+      ></upload-files>
+    </ion-list>
+
+    <!-- 抢修单检查 -->
+    <ion-list class="new-list">
+      <ion-list-header
+        no-lines
+        (tap)="toggleDefectInspection = !toggleDefectInspection"
+      >
+        抢修单检查
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleDefectInspection?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleDefectInspection">
+        <!-- 检查结果 -->
+        <ion-item
+          *ngIf="fields?.checkStatus.show"
+          [attr.detail-push]="fields?.checkStatus.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.checkStatus.nullable">*</b
+            >{{fields?.checkStatus.name}}：</ion-label
+          >
+          <ion-input
+            *ngIf="fields?.checkStatus.editable"
+            (tap)="openSheetModal('checkStatus','checkStatusText')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="checkStatusText"
+          ></ion-input>
+          <ion-input
+            *ngIf="!fields?.checkStatus.editable"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="checkStatusText"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 检查人 -->
+        <ion-item
+          *ngIf="fields?.checker.show"
+          [attr.detail-push]="fields?.checker.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.checker.nullable">*</b
+            >{{fields?.checker.name}}：</ion-label
+          >
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="checkerName"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 检查时间 -->
+        <ion-item
+          *ngIf="fields?.checkTime.show"
+          [attr.detail-push]="fields?.checkTime.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.checkTime.nullable">*</b
+            >{{fields?.checkTime.name}}：</ion-label
+          >
+          <ion-datetime
+            *ngIf="!fields?.reportTime.editable"
+            type="text"
+            [disabled]="true"
+            text-right
+            displayFormat="YYYY-MM-DD HH:mm"
+            formControlName="checkTime"
+          ></ion-datetime>
+        </ion-item>
+
+        <!-- 检查备注 -->
+        <ion-item
+          *ngIf="fields?.checkMemo.show"
+          [attr.detail-push]="fields?.checkMemo.editable"
+          no-lines
+        >
+          <ion-label>
+            <b *ngIf="!fields?.checkMemo.nullable">*</b
+            >{{fields?.checkMemo.name}}：</ion-label
+          >
+          <ion-input
+            (tap)="addTextarea(fields?.checkMemo.name,'checkMemo',fields?.checkMemo.editable)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="checkMemo"
+          ></ion-input>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <!-- 工作流程 -->
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleWorkFlow = !toggleWorkFlow">
+        工作流程
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleWorkFlow?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleWorkFlow">
+        <div echarts #echart [options]="options" class="workflow-chart"></div>
+      </ng-container>
+    </ion-list>
+
+    <!-- 流程日志 -->
+    <ion-list class="new-list">
+      <ion-list-header
+        no-lines
+        (tap)="toggleWorkflowLogs = !toggleWorkflowLogs"
+      >
+        流程日志
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleWorkflowLogs?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleWorkflowLogs">
+        <ng-container formArrayName="workflowLogs">
+          <ng-container
+            *ngFor="let item of getWorkflowLogs(form); let i = index"
+            [formGroupName]="i"
+          >
+            <div class="workflow-log">
+              <p>
+                {{item.value.executeTime | date:'yyyy-MM-dd HH:mm'}}
+                {{item.value.userName }}
+              </p>
+              <div class="action-content">{{item.value.action}}</div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+
+    <!-- 抄送 -->
+    <ion-list class="new-list">
+      <cc
+        [ccPermission]="ccPermission"
+        [users]="ccUsers"
+        (userEvent)="ccUserEvent($event)"
+      ></cc>
+    </ion-list>
+
+    <!-- 评论  -->
+    <ion-list class="new-list" *ngIf="ticketId!==0">
+      <ion-list-header no-lines (tap)="toggleComment = !toggleComment">
+        评论
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon name="{{toggleComment?'arrow-up':'arrow-down'}}"></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleComment">
+        <comment [orderId]="orderId" [commentsList]="commentsList"></comment>
+      </ng-container>
+    </ion-list>
+  </form>
+</ion-content>
+
+<ion-footer *ngIf="buttons.length>0">
+  <ion-toolbar class="footer-bar">
+    <ng-container *ngIf="buttons.length<=4">
+      <ion-grid>
+        <ion-row>
+          <ion-col
+            *ngFor="let button of buttons"
+            class="{{buttonFlex(buttons.length)}}"
+          >
+            <div class="btn">
+              <ion-icon
+                (tap)="buttonFunction(button)"
+                [name]="button.buttonIcon.split('.')[0]"
+              ></ion-icon>
+              <p>{{button.buttonText}}</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-container>
+    <ng-container *ngIf="buttons.length>4">
+      <button
+        ion-button
+        block
+        (tap)="showMoreButtons()"
+        *ngIf="buttonToggle==false"
+        style="background-color: #54a4e4"
+      >
+        <span style="margin-right: 5px">处理</span
+        ><ion-icon name="arrow-up"></ion-icon>
+      </button>
+      <ng-container *ngIf="buttonToggle==true">
+        <ion-grid>
+          <ion-row>
+            <ion-col *ngFor="let button of buttons" class="col-3">
+              <div class="btn">
+                <ion-icon
+                  (tap)="buttonFunction(button)"
+                  [name]="button.buttonIcon.split('.')[0]"
+                ></ion-icon>
+                <p>{{button.buttonText}}</p>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12 style="padding-top: 10px">
+              <ion-icon
+                name="arrow-down"
+                (tap)="showMoreButtons()"
+                style="font-size: 1.6em"
+              ></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ng-container>
+    </ng-container>
+  </ion-toolbar>
+</ion-footer>

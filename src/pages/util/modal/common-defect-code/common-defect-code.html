@@ -1,0 +1,38 @@
+<!--
+  Generated template for the CommonDefectCodePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content no-scroll>
+  <ion-icon name="close" (tap)="close()"></ion-icon>
+    <h6>{{title}}</h6>
+    <ion-grid style="margin-top: 0;">
+        <ion-row>
+            <ion-col col-10>
+                <ion-input [type]="type" [(ngModel)]="value.relaBusinessCode"></ion-input>
+            </ion-col>
+            <ion-col col-2 text-center>
+                <ion-icon
+                    name="md-arrow-dropright-circle"
+                    (tap)="goDefectManagementDetail()"
+                ></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col col-6>
+                <button ion-button small color="light" class="clear-btn" (tap)="clear()">
+                    清除
+                </button>
+            </ion-col>
+            <ion-col col-6>
+                <button ion-button small class="ok-btn" (tap)="ok()">
+                    确定
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

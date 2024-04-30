@@ -1,0 +1,149 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{deviceInfo.deviceName}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="equiment">
+    <img src="assets/imgs/home/equiment.png" />
+    <div class="ell">
+      <span>{{deviceInfo.label1}}</span>
+      ：{{deviceInfo.value1}}
+    </div>
+    <div class="ell">
+      <span>{{deviceInfo.label2}}</span>
+      ：{{deviceInfo.value2}}
+    </div>
+    <div class="ell">
+      <span>{{deviceInfo.label3}}</span>
+      ：{{deviceInfo.value3}}
+    </div>
+    <div class="ell">
+      <span>{{deviceInfo.label4}}</span>
+      ：{{deviceInfo.value4}}
+    </div>
+  </div>
+  <div>
+    <ion-segment [(ngModel)]="task">
+      <!-- <ion-segment-button value="trend">运行趋势</ion-segment-button> -->
+      <ion-segment-button value="telemetry">遥测数据</ion-segment-button>
+      <ion-segment-button value="yaoxin">遥信数据</ion-segment-button>
+      <ion-segment-button value="activity">活动状态</ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [ngSwitch]="task">
+    <!-- *****运行趋势***** -->
+    <div *ngSwitchCase="'trend'" class="rankechart">
+      <div class="e-title">
+        <div class="time-dl">
+          日期：<span class="time">05/15</span> 电量：<span>1600</span>
+        </div>
+      </div>
+      <div
+        echarts
+        #echart
+        [options]="trendChartOption"
+        class="trend-chart"
+      ></div>
+      <div class="date-classify">
+        <span>时</span>
+        <span>日</span>
+        <span>月</span>
+        <span>年</span>
+      </div>
+    </div>
+    <!-- *****遥测数据***** -->
+    <div *ngSwitchCase="'telemetry'">
+      <!-- <div class="rank">
+                <span class="line"></span>
+                <span class="r-title">设备数据</span>
+                <span class="line"></span>
+            </div> -->
+      <ion-list no-lines>
+        <ion-item *ngFor="let point of ycPoints">
+          {{point.pointName}}
+          <span>{{point.displayValue}}</span>
+          {{point.unit}}
+        </ion-item>
+      </ion-list>
+      <!-- <div class="telemetry">
+                <div *ngFor="let point of ycPoints">
+                    {{point.pointName}}
+                    <span>{{point.displayValue}}</span>
+                    {{point.unit}}
+                </div>
+            </div> -->
+      <!-- <div class="rank">
+                <span class="line"></span>
+                <span class="r-title">其他数据</span>
+                <span class="line"></span>
+            </div>
+            <div class="telemetry">
+                <div *ngFor="let tel of telemetry;">
+                    {{tel.title}}
+                    <span>{{tel.shuju}}</span>
+                    {{tel.danwei}}
+                </div>
+            </div> -->
+      <div class="unfold" (click)="showYaoCeClick()">
+        <ion-icon *ngIf="!showYaoCe" name="add"></ion-icon>
+        <ion-icon *ngIf="showYaoCe" name="remove"></ion-icon>
+        {{showYaoCe? '收起' : '展开'}}
+      </div>
+    </div>
+    <!-- *****遥信数据***** -->
+    <div *ngSwitchCase="'yaoxin'">
+      <ion-list no-lines>
+        <ion-item *ngFor="let point of yxPoints">
+          <span
+            class="dot"
+            [class.one]='point.pic=="on"'
+            [class.three]='point.pic=="off"'
+          ></span>
+          {{point.pointName}}({{point.displayValue}})
+        </ion-item>
+      </ion-list>
+      <div class="unfold" (click)="showYaoXinClick()">
+        <ion-icon *ngIf="!showYaoXin" name="add"></ion-icon>
+        <ion-icon *ngIf="showYaoXin" name="remove"></ion-icon>
+        {{showYaoXin ? '收起' : '展开'}}
+      </div>
+    </div>
+    <!-- *****活动状态***** -->
+    <div *ngSwitchCase="'activity'">
+      <ion-list no-lines>
+        <ion-item *ngFor="let point of statusPoints">
+          <span
+            class="dot"
+            [class.one]='point.pic=="fault"'
+            [class.two]='point.pic=="warn"'
+            [class.three]='point.pic=="info"'
+            [class.four]='point.pic=="log"'
+          ></span>
+          {{point.pointName}}
+        </ion-item>
+      </ion-list>
+      <div class="unfold" (click)="showActivityClick()">
+        <ion-icon *ngIf="!showActivity" name="add"></ion-icon>
+        <ion-icon *ngIf="showActivity" name="remove"></ion-icon>
+        {{showActivity ? '收起' : '展开'}}
+      </div>
+    </div>
+  </div>
+  <ion-list no-lines>
+    <button ion-item detail-none (click)="deviceAlarmClick()">
+      <ion-avatar item-start>
+        <img src="assets/imgs/jiance/dzgj.png" class="smile-img" />
+      </ion-avatar>
+      设备告警
+
+      <span item-end class="alarmCount">{{alarmCount}}</span>
+    </button>
+    <button ion-item (click)="deviceArchivePageClick()">
+      <ion-avatar item-start>
+        <img src="assets/imgs/jiance/sbda.png" class="smile-img" />
+      </ion-avatar>
+      设备档案
+    </button>
+  </ion-list>
+</ion-content>

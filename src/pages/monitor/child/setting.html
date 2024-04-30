@@ -1,0 +1,32 @@
+<ion-content class="model" no-scroll>
+  <div class="qz-content">
+    <div class="list-button">
+      <!-- <div ></div> -->
+      <p><img src="assets/imgs/home/title-icon.png" alt="" />排序方式</p>
+      <button
+        *ngFor="let button of buttonList"
+        class="select-item"
+        [class.active]="button.value == inverterrankParam.sort"
+        (click)='select("sort",button.value)'
+      >
+        {{button.name}}
+      </button>
+    </div>
+    <div class="list-button">
+      <!-- <div ></div> -->
+      <p><img src="assets/imgs/home/title-icon.png" alt="" />排名内容</p>
+      <button
+        *ngFor="let button of rankingButtonList"
+        class="select-item"
+        [class.active]="button.value == inverterrankParam.cateId"
+        (click)='select("cateId",button.value)'
+      >
+        {{button.name}}
+      </button>
+    </div>
+    <div class="submit">
+      <button class="submit-button" (click)='close("n")'>取消</button
+      ><button class="submit-button" (click)='close("y")'>确定</button>
+    </div>
+  </div>
+</ion-content>

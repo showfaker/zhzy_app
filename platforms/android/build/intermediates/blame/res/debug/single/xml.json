@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\xml\\camera_provider_paths.xml",
+        "source": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\xml\\camera_provider_paths.xml"
+    },
+    {
+        "merged": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\xml\\config.xml",
+        "source": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\xml\\config.xml"
+    },
+    {
+        "merged": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\xml\\appupdate_paths.xml",
+        "source": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\xml\\appupdate_paths.xml"
+    },
+    {
+        "merged": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\xml\\opener_paths.xml",
+        "source": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\xml\\opener_paths.xml"
+    }
+]

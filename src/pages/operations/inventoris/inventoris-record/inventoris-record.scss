@@ -1,0 +1,47 @@
+page-inventoris-record {
+  // .card-item {
+  //   border-left: 1px solid #ddd;
+  //   .left-line {
+  //     .line-icon {
+  //       width: 10px;
+  //       height: 10px;
+  //       top: 6px;
+  //       left: -5px;
+  //       background: url(../assets/imgs/operations/job-record/icon.png);
+  //     }
+  //   }
+  // }
+  .search {
+    .select-item {
+      margin-left: 16px;
+      display: inline-block;
+      width: 159px;
+      padding-left: 13px;
+      height: 36px;
+      line-height: 36px;
+      font-size: 1.6rem;
+      color: #2585cb;
+      letter-spacing: 0;
+      font-weight: 400;
+
+      border: 1px solid rgba(97, 168, 250, 1);
+      border-radius: 6px;
+      background: url('../assets/imgs/list/select-arrow.png') no-repeat
+        calc(100% - 12px) center;
+      background-color: #e7f2fd;
+    }
+  }
+  .common-search > div.input-picker input {
+    text-align: center;
+    color: #727272;
+  }
+  .button-icon {
+    height: 35px;
+    line-height: 26px;
+    color: #5eade7;
+    ion-icon {
+      margin-right: 8px;
+      vertical-align: text-bottom;
+    }
+  }
+}

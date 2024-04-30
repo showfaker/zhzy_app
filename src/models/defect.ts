@@ -1,0 +1,41 @@
+export class Defect {
+    defectCode:number;
+    stationId:number;
+    shortName:string;
+    defectSource:string;
+    defectSourceText:string;
+    defectDesc:string;
+    stationStage:string;
+    stationStageText:string;
+    reportTime:string;
+    defectDeviceType:string;
+    defectDeviceTypeText:string;
+    defectType:string;
+    defectTypeText:string;
+    defectTechType:string;
+    defectTechTypeText:string;
+    supplierId:string;
+    supplierName:string;
+    planEndTime:string;
+    defectStatus:string;
+    defectStatusText:string;
+    endTime:string;
+    resultDesc:string;
+    responsibleDept:string;
+    responsibleDeptName:string;
+    responsiblePerson:string;
+    responsiblePersonName:string;
+    reporter:string
+    checkStatus:string;
+    checkStatusText:string;
+    checkTime:string;
+    defectDeviceIds:string;
+    defectLevel:string;
+    defectLevelText:string;
+    elimiType:string;
+    elimiTypeText:string;
+    workHours:number;
+    workOrder:{};
+    defectDeviceIdsText:string;
+}
+

@@ -1,0 +1,234 @@
+ion-navbar {
+  .navbar-button.bar-button-ios[icon-only] {
+    color: #5a6371;
+    ion-icon {
+      font-size: 1.4em;
+    }
+  }
+}
+
+// 隐藏原来cancle按钮
+.hiddenCancelButton {
+  .picker-toolbar-cancel {
+    display: none;
+  }
+  .picker-toolbar-button {
+    &:first-child {
+      text-align: left;
+    }
+  }
+}
+
+.commonSearchSideBar {
+  .modal-wrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    top: 0;
+  }
+}
+.common-search-container {
+  height: 100%;
+  position: relative;
+  ion-list {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    margin: 0;
+  }
+}
+
+.common-search {
+  height: calc(100% - 70px);
+  overflow-y: scroll;
+  font-size: 12px;
+  // position: relative;
+
+  .clear-icon {
+    position: absolute;
+    right: 0.6em;
+    font-size: 12px;
+  }
+  & > div {
+    padding: 15px 30px;
+    .query-label {
+      margin-bottom: 15px;
+    }
+    &.border-bottom {
+      border-bottom: 1px solid #ddd;
+    }
+    &.button-picker {
+      button {
+        width: 100%;
+        color: #727272;
+        margin: 0;
+        height: 30px;
+      }
+    }
+    &.time-picker {
+      &.full-time-picker {
+        ion-datetime {
+          width: 100%;
+        }
+      }
+      ion-datetime {
+        float: left;
+        width: 47%;
+        padding: 0 0.9em;
+        margin: 0;
+        color: #727272;
+
+        background: #f4f4f4;
+        border-radius: 64px;
+        height: 30px;
+        text-align: center;
+        .datetime-text {
+          line-height: 30px;
+        }
+
+        .item-cover {
+          height: 0;
+          width: 0;
+        }
+
+        .datetime-ios {
+          padding: 0;
+        }
+      }
+      .line {
+        float: left;
+        height: 27px;
+        line-height: 27px;
+        width: 6%;
+        text-align: center;
+      }
+      &:after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+    }
+    &.select-picker {
+      ion-grid {
+        padding: 0;
+        ion-col {
+          &:nth-child(3n + 1) {
+            padding-left: 0;
+          }
+          &::nth-child(3n) {
+            padding-right: 0;
+          }
+        }
+      }
+      .select-option {
+        height: 30px;
+        text-align: center;
+        background-color: #f4f4f4;
+        color: #727272;
+        line-height: 30px;
+        border-radius: 64px;
+        &.active-option {
+          border: 1px solid #5eade7;
+          line-height: 28px;
+          background-color: #5eade7;
+          color: #fff;
+        }
+      }
+    }
+    &.input-picker {
+      input {
+        height: 30px;
+        background: #f4f4f4;
+        border-radius: 64px;
+        margin: 0;
+        padding: 0 10px;
+        width: 100%;
+      }
+    }
+  }
+}
+.fix-bottom {
+  .button-small-ios {
+    height: 40px;
+    width: 105px;
+  }
+  .reset-btn {
+    color: #727272;
+  }
+  .query-btn {
+    background: rgba(94, 173, 231, 1);
+  }
+}
+
+.page-search,
+.page-bottom {
+  .toolbar-background {
+    background: #fff;
+  }
+}
+
+.page-bottom {
+  button {
+    background: #ccc;
+    color: #fff;
+  }
+}
+
+.has-refresher > .scroll-content {
+  border-top: none;
+}
+
+.ell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.img-badge {
+  position: relative;
+  height: 40px;
+  display: inline-block;
+  width: 40px;
+  sup {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    transform-origin: 100% 0;
+    z-index: 10;
+    width: 6px;
+    height: 6px;
+    background: #f5222d;
+    border-radius: 100%;
+    box-shadow: 0 0 0 1px #fff;
+  }
+}
+
+.more-lines {
+  height: auto;
+  & > .item-inner {
+    background-image: none !important;
+    padding-right: 0 !important;
+  }
+  .more-line-block {
+    flex: 1;
+    .item-inner {
+      height: 27px;
+      .text-input-ios {
+        margin: 5px 8px 5px 0;
+      }
+    }
+  }
+}
+
+.datetime-disabled {
+  opacity: 1;
+}
+
+.anchorBL {
+  display: none;
+}
+
+.ion-ios-time:before {
+  content: '\e77e';
+}

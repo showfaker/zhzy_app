@@ -1,0 +1,66 @@
+<!--
+  Generated template for the CommonTypicalOperateTicketsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="arrow-back" class="my-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title> 典型操作票 </ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-searchbar
+      [(ngModel)]="operateDesc"
+      placeholder="操作任务"
+      (ionInput)="onCancel($event)"
+    >
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="正在刷新..."
+    ></ion-refresher-content>
+  </ion-refresher>
+  <div class="notice-list-box">
+    <div
+      class="new-notice-list"
+      *ngFor="let operateTemplate of operateTemplates"
+      (click)="clickItem(operateTemplate.id)"
+    >
+      <div class="notice">
+        <div class="notice-title">
+          <span> {{operateTemplate.title}} </span>
+        </div>
+        <div class="notice-subtitle">
+          <div class="notice-subtitle-content">
+            <span> {{operateTemplate.item1}} </span>
+          </div>
+        </div>
+      </div>
+      <div class="left-img">
+        <img
+          [src]="'assets/imgs/list/'+operateTemplate.icon"
+          class="alarm-img"
+        />
+      </div>
+    </div>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载更多数据..."
+      >
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+</ion-content>

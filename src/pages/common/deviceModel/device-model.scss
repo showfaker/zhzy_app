@@ -1,0 +1,47 @@
+device-model {
+  ul {
+    padding: 0%;
+    margin-top: 0%;
+    li {
+      list-style: none;
+      height: 40px;
+      border-bottom: rgb(207, 202, 198) 1px solid;
+      line-height: 40px;
+      text-indent: 15px;
+      .active {
+        float: right;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgb(99, 92, 92);
+        margin-top: 15px;
+        margin-right: 20px;
+      }
+    }
+    .last {
+      border: none;
+    }
+  }
+  textarea {
+    display: block;
+    margin: 0 auto;
+    resize: none;
+    width: 80%;
+    height: 100px;
+  }
+  .bnt {
+    span {
+      width: 50%;
+      height: 45px;
+      display: inline-block;
+      background-color: #87c15e;
+      color: #fff;
+      text-align: center;
+      font-size: 18px;
+      padding-top: 10px;
+    }
+    span:nth-child(1) {
+      border-right: rgb(240, 240, 245) 1px solid;
+    }
+  }
+}

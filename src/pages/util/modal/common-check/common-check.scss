@@ -1,0 +1,31 @@
+page-common-check {
+    b {
+        color: #f00;
+    }
+    ion-textarea {
+        border: 1px solid #ddd;
+        textarea {
+            height: 120px;
+            resize: none;
+        }
+    }
+    .check-result {
+        position: relative;
+        ion-icon {
+            position: absolute;
+            top: 0;
+            right: 6px;
+            font-size: 2em;
+            height: 40px;
+            line-height: 40px;
+            color: #ddd;
+        }
+    }
+}
+
+.commonCheckModal {
+    .modal-wrapper {
+        height: 370px;
+        margin-top: -185px;
+    }
+}

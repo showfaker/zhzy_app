@@ -1,0 +1,33 @@
+<ion-content no-scroll>
+  <ion-icon name="close" (tap)="close()"></ion-icon>
+  <h6>检查结果<b>*</b></h6>
+  <div class="check-result">
+    <ion-input
+      type="text"
+      [readonly]="true"
+      [(ngModel)]="selectedOption.checkStatusText"
+      (tap)="checkResult()"
+    ></ion-input>
+    <ion-icon name="ios-arrow-down"></ion-icon>
+  </div>
+  <h6>检查备注</h6>
+  <ion-textarea [(ngModel)]="checkMemo"></ion-textarea>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <button
+          ion-button
+          small
+          color="light"
+          class="clear-btn"
+          (tap)="clear()"
+        >
+          取消
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button small class="ok-btn" (tap)="ok()">确定</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

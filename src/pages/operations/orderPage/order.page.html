@@ -1,0 +1,141 @@
+<!-- <ion-header>
+    <ion-navbar>
+        <ion-title>工单</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="serchMenu()">
+                <ion-icon name="search" style="font-size: 1.4em;"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header> -->
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button (click)="goBack()">
+        <ion-icon name="ios-arrow-back" class="my-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>工单</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="serchMenu()">
+        <ion-icon name="ios-search" class="title-bar-icon"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="card-list" #orderPageSearch>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="刷新..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <div
+      class="card-item"
+      *ngFor="let workbenchOrders of workbenchOrdersList"
+      (click)="toPage(workbenchOrders)"
+    >
+      <div class="left-line">
+        <div class="line-icon alarm01"></div>
+        <!-- [ngClass]="{alarm01: alarm.icon==='alarm-01.png',alarm02: alarm.icon==='alarm-02.png',alarm03: alarm.icon==='alarm-03.png',alarm04: alarm.icon==='alarm-04.png'}" -->
+      </div>
+      <div class="right-content">
+        <div class="title">{{workbenchOrders.time}}</div>
+        <ion-card>
+          <ion-card-header>
+            {{workbenchOrders.title}}
+            <span
+              class="card-cd"
+              (click)="workbenchRemind(workbenchOrders)"
+              *ngIf='workbenchOrders.button == "remind"'
+              >催单</span
+            >
+          </ion-card-header>
+          <ul class="ion-card-content">
+            <li class="ell">{{workbenchOrders.item1}}</li>
+            <li class="ell">{{workbenchOrders.item2}}</li>
+            <li class="ell">{{workbenchOrders.item3}}</li>
+          </ul>
+          <div
+            *ngIf="workbenchOrders.status"
+            class="card-tip"
+            [style.background-color]="workbenchOrders.statusStyle"
+          >
+            {{workbenchOrders.status}}
+          </div>
+        </ion-card>
+      </div>
+    </div>
+  </ion-list>
+  <ion-infinite-scroll
+    (ionInfinite)="doInfinite($event)"
+    threshold="5%"
+    *ngIf="canInfinite"
+  >
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<ion-menu
+  [content]="orderPageSearch"
+  side="right"
+  (ionOpen)="menuInit()"
+  (ionClose)="ionClose()"
+  id="orderPageSearch"
+  type="overlay"
+  swipeEnabled="true"
+  class="search-menu"
+>
+  <ion-content class="outer-content" no-bounce class="my-custom-menu">
+    <div>
+      <div class="condition">
+        <p>状态</p>
+        <span
+          class="had-endtime"
+          [class.selected]='status == "0"'
+          (click)='changeStatus("0")'
+        >
+          {{dataType==='0'?'已办':'已完成'}}
+        </span>
+        <span
+          class="had-endtime"
+          [class.selected]='status == "1"'
+          (click)='changeStatus("1")'
+        >
+          {{dataType==='0'?'待办':'未完成'}}
+        </span>
+      </div>
+      <div class="condition">
+        <p>日期</p>
+        <span class="had-endtime">
+          <!-- {{(modulesDetails && modulesDetails.startDate || '') | date:'yyyy-MM-dd'}} -->
+          <ion-datetime
+            cancelText="取消"
+            doneText="确定"
+            displayFormat="YYYY-MM-DD"
+            [(ngModel)]="startDate"
+            (ionChange)="changeDate('startDate')"
+          ></ion-datetime>
+        </span>
+        <span class="had-endtime">
+          <!-- {{(modulesDetails && modulesDetails.endDate || '')| date:'yyyy-MM-dd'}} -->
+          <ion-datetime
+            cancelText="取消"
+            doneText="确定"
+            displayFormat="YYYY-MM-DD"
+            [(ngModel)]="endDate"
+            (ionChange)="changeDate('endDate')"
+          ></ion-datetime>
+        </span>
+      </div>
+    </div>
+    <div class="my-button">
+      <button (click)="reset()">重置</button>
+      <button (click)="submit()">查询</button>
+    </div>
+  </ion-content>
+</ion-menu>

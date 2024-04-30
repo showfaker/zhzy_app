@@ -1,0 +1,16 @@
+page-device-archive {
+    .device-type {
+        background: #fff;
+        height: 140px;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .toolbar-ios ion-title {
+        padding: 0 60px 1px;
+    }
+    ion-item ion-label {
+        width: 110px;
+        text-align: right;
+    }
+}

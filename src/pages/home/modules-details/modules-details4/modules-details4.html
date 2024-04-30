@@ -1,0 +1,128 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button (click)="goBack()">
+        <ion-icon name="ios-arrow-back" class="my-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{modulesDetails && modulesDetails.title || ''}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="serchMenu()">
+        <ion-icon
+          name="search"
+          class="down-me"
+          style="font-size: 1.4em"
+        ></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="downLoadFile()">
+        <ion-icon
+          name="md-download"
+          class="down-me"
+          style="font-size: 1.4em"
+        ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #search4>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="刷新..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="card-list">
+    <div class="card" *ngFor="let modules of modulesList">
+      <!-- <img [src]="getImg(modules.icon)" alt=""> -->
+      <div class="card-content">
+        <h1>{{modules.title}}</h1>
+        <div class="card-content-test-list">
+          <span>电站</span>
+          <span>{{modules.item1}}</span>
+        </div>
+        <div class="card-content-test-list">
+          <span>设备</span>
+          <span>{{modules.item2}}</span>
+        </div>
+        <div class="card-content-test-list">
+          <span>描述</span>
+          <span>{{modules.item3}}</span>
+        </div>
+        <div class="card-content-test-list">
+          <span>时间</span>
+          <span>{{modules.item4}}</span>
+        </div>
+        <div class="card-content-test-list">
+          <span>损失</span>
+          <span>{{modules.item5}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ion-infinite-scroll
+    (ionInfinite)="doInfinite($event)"
+    threshold="5%"
+    *ngIf="canInfinite"
+  >
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<ion-menu
+  [content]="search4"
+  side="right"
+  (ionOpen)="menuInit()"
+  (ionClose)="ionClose()"
+  id="search4"
+  type="overlay"
+  swipeEnabled="true"
+  class="search-menu"
+>
+  <ion-content class="outer-content" no-bounce class="my-custom-menu">
+    <div>
+      <div class="condition" *ngIf="modulesDetails">
+        <p>日期</p>
+        <span [class.had-endtime]="modulesDetails ">
+          <!-- {{(modulesDetails && modulesDetails.startDate || '') | date:'yyyy-MM-dd'}} -->
+          <ion-datetime
+            cancelText="取消"
+            doneText="确定"
+            displayFormat="YYYY-MM-DD"
+            [(ngModel)]="startDate"
+            [max]="toDate"
+            (ionChange)="changeDate('startDate')"
+          ></ion-datetime>
+        </span>
+        <span [class.had-endtime]="modulesDetails" *ngIf="modulesDetails ">
+          <!-- {{(modulesDetails && modulesDetails.endDate || '')| date:'yyyy-MM-dd'}} -->
+          <ion-datetime
+            cancelText="取消"
+            doneText="确定"
+            displayFormat="YYYY-MM-DD"
+            [(ngModel)]="endDate"
+            [max]="toDate"
+            (ionChange)="changeDate('endDate')"
+          ></ion-datetime>
+        </span>
+      </div>
+      <div class="condition">
+        <p>电站</p>
+        <span (click)="selectStation()">{{getStationNum()}}</span>
+        <!-- <input
+                    type="text"
+                    placeholder="请输入"
+                    [(ngModel)]="modulesDetails['stationName']"
+                    *ngIf="modulesDetails"
+                /> -->
+      </div>
+    </div>
+    <div class="my-button">
+      <button (click)="reset()">重置</button>
+      <button (click)="submit()">查询</button>
+    </div>
+  </ion-content>
+</ion-menu>

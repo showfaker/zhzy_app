@@ -1,0 +1,19 @@
+page-maintains {
+  ion-header .icon {
+    color: #5a6371;
+  }
+  .card-item {
+    // height: 158px;
+    height: 208px;
+
+    .left-line {
+      .line-icon {
+        width: 18px;
+        height: 18px;
+        top: -9px;
+        left: -9px;
+        background: url(../assets/imgs/operations/job-record/icon.png);
+      }
+    }
+  }
+}

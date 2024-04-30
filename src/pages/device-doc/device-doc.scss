@@ -1,0 +1,12 @@
+page-device-doc {
+    .toolbar-ios ion-title {
+        padding: 0 60px 1px;
+    }
+
+    ion-list {
+        margin: 20px 0 10px 0 !important;
+        & + ion-list {
+            margin: 10px 0 !important;
+        }
+    }
+}

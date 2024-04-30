@@ -1,0 +1,121 @@
+page-maintains-device {
+  b {
+    color: #f00;
+  }
+  .title-icon {
+    font-size: 30px;
+    color: #fff;
+  }
+
+  .docs-container {
+    background: #fff;
+    margin-bottom: 1px;
+  }
+  [col-3] {
+    width: 20%;
+    max-width: 20%;
+    text-align: center;
+    .img-container {
+      position: relative;
+      text-align: center;
+      .delete-doc {
+        font-size: 12px;
+        position: absolute;
+        right: 10px;
+        top: -6px;
+      }
+    }
+    img {
+      width: 40px;
+    }
+    .add {
+      color: #ccc;
+    }
+    p {
+      color: #727272;
+      height: 20px;
+      line-height: 20px;
+      font-size: 12px;
+    }
+  }
+  .footer-bar {
+    .toolbar-background-ios {
+      background: rgba(248, 248, 246, 1);
+    }
+    .col-12 {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      width: 100%;
+      max-width: 100%;
+    }
+    .col-6 {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+      flex: 0 0 50%;
+      width: 50%;
+      max-width: 50%;
+    }
+    .col-4 {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(100% / 3);
+      flex: 0 0 calc(100% / 3);
+      width: calc(100% / 3);
+      max-width: calc(100% / 3);
+    }
+    .col-3 {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 25%;
+      flex: 0 0 25%;
+      width: 25%;
+      max-width: 25%;
+    }
+    ion-col {
+      text-align: center;
+      font-size: 12px;
+      color: #727272;
+      img {
+        width: 40px;
+      }
+      .icon {
+        font-size: 30px;
+      }
+    }
+  }
+  .new-list {
+    &.list-ios {
+      padding-bottom: 10px;
+      margin: 0;
+
+      .list-header {
+        height: 20px;
+        min-height: 20px;
+        background: none;
+        .label {
+          margin: 0;
+          color: #727272;
+        }
+      }
+    }
+  }
+  .item-block {
+    height: auto;
+  }
+  .label-ios {
+    text-overflow: unset;
+    white-space: unset;
+    max-width: 225px;
+  }
+
+  .div-item {
+    // padding-right: 16px;
+    position: relative;
+    // background: #fff;
+  }
+  .item-his {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    margin-top: -8px;
+  }
+}

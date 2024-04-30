@@ -1,0 +1,25 @@
+upload-pics {
+  .img-container {
+    background: #fff;
+  }
+  .img-col {
+    width: 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+  .img-item {
+    position: relative;
+    .delete-img {
+      position: absolute;
+      top: -8px;
+      right: -6px;
+      img {
+        width: 12px;
+        height: 12px;
+      }
+      .icon {
+        font-size: 12px;
+      }
+    }
+  }
+}

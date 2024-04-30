@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <!-- <ion-buttons start>
+            <button (click)="close()" class="qz-back">返回</button>
+        </ion-buttons> -->
+    <ion-title>摄像头列表</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list no-lines class="ledger">
+    <ng-container *ngFor="let video of videoList;let i = index">
+      <button ion-item [class.target]="i%2 === 0" (click)="play(video)">
+        <span>{{video.cameraName}}</span>
+      </button>
+    </ng-container>
+    <!-- <button ion-item>
+            <span>摄像头位置一</span>
+        </button>
+        <button ion-item target>
+            <span>摄像头位置一</span>
+        </button>  -->
+  </ion-list>
+</ion-content>

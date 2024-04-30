@@ -1,0 +1,15 @@
+<ion-content>
+  <div class="selected-equipment" *ngFor="let equipment of selectedItem">
+    <div class="left-img">
+      <!-- <img src="assets/imgs/list/device.png" class="alarm-img" /> -->
+      <ion-icon name="device" class="alarm-img"></ion-icon>
+    </div>
+    <div class="notice">
+      <div class="notice-title">{{equipment.displayName}}</div>
+    </div>
+    <div class="delete-icon" (click)="deleteSelectedItem(equipment.deviceId)">
+      <!-- <img src="assets/imgs/buttons/delete.png" /> -->
+      <ion-icon name="delete-grey"></ion-icon>
+    </div>
+  </div>
+</ion-content>

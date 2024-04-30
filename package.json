@@ -1,0 +1,206 @@
+{
+  "name": "demo",
+  "version": "0.0.1",
+  "author": "Ionic Framework",
+  "homepage": "http://ionicframework.com/",
+  "private": true,
+  "scripts": {
+    "start": "ionic-app-scripts serve --host 0.0.0.0",
+    "clean": "ionic-app-scripts clean",
+    "changeMaven": "node ./changeMaven.js",
+    "build": "ionic-app-scripts build",
+    "lint": "ionic-app-scripts lint",
+    "ionic:build": "ionic-app-scripts build",
+    "ionic:serve": "ionic-app-scripts serve",
+    "cordova-res": "cordova-res"
+  },
+  "dependencies": {
+    "@angular/animations": "5.2.10",
+    "@angular/common": "5.2.10",
+    "@angular/compiler": "5.2.10",
+    "@angular/compiler-cli": "5.2.10",
+    "@angular/core": "5.2.10",
+    "@angular/forms": "5.2.10",
+    "@angular/http": "5.2.10",
+    "@angular/platform-browser": "5.2.10",
+    "@angular/platform-browser-dynamic": "5.2.10",
+    "@ionic-native/android-permissions": "4",
+    "@ionic-native/app-update": "^4.18.0",
+    "@ionic-native/app-version": "^4.18.0",
+    "@ionic-native/camera": "^4.18.0",
+    "@ionic-native/core": "^4.11.0",
+    "@ionic-native/file": "^4.18.0",
+    "@ionic-native/file-chooser": "^4.20.0",
+    "@ionic-native/file-opener": "^5.19.1",
+    "@ionic-native/file-path": "^4.20.0",
+    "@ionic-native/file-picker": "^4.20.0",
+    "@ionic-native/file-transfer": "4",
+    "@ionic-native/geolocation": "^4.20.0",
+    "@ionic-native/image-picker": "^4.20.0",
+    "@ionic-native/media": "^4.20.0",
+    "@ionic-native/photo-viewer": "^4.20.0",
+    "@ionic-native/qr-scanner": "4",
+    "@ionic-native/screen-orientation": "^4.20.0",
+    "@ionic-native/splash-screen": "4.7.0",
+    "@ionic-native/status-bar": "^4.20.0",
+    "@ionic/pro": "1.0.20",
+    "@ionic/storage": "2.1.3",
+    "build": "0.1.4",
+    "com-sarriaroman-photoviewer": "^1.2.5",
+    "com.kit.cordova.amaplocation": "git+https://github.com/namedjw/com.kit.cordova.amaplocation.git",
+    "cordova-android": "^6.3.0",
+    "cordova-ios": "^5.1.1",
+    "cordova-plugin-add-swift-support": "^2.0.2",
+    "cordova-plugin-android-permissions": "^1.1.5",
+    "cordova-plugin-app-update": "^2.0.2",
+    "cordova-plugin-app-version": "^0.1.14",
+    "cordova-plugin-appversion": "^1.0.0",
+    "cordova-plugin-camera": "^4.1.0",
+    "cordova-plugin-compat": "^1.2.0",
+    "cordova-plugin-device": "^2.1.0",
+    "cordova-plugin-file": "^4.3.3",
+    "cordova-plugin-file-opener2": "^2.2.1",
+    "cordova-plugin-file-transfer": "^1.6.3",
+    "cordova-plugin-filechooser": "^1.2.0",
+    "cordova-plugin-filepath": "^1.6.0",
+    "cordova-plugin-filepicker": "^1.1.6",
+    "cordova-plugin-geolocation": "^4.1.0",
+    "cordova-plugin-ionic-keyboard": "^2.2.0",
+    "cordova-plugin-ionic-webview": "^1.2.1",
+    "cordova-plugin-media": "^5.0.3",
+    "cordova-plugin-qrscanner": "^3.0.1",
+    "cordova-plugin-screen-orientation": "^3.0.2",
+    "cordova-plugin-splashscreen": "^5.0.4",
+    "cordova-plugin-statusbar": "^2.4.3",
+    "cordova-plugin-telerik-imagepicker": "^2.3.6",
+    "cordova-plugin-whitelist": "^1.3.5",
+    "echarts": "^4.1.0",
+    "es6-promise-plugin": "^4.2.2",
+    "gcoord": "^0.2.3",
+    "hls.js": "^0.13.2",
+    "ionic-angular": "3.9.2",
+    "ionicons": "3.0.0",
+    "jsrsasign": "^10.0.5",
+    "moment": "^2.24.0",
+    "ngx-echarts": "^2.0.0",
+    "rxjs": "^5.5.11",
+    "sharp": "^0.29.3",
+    "sw-toolbox": "3.6.0",
+    "triple-beam": "^1.4.1",
+    "typescript": "^3.9.10",
+    "videogular2": "6.1.1",
+    "zone.js": "0.8.26"
+  },
+  "devDependencies": {
+    "@angular/cli": "^6.0.8",
+    "@ionic/app-scripts": "3.1.9",
+    "@types/core-js": "2.5.0",
+    "@types/echarts": "0.0.13"
+  },
+  "description": "An Ionic project",
+  "config": {
+    "ionic_bundler": "webpack",
+    "ionic_webpack": "./config/webpack.config.js"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+",
+        "GPS_REQUIRED": "true"
+      },
+      "cordova-plugin-ionic-webview": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+",
+        "GPS_REQUIRED": "true"
+      },
+      "cordova-plugin-ionic-keyboard": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+",
+        "GPS_REQUIRED": "true"
+      },
+      "cordova-plugin-camera": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb"
+      },
+      "cordova-plugin-file-transfer": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      },
+      "cordova-plugin-file": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb"
+      },
+      "cordova-plugin-android-permissions": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb"
+      },
+      "cordova-plugin-qrscanner": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+",
+        "GPS_REQUIRED": "true"
+      },
+      "cordova-plugin-file-opener2": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      },
+      "cordova-plugin-app-version": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb"
+      },
+      "cordova-plugin-telerik-imagepicker": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+",
+        "GPS_REQUIRED": "true",
+        "PHOTO_LIBRARY_USAGE_DESCRIPTION": " App需要您的同意，才能访问设备的相册",
+        "ANDROID_SUPPORT_V7_VERSION": "27.+"
+      },
+      "cordova-plugin-filechooser": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      },
+      "cordova-plugin-filepicker": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      },
+      "cordova-plugin-filepath": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      },
+      "cordova-plugin-screen-orientation": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+",
+        "GPS_REQUIRED": "true"
+      },
+      "com-sarriaroman-photoviewer": {},
+      "cordova-plugin-geolocation": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+",
+        "GPS_REQUIRED": "true"
+      },
+      "com.kit.cordova.amaplocation": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb"
+      },
+      "cordova-plugin-app-update": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb"
+      },
+      "cordova-plugin-statusbar": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+",
+        "GPS_REQUIRED": "true"
+      },
+      "cordova-plugin-compat": {},
+      "cordova-plugin-add-swift-support": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb"
+      },
+      "cordova-plugin-appversion": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb"
+      },
+      "cordova-plugin-whitelist": {
+        "KEY": "9e8b0a1f9aaf64e98ec50260006cd8fb",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+",
+        "GPS_REQUIRED": "true",
+        "PHOTO_LIBRARY_USAGE_DESCRIPTION": " App需要您的同意，才能访问设备的相册",
+        "ANDROID_SUPPORT_V7_VERSION": "27.+"
+      }
+    },
+    "platforms": []
+  }
+}

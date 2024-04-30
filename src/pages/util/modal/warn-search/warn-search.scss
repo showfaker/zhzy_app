@@ -1,0 +1,11 @@
+page-warn-search {
+    .scroll-content {
+        background: #fff;
+    }
+    div.select-picker ion-grid ion-col:nth-child(3n + 1) {
+        padding-left: 5px !important;
+    }
+    div.select-picker ion-grid ion-col:nth-child(2n + 1) {
+        padding-left: 0 !important;
+    }
+}

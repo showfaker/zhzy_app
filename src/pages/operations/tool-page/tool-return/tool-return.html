@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>归还</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list no-lines>
+        <div ion-item>
+            <ion-label>仓库名称</ion-label>
+            <ion-input class="rinhtInput"  placeholder="输入仓库名称"></ion-input>
+        </div>
+        <div ion-item detail-push>
+            <ion-label>归还类别</ion-label>
+            <div item-right class="gray">选择归还类别</div>
+        </div>
+        <div ion-item detail-push>
+            <ion-label>归还时间</ion-label>
+            <ion-datetime cancelText='取消' doneText="确定" displayFormat="YYYY-MM-DD HH:mm" [(ngModel)]="myDate"></ion-datetime>
+            <!-- <div item-right class="gray">2018-05-23 16:00</div> -->
+        </div>
+        <div ion-item detail-push (click)="sort()">
+            <ion-label>库存类别</ion-label>
+            <div item-right class="gray">选择库存类别</div>
+        </div>
+        <div ion-item detail-push>
+            <ion-label>工具类别</ion-label>
+            <div item-right class="gray">选择工具类别</div>
+        </div>
+        <div ion-item>
+            <ion-label>数量</ion-label>
+            <ion-input class="rinhtInput"  placeholder="输入数量"></ion-input>
+        </div>
+        <div ion-item>
+            <ion-label>单位</ion-label>
+            <ion-input class="rinhtInput" item-end placeholder="单位"></ion-input>
+        </div>
+        <ion-item class="textarea">
+            <ion-label class="textareaTitle" stacked>说明</ion-label>
+            <ion-textarea placeholder="不超过100字"></ion-textarea>
+        </ion-item>
+    </ion-list>
+    <div class="buttons">
+        <div class="buttonfull"   (click)="next()">取消</div>
+        <div class="buttonfull blue"   (click)="next()">确定</div>
+    </div>
+    
+</ion-content>

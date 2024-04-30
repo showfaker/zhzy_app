@@ -1,0 +1,23 @@
+<ion-content>
+  <div [ngSwitch]="pet">
+    <!-- 公司 -->
+    <ion-list >
+      <div *ngFor = 'let station of stationList;let i = index'>
+        <button ion-item  (click) = "powerStation(i)">
+          {{station.provinceName}}({{getStationNumber(station)}})
+        </button> 
+        <ion-list   *ngIf="station['hidePower']" class="power-station" >
+          <ng-container *ngFor = 'let content of station["content"]'>
+              <ion-item  ion-item  (click) = "select(content)" [class.active] = 'content.select'>{{content.shortName}}</ion-item>
+          </ng-container>
+        </ion-list>
+    </div>
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer >
+  <div class="bnt">
+      <div class="bnt-left" (click) = 'resetModel()'>重置</div>
+      <div class="bnt-left bnt-right" (click) = 'returnMonitor()'>确定</div>            
+  </div>  
+</ion-footer>

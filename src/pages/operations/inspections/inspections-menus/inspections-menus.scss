@@ -1,0 +1,28 @@
+page-inspections-menus {
+    .content {
+        background: #333;
+        .list-ios {
+            margin-bottom: 0;
+            ion-item {
+                color: #fff;
+                background: none;
+                padding: 0;
+                &.item > ion-icon {
+                    font-size: 1.2em;
+                    min-height: 1.2em;
+                    margin: 0;
+                    padding: 0 10px;
+                }
+            }
+        }
+    }
+}
+
+.inspectionsMenus.popover-ios {
+    .popover-content {
+        width: 180px;
+    }
+    .popover-arrow::after {
+        background: #333;
+    }
+}

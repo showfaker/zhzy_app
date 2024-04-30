@@ -1,0 +1,319 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{this.navParams.data.date.date}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ul style="margin-bottom: 10px">
+      <li style="margin-bottom: 10px">
+        <div class="detail clearfix">
+          <div>
+            <span class="num">{{reportDetail?.stationNum.value}}</span><br />
+            <span class="dis">电站数量(个)</span>
+          </div>
+          <div>
+            <span class="num">{{reportDetail?.capacity.value}}</span><br />
+            <span class="dis">并网容量(MW)</span>
+          </div>
+          <div>
+            <span class="num">{{reportDetail?.dayIrrad.value}}</span><br />
+            <span class="dis">当日辐照(MJ)</span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="detail clearfix">
+          <div>
+            <span class="num" style="color: #fc5232"
+              >{{reportDetail?.dayEnergy.value}}</span
+            ><br />
+            <span class="dis">当日电量(万kWh)</span>
+          </div>
+          <div>
+            <span class="num" style="color: #fc5232"
+              >{{reportDetail?.monEnergy.value}}</span
+            ><br />
+            <span class="dis">当月电量(万kWh)</span>
+          </div>
+          <div>
+            <span class="num" style="color: #fc5232"
+              >{{reportDetail?.yearEnergy.value}}</span
+            ><br />
+            <span class="dis">当年电量(万kWh)</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="weather">
+      <ul class="clearfix">
+        <li *ngFor="let weather of reportDetail?.weathers;let i = index">
+          <img
+            src="assets/imgs/daily-report/weather/{{weather.icon}}.svg"
+            alt=""
+          />
+          <span class="num"
+            ><span style="font-size: 1.8rem">{{weather.value}}</span
+            ><span class="unit">(个)</span></span
+          >
+          <div>{{weather.label}}</div>
+        </li>
+      </ul>
+    </div>
+    <!-- 集团生产进度 -->
+    <div class="group-progress">
+      <ion-list-header>
+        <div class="color-block"></div>
+        <p>集团生产进度</p>
+      </ion-list-header>
+      <div>
+        <ion-segment [(ngModel)]="stationGroup">
+          <ion-segment-button value="previous">
+            往年并网电站：{{preYearByGroup?.stationNum}}
+          </ion-segment-button>
+          <ion-segment-button value="then">
+            当年并网电站：{{thisYearByGroup?.stationNum}}
+          </ion-segment-button>
+          <ion-segment-button value="all">
+            全部电站：{{allYearByGroup?.stationNum}}
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+      <div [ngSwitch]="stationGroup">
+        <ul class="clearfix">
+          <li style="font-weight: Bold">计划类别</li>
+          <li>
+            <span class="list">计划电量</span><br /><span class="unit"
+              >(万kWh)</span
+            >
+          </li>
+          <li>
+            <span class="list">实际电量</span><br /><span class="unit"
+              >(万kWh)</span
+            >
+          </li>
+          <li>
+            <span class="list">完成进度</span><br /><span class="unit"
+              >(%)</span
+            >
+          </li>
+        </ul>
+        <ion-list *ngSwitchCase="'previous'">
+          <div>
+            <ul class="clearfix">
+              <li>月日历计划</li>
+              <li>{{preYearByGroup?.data[0][1]}}</li>
+              <li>{{preYearByGroup?.data[0][2]}}</li>
+              <li>{{preYearByGroup?.data[0][3]}}</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="clearfix">
+              <li>月度计划</li>
+              <li>{{preYearByGroup?.data[1][1]}}</li>
+              <li>{{preYearByGroup?.data[1][2]}}</li>
+              <li>{{preYearByGroup?.data[1][3]}}</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="clearfix">
+              <li>季度计划</li>
+              <li>{{preYearByGroup?.data[2][1]}}</li>
+              <li>{{preYearByGroup?.data[2][2]}}</li>
+              <li>{{preYearByGroup?.data[2][3]}}</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="clearfix">
+              <li>年度计划</li>
+              <li>{{preYearByGroup?.data[3][1]}}</li>
+              <li>{{preYearByGroup?.data[3][2]}}</li>
+              <li>{{preYearByGroup?.data[3][3]}}</li>
+            </ul>
+          </div>
+        </ion-list>
+        <ion-list *ngSwitchCase="'then'">
+          <div>
+            <ul class="clearfix">
+              <li>月日历计划</li>
+              <li>{{thisYearByGroup?.data[0][1]}}</li>
+              <li>{{thisYearByGroup?.data[0][2]}}</li>
+              <li>{{thisYearByGroup?.data[0][3]}}</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="clearfix">
+              <li>月度计划</li>
+              <li>{{thisYearByGroup?.data[1][1]}}</li>
+              <li>{{thisYearByGroup?.data[1][2]}}</li>
+              <li>{{thisYearByGroup?.data[1][3]}}</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="clearfix">
+              <li>季度计划</li>
+              <li>{{thisYearByGroup?.data[2][1]}}</li>
+              <li>{{thisYearByGroup?.data[2][2]}}</li>
+              <li>{{thisYearByGroup?.data[2][3]}}</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="clearfix">
+              <li>年度计划</li>
+              <li>{{thisYearByGroup?.data[3][1]}}</li>
+              <li>{{thisYearByGroup?.data[3][2]}}</li>
+              <li>{{thisYearByGroup?.data[3][3]}}</li>
+            </ul>
+          </div>
+        </ion-list>
+        <ion-list *ngSwitchCase="'all'">
+          <div>
+            <ul class="clearfix">
+              <li>月日历计划</li>
+              <li>{{allYearByGroup?.data[0][1]}}</li>
+              <li>{{allYearByGroup?.data[0][2]}}</li>
+              <li>{{allYearByGroup?.data[0][3]}}</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="clearfix">
+              <li>月度计划</li>
+              <li>{{allYearByGroup?.data[1][1]}}</li>
+              <li>{{allYearByGroup?.data[1][2]}}</li>
+              <li>{{allYearByGroup?.data[1][3]}}</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="clearfix">
+              <li>季度计划</li>
+              <li>{{allYearByGroup?.data[2][1]}}</li>
+              <li>{{allYearByGroup?.data[2][2]}}</li>
+              <li>{{allYearByGroup?.data[2][3]}}</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="clearfix">
+              <li>年度计划</li>
+              <li>{{allYearByGroup?.data[3][1]}}</li>
+              <li>{{allYearByGroup?.data[3][2]}}</li>
+              <li>{{allYearByGroup?.data[3][3]}}</li>
+            </ul>
+          </div>
+        </ion-list>
+      </div>
+    </div>
+    <!-- 分区月度生产进度 -->
+    <div class="part-progress">
+      <ion-list-header>
+        <div class="color-block" style="background: #f08e23"></div>
+        <p>分区月度生产进度</p>
+      </ion-list-header>
+      <div>
+        <ion-segment [(ngModel)]="stationPart">
+          <ion-segment-button value="previous">
+            往年并网电站：{{preYearByPart?.stationNum}}
+          </ion-segment-button>
+          <ion-segment-button value="then">
+            当年并网电站：{{thisYearByPart?.stationNum}}
+          </ion-segment-button>
+          <ion-segment-button value="all">
+            全部电站：{{allYearByPart?.stationNum}}
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+      <div [ngSwitch]="stationPart">
+        <ion-list
+          *ngSwitchCase="'previous'"
+          class="clearfix"
+          style="background: #fff"
+        >
+          <ul class="province">
+            <li class="tit">分区</li>
+            <li *ngFor="let province of preYearByPart?.regions;">
+              {{province}}
+            </li>
+          </ul>
+          <ul class="detail">
+            <li class="tit">
+              <span *ngFor="let tit of preYearByPart?.header;let i = index;"
+                >{{tit.label}}
+                <p>({{tit.unit}})</p></span
+              >
+            </li>
+            <li *ngFor="let value of preYearByPart?.data;let i = index;">
+              <span
+                *ngFor="let value of preYearByPart?.data[i].data;let i = index;"
+                >{{value.value}}<img
+                  style="width: 9px; height: 10px; margin-left: 5px"
+                  *ngIf="value.icon"
+                  src="assets/imgs/daily-report/icon_{{value.icon}}.png"
+              /></span>
+            </li>
+          </ul>
+        </ion-list>
+        <ion-list
+          *ngSwitchCase="'then'"
+          class="clearfix"
+          style="background: #fff"
+        >
+          <ul class="province">
+            <li class="tit">分区</li>
+            <li *ngFor="let province of thisYearByPart?.regions;">
+              {{province}}
+            </li>
+          </ul>
+          <ul class="detail">
+            <li class="tit">
+              <span
+                style="position: relative"
+                *ngFor="let tit of thisYearByPart?.header;let i = index;"
+                >{{tit.label}}
+                <p>({{tit.unit}})</p></span
+              >
+            </li>
+            <li *ngFor="let value of thisYearByPart?.data;let i = index;">
+              <span
+                *ngFor="let value of thisYearByPart?.data[i].data;let i = index;"
+                >{{value.value}}<img
+                  style="width: 9px; height: 10px; margin-left: 5px"
+                  *ngIf="value.icon"
+                  src="assets/imgs/daily-report/icon_{{value.icon}}.png"
+              /></span>
+            </li>
+          </ul>
+        </ion-list>
+        <ion-list
+          *ngSwitchCase="'all'"
+          class="clearfix"
+          style="background: #fff"
+        >
+          <ul class="province">
+            <li class="tit">分区</li>
+            <li *ngFor="let province of allYearByPart?.regions;">
+              {{province}}
+            </li>
+          </ul>
+          <ul class="detail">
+            <li class="tit">
+              <span
+                style="position: relative"
+                *ngFor="let tit of allYearByPart?.header;let i = index;"
+                >{{tit.label}}
+                <p>({{tit.unit}})</p></span
+              >
+            </li>
+            <li *ngFor="let value of allYearByPart?.data;let i = index;">
+              <span
+                *ngFor="let value of allYearByPart?.data[i].data;let i = index;"
+                >{{value.value}}<img
+                  style="width: 9px; height: 10px; margin-left: 5px"
+                  *ngIf="value.icon"
+                  src="assets/imgs/daily-report/icon_{{value.icon}}.png"
+              /></span>
+            </li>
+          </ul>
+        </ion-list>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>

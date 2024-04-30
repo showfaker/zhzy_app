@@ -1,0 +1,348 @@
+<!--
+  Generated template for the EnergyReportPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button (click)="goBack()">
+        <ion-icon name="ios-arrow-back" class="my-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{title || ''}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="serchMenu()">
+        <ion-icon
+          style="font-size: 1.4em"
+          class="title-bar-icon"
+          name="search"
+        ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar>
+    <div class="search">
+      <span class="select-item" (click)='select("defaultSort")'
+        >{{modulesDetails && modulesDetails.defaultSort &&
+        modulesDetails.defaultSort.second || ''}}</span
+      >
+      <div class="sort-btns">
+        <span
+          [ngClass]="{active: (modulesDetails && modulesDetails.direction === 'asc')}"
+          (click)='select("asc")'
+        ></span>
+        <span
+          [ngClass]="{active: (modulesDetails && modulesDetails.direction === 'desc')}"
+          (click)='select("desc")'
+        ></span>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #search>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="刷新..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="card-list">
+    <div class="card" *ngFor="let modules of modulesList">
+      <!-- <img [src]="getImg(modules.icon)" alt="" /> -->
+      <ion-icon [name]="getImg(modules.icon)"></ion-icon>
+      <div class="card-content">
+        <div class="info">{{modules.info}}</div>
+        <h1>{{modules.title}}</h1>
+        <div class="card-content-list" *ngFor="let item of modules.items">
+          {{item}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <ion-infinite-scroll
+    (ionInfinite)="doInfinite($event)"
+    threshold="5%"
+    *ngIf="canInfinite"
+  >
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<ion-menu
+  [content]="search"
+  side="right"
+  (ionOpen)="menuInit()"
+  (ionClose)="ionClose()"
+  id="search"
+  type="overlay"
+  swipeEnabled="true"
+  class="search-menu"
+>
+  <ion-content class="outer-content" no-bounce>
+    <div class="common-search-container">
+      <div class="common-search">
+        <div class="select-picker border-bottom">
+          <div class="query-label">统计维度</div>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-4>
+                <div
+                  class="select-option"
+                  [ngClass]="{'active-option': modulesDetails?.dataType==='all'}"
+                  (click)="modulesDetails.dataType = 'all'"
+                >
+                  全部
+                </div></ion-col
+              >
+              <ion-col col-4>
+                <div
+                  class="select-option"
+                  [ngClass]="{'active-option':  modulesDetails?.dataType==='region'}"
+                  (click)="modulesDetails.dataType = 'region'"
+                >
+                  区域
+                </div></ion-col
+              >
+              <ion-col col-4>
+                <div
+                  class="select-option"
+                  [ngClass]="{'active-option':  modulesDetails?.dataType==='station'}"
+                  (click)="modulesDetails.dataType = 'station'"
+                >
+                  电站
+                </div></ion-col
+              >
+            </ion-row>
+          </ion-grid>
+        </div>
+        <div class="select-picker border-bottom">
+          <div class="query-label">时间维度</div>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-3>
+                <div
+                  class="select-option"
+                  [ngClass]="{'active-option': modulesDetails?.timeType==='day'}"
+                  (click)="setTimeType('day')"
+                >
+                  日
+                </div></ion-col
+              >
+              <ion-col col-3>
+                <div
+                  class="select-option"
+                  [ngClass]="{'active-option':  modulesDetails?.timeType==='month'}"
+                  (click)="setTimeType('month')"
+                >
+                  月
+                </div></ion-col
+              >
+              <ion-col col-3>
+                <div
+                  class="select-option"
+                  [ngClass]="{'active-option':  modulesDetails?.timeType==='quarter'}"
+                  (click)="setTimeType('quarter')"
+                >
+                  季
+                </div></ion-col
+              >
+              <ion-col col-3>
+                <div
+                  class="select-option"
+                  [ngClass]="{'active-option':  modulesDetails?.timeType==='year'}"
+                  (click)="setTimeType('year')"
+                >
+                  年
+                </div></ion-col
+              >
+            </ion-row>
+          </ion-grid>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                <div class="select-option">
+                  <ion-datetime
+                    cancelText="取消"
+                    doneText="确定"
+                    [displayFormat]="showFormat()"
+                    [pickerFormat]="showFormat()"
+                    [(ngModel)]="startDate"
+                    [max]="'2099-12-31'"
+                    (ionChange)="changeDate($event,'startDate')"
+                  ></ion-datetime>
+                </div>
+              </ion-col>
+              <ion-col col-6>
+                <div class="select-option">
+                  <ion-datetime
+                    cancelText="取消"
+                    doneText="确定"
+                    [displayFormat]="showFormat()"
+                    [pickerFormat]="showFormat()"
+                    [(ngModel)]="endDate"
+                    [max]="'2099-12-31'"
+                    (ionChange)="changeDate($event,'endDate')"
+                  ></ion-datetime>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <div class="input-picker border-bottom">
+          <div class="query-label">电站</div>
+          <ion-input
+            type="text"
+            placeholder="请输入"
+            [(ngModel)]="modulesDetails['stationName']"
+            *ngIf="modulesDetails"
+          ></ion-input>
+        </div>
+
+        <div class="select-picker border-bottom">
+          <div class="query-label">区域</div>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-4>
+                <div class="select-option" (click)='select("province")'>
+                  {{this.modulesDetails && this.modulesDetails.province &&
+                  this.modulesDetails.province.second || '省'}}
+                </div></ion-col
+              >
+
+              <ion-col col-4>
+                <div class="select-option" (click)='select("city")'>
+                  {{this.modulesDetails && this.modulesDetails.city &&
+                  this.modulesDetails.city.second || '市'}}
+                </div></ion-col
+              >
+
+              <ion-col col-4>
+                <div class="select-option" (click)='select("county")'>
+                  {{this.modulesDetails && this.modulesDetails.county &&
+                  this.modulesDetails.county.second || '县'}}
+                </div></ion-col
+              >
+            </ion-row>
+          </ion-grid>
+        </div>
+        <div class="button-picker border-bottom">
+          <div class="query-label">电站类型</div>
+          <button
+            ion-button
+            round
+            small
+            color="light"
+            (click)='select("station")'
+          >
+            {{this.modulesDetails && this.modulesDetails.station &&
+            this.modulesDetails.station.second || '请选择'}}
+          </button>
+        </div>
+
+        <div
+          class="input-picker border-bottom"
+          *ngIf="modulesDetails?.dataType!=='all'"
+        >
+          <div class="query-label">电量</div>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                <ion-input
+                  type="number"
+                  [min]="0"
+                  [(ngModel)]="modulesDetails.energyFloor"
+                ></ion-input>
+              </ion-col>
+              <ion-col col-6>
+                <ion-input
+                  type="number"
+                  [min]="modulesDetails.energyFloor||0"
+                  [(ngModel)]="modulesDetails.energyCeil"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+        <div
+          class="input-picker border-bottom"
+          *ngIf="modulesDetails?.dataType!=='all'"
+        >
+          <div class="query-label">等效时</div>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                <ion-input
+                  type="number"
+                  [min]="0"
+                  [(ngModel)]="modulesDetails.kwhkwpFloor"
+                ></ion-input>
+              </ion-col>
+              <ion-col col-6>
+                <ion-input
+                  type="number"
+                  [min]="modulesDetails.kwhkwpFloor||0"
+                  [(ngModel)]="modulesDetails.kwhkwpCeil"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+        <div
+          class="input-picker border-bottom"
+          *ngIf="modulesDetails?.dataType!=='all'"
+        >
+          <div class="query-label">计划完成率</div>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                <ion-input
+                  type="number"
+                  [min]="0"
+                  [(ngModel)]="modulesDetails.rateFloor"
+                ></ion-input>
+              </ion-col>
+              <ion-col col-6>
+                <ion-input
+                  type="number"
+                  [min]="modulesDetails.rateFloor||0"
+                  [(ngModel)]="modulesDetails.rateCeil"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+      <ion-list>
+        <ion-row class="fix-bottom">
+          <ion-col col-6 text-center>
+            <button
+              ion-button
+              round
+              small
+              class="reset-btn"
+              color="light"
+              (click)="reset()"
+            >
+              重置
+            </button>
+          </ion-col>
+          <ion-col col-6 text-center>
+            <button ion-button round small class="query-btn" (click)="submit()">
+              查询
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-menu>

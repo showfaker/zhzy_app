@@ -1,0 +1,138 @@
+<ion-content>
+  <div class="common-search-container">
+    <div class="common-search">
+      <div class="time-picker border-bottom">
+        <div class="query-label">告警时间</div>
+        <ion-datetime
+          displayFormat="YYYY-MM-DD"
+          pickerFormat="YYYY/MM/DD"
+          doneText="确定"
+          [(ngModel)]="startDate"
+          [pickerOptions]="customStartPickerOptions"
+        ></ion-datetime>
+        <div class="line">-</div>
+        <ion-datetime
+          displayFormat="YYYY-MM-DD"
+          pickerFormat="YYYY/MM/DD"
+          doneText="确定"
+          [pickerOptions]="customEndPickerOptions"
+          [(ngModel)]="endDate"
+        ></ion-datetime>
+      </div>
+      <div class="button-picker border-bottom">
+        <div class="query-label">电站</div>
+        <button ion-button round small color="light" (click)="selectStation()">
+          {{(station?.title)||'未选择'}}
+          <!-- <img
+                        *ngIf="station"
+                        (click)="clearStation($event)"
+                        class="clear-icon"
+                        src="assets/imgs/buttons/delete.png"
+                        alt=""
+                    /> -->
+          <ion-icon
+            *ngIf="station"
+            (click)="clearStation($event)"
+            class="clear-icon"
+            name="delete"
+          ></ion-icon>
+        </button>
+      </div>
+      <div class="button-picker border-bottom">
+        <div class="query-label">设备</div>
+        <button
+          ion-button
+          round
+          small
+          color="light"
+          (click)="selectEquipment()"
+        >
+          {{(equipment?.deviceName)||'未选择'}}
+          <!-- <img
+                        *ngIf="equipment"
+                        (click)="clearEquipment($event)"
+                        class="clear-icon"
+                        src="assets/imgs/buttons/delete.png"
+                        alt=""
+                    /> -->
+          <ion-icon
+            *ngIf="equipment"
+            (click)="clearEquipment($event)"
+            class="clear-icon"
+            name="delete"
+          ></ion-icon>
+        </button>
+      </div>
+
+      <div class="select-picker border-bottom">
+        <div class="query-label">告警级别</div>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6 *ngFor="let item of alarmLevels">
+              <div
+                class="select-option"
+                [ngClass]="{'active-option': item.selected===true}"
+                (click)="selectAlarmLevels(item)"
+              >
+                {{item.name}}
+              </div></ion-col
+            >
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div class="select-picker border-bottom">
+        <div class="query-label">告警类型</div>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6 *ngFor="let item of alarmTypes">
+              <div
+                class="select-option"
+                [ngClass]="{'active-option': item.selected===true}"
+                (click)="selectAlarmTypes(item)"
+              >
+                {{item.name}}
+              </div></ion-col
+            >
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div class="select-picker">
+        <div class="query-label">告警状态</div>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6 *ngFor="let item of alarmStatus">
+              <div
+                class="select-option"
+                [ngClass]="{'active-option': item.selected===true}"
+                (click)="selectAlarmStatus(item)"
+              >
+                {{item.name}}
+              </div></ion-col
+            >
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+    <ion-list>
+      <ion-row class="fix-bottom">
+        <ion-col col-6 text-center>
+          <button
+            ion-button
+            round
+            small
+            class="reset-btn"
+            color="light"
+            (click)="reset()"
+          >
+            重置
+          </button>
+        </ion-col>
+        <ion-col col-6 text-center>
+          <button ion-button round small class="query-btn" (click)="ok()">
+            查询
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+  </div>
+</ion-content>

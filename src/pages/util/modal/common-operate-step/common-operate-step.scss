@@ -1,0 +1,23 @@
+page-common-operate-step {
+    b {
+        color: #f00;
+    }
+    ion-textarea {
+        border: 1px solid #ddd;
+        textarea {
+            height: 120px;
+            resize: none;
+        }
+    }
+    ion-datetime.datetime-ios {
+        border: 1px solid #ddd;
+        padding-left: 0;
+    }
+}
+
+.commonOperateStepModal {
+    .modal-wrapper {
+        height: 370px;
+        margin-top: -185px;
+    }
+}

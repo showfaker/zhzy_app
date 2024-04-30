@@ -1,0 +1,15 @@
+page-common-textarea {
+  ion-textarea {
+    border: 1px solid #ddd;
+    textarea {
+      height: 120px;
+    }
+  }
+}
+
+.commonTextareaModal {
+  .modal-wrapper {
+    height: 280px;
+    margin-top: -140px;
+  }
+}

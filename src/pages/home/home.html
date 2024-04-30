@@ -1,0 +1,238 @@
+<ion-header class="page-header">
+  <ion-navbar>
+    <ion-title start>{{homeInfo&&homeInfo.title}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="search()">
+        <ion-icon name="ios-search" class="title-bar-icon"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="scan()">
+        <ion-icon name="ios-scan" class="title-bar-icon"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="trend-container">
+    <!-- <div class="trend-bg">
+      <div
+        echarts
+        #echart
+        [options]="trendChartOption"
+        class="trend-chart"
+      ></div> 
+      <div class="power-energy" *ngIf="homeInfo">
+        <div
+          echarts
+          #echart
+          [options]="trendChartOption1"
+          class="trend-chart dif-height"
+        ></div>
+        <div class="power">
+          <div>
+            {{homeInfo.subInfos[0].value}} {{homeInfo.subInfos[0].unit}}
+          </div>
+          <div>
+            {{homeInfo.subInfos[0].subTitle}}:{{homeInfo.subInfos[0].subValue}}
+            {{homeInfo.subInfos[0].subUnit}}
+          </div>
+        </div>
+        <div class="power tr">
+          <div>
+            {{homeInfo.subInfos[1].value}} {{homeInfo.subInfos[1].unit}}
+          </div>
+          <div>
+            {{homeInfo.subInfos[1].subTitle}}:{{homeInfo.subInfos[1].subValue}}
+            {{homeInfo.subInfos[1].subUnit}}
+          </div>
+        </div>
+        <div class="power lb">
+          <div>
+            {{homeInfo.subInfos[2].value}} {{homeInfo.subInfos[2].unit}}
+          </div>
+          <div>
+            {{homeInfo.subInfos[2].subTitle}}:{{homeInfo.subInfos[2].subValue}}
+            {{homeInfo.subInfos[2].subUnit}}
+          </div>
+        </div>
+        <div class="power br">
+          <div>
+            {{homeInfo.subInfos[3].value}} {{homeInfo.subInfos[3].unit}}
+          </div>
+          <div>
+            {{homeInfo.subInfos[3].subTitle}}:{{homeInfo.subInfos[3].subValue}}
+            {{homeInfo.subInfos[3].subUnit}}
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="topbg-container">
+      <div
+        *ngFor="let item of homeInfo?.subInfos;let i = index"
+        [class]="'topbg topbg-'+i"
+      >
+        <div class="title">{{item.title}}</div>
+        <div class="main">
+          <span>{{item.value}}</span>
+          <span>{{item.unit}}</span>
+        </div>
+        <div echarts #echart class="echart" [options]="getPie(item,i)"></div>
+        <div class="sub">
+          <span>{{item.subTitle}}:{{item.subValue}}{{item.subUnit}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <homepage2-modules *ngIf="homePage!=='DEFAULT'"></homepage2-modules>
+
+  <div class="option opton-left" *ngIf='homePage === "DEFAULT"'>
+    <div (click)="changerTab(2)">
+      <img src="assets/imgs/home/more.png" />
+      <p>更多功能</p>
+    </div>
+  </div>
+  <div class="option" *ngIf='homePage === "DEFAULT"'>
+    <div (click)="toJobRecord()" *ngIf='showModule("APP_JOB_RECORD")'>
+      <img src="assets/imgs/operations/yunxingrb.png" />
+      <p>运行日报</p>
+    </div>
+    <div (click)="dailyReport()" *ngIf='showModule("APP_ENERGY_RPT")'>
+      <img src="assets/imgs/operations/defect-mana.png" />
+      <p>集团日报</p>
+    </div>
+    <div *ngIf='showModule("APP_ALARM")'>
+      <img src="assets/imgs/operations/notice.png" />
+      <p>告警管理</p>
+    </div>
+
+    <div (click)="toDefectManage()" *ngIf='showModule("APP_DEFECT")'>
+      <img src="assets/imgs/home/bug.png" />
+      <p>缺陷管理</p>
+    </div>
+    <div (click)="noticeList()" *ngIf='showModule("")'>
+      <img src="assets/imgs/home/gonggao.png" />
+      <p>公告</p>
+    </div>
+    <div (click)="toOperateTask()" *ngIf='showModule("APP_MAINTAIN")'>
+      <img src="assets/imgs/operations/ywtask.png" />
+      <p>运维任务</p>
+    </div>
+    <div (click)="toCargoManage()" *ngIf='showModule("APP_MATERIAL")'>
+      <img src="assets/imgs/operations/wuliao.png" />
+      <p>物料管理</p>
+    </div>
+    <div (click)='toTool("03")' *ngIf='showModule("APP_TOOL")'>
+      <img src="assets/imgs/operations/gongju.png" />
+      <p>工具器</p>
+    </div>
+    <div (click)="toInventoris()" *ngIf='showModule("APP_MATERIAL")'>
+      <img src="assets/imgs/module/bpbj.png" />
+      <p>备品备件</p>
+    </div>
+  </div>
+
+  <!-- ******** 高层首页显示 ******** -->
+  <ng-container *ngIf='homeInfo && homePage === "DEFAULT"'>
+    <!-- <div>
+            <img src="assets/imgs/home/publicity.png" class="publicity"/>
+        </div> -->
+    <div class="plan-title">
+      <i></i>
+      <span>各区域生产计划完成情况</span>
+    </div>
+    <div class="plan" *ngFor="let regionInfo of homeInfo.regionInfos| keys">
+      <div class="p-name">
+        <p>{{regionInfo.key}}</p>
+        <!-- <p>&</p>
+                <p>山东</p> -->
+      </div>
+      <div class="p-power">
+        <span
+          >{{regionInfo.value[0].title}}：{{regionInfo.value[0].value}}{{regionInfo.value[0].unit}}</span
+        >
+        <span
+          >{{regionInfo.value[1].title}}：{{regionInfo.value[1].value}}{{regionInfo.value[1].unit}}</span
+        >
+      </div>
+      <div>
+        <span class="p-energy"
+          ><span [style.width]='(regionInfo.value[0].ratio*0.36)+"%"'></span
+        ></span>
+        <span class="p-energy"
+          ><span [style.width]='(regionInfo.value[1].ratio*0.36)+"%"'></span
+        ></span>
+      </div>
+      <div class="p-power">
+        <span
+          >{{regionInfo.value[2].title}}：{{regionInfo.value[2].value}}{{regionInfo.value[2].unit}}</span
+        >
+        <span
+          >{{regionInfo.value[3].title}}：{{regionInfo.value[3].value}}{{regionInfo.value[3].unit}}</span
+        >
+      </div>
+      <div>
+        <span class="p-energy"
+          ><span [style.width]='(regionInfo.value[2].ratio*0.36)+"%"'></span
+        ></span>
+        <span class="p-energy"
+          ><span [style.width]='(regionInfo.value[3].ratio*0.36)+"%"'></span
+        ></span>
+      </div>
+    </div>
+  </ng-container>
+  <!-- ******** 中层和基层首页显示 ******** -->
+  <ng-container *ngIf="false">
+    <div class="new-notice">
+      <img src="assets/imgs/home/zxgg.png" />
+      <span class="notice-title">最新公告：</span>
+      <span>公告内容</span>
+    </div>
+    <div>
+      <ion-segment [(ngModel)]="task">
+        <ion-segment-button value="mytask">代办任务(8)</ion-segment-button>
+        <span class="boundary"></span>
+        <ion-segment-button value="notask">告警信息</ion-segment-button>
+      </ion-segment>
+    </div>
+    <div [ngSwitch]="task">
+      <div *ngSwitchCase=" 'mytask' ">
+        <div class="task-details dif-heihgt">
+          <div class="home-title">
+            <img src="assets/imgs/home/bugtask.png" />
+            <p>缺陷任务</p>
+          </div>
+          <div class="time-status">
+            <span class="time">任务类型</span>
+            <span>任务类型A</span>
+            <span class="time t-right">发布时间</span>
+            <span>05/23 14:00</span>
+          </div>
+          <div class="time-status">
+            <span class="time">其他信息</span>
+            <span>设备外机被破损，可能会漏水.....</span>
+          </div>
+        </div>
+      </div>
+      <div *ngSwitchCase=" 'notask' ">
+        <div class="task-details dif-heihgt">
+          <div class="home-title">
+            <img src="assets/imgs/home/bugtask.png" />
+            <p>缺陷任务</p>
+          </div>
+          <div class="time-status">
+            <span class="time">任务类型</span>
+            <span>任务类型A</span>
+            <span class="time t-right">发布时间</span>
+            <span>05/23 14:00</span>
+          </div>
+          <div class="time-status">
+            <span class="time">其他信息</span>
+            <span>设备外机被破损，可能会漏水.....</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ion-content>

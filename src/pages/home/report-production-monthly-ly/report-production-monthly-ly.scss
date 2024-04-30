@@ -1,0 +1,42 @@
+page-report-production-monthly-ly {
+    .scan {
+        width: 18px;
+        height: 18px;
+    }
+    .my-back {
+        font-size: 30px;
+        color: #fff;
+    }
+    p {
+        color: #333;
+    }
+    .item-ios.item-block {
+        border: none !important;
+        .item-inner {
+            border-bottom: none;
+            color: #727272;
+        }
+        .note-ios {
+            color: #727272;
+        }
+    }
+    .list-ios {
+        margin-bottom: 10px;
+        &.report-header,
+        &.report-body {
+            margin: 0;
+        }
+        &.report-body + .report-body {
+            margin: 0;
+            margin-top: 5px;
+        }
+    }
+    .report-header,
+    .report-body {
+        .input-wrapper,
+        .note-ios {
+            width: 50%;
+            margin: 0;
+        }
+    }
+}

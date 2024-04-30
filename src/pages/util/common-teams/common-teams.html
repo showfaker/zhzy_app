@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="arrow-back" style="color: #fff"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title> 班组 </ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-searchbar
+      [(ngModel)]="name"
+      placeholder="班组名称或部门名称"
+      (ionInput)="onCancel($event)"
+    >
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="正在刷新..."
+    ></ion-refresher-content>
+  </ion-refresher>
+  <div class="notice-list-box">
+    <div
+      class="new-notice-list"
+      *ngFor="let team of teams"
+      (click)="clickItem(team)"
+    >
+      <div class="notice">
+        <div class="notice-title">{{team.teamName}}({{team.users.length}})</div>
+        <div class="notice-subtitle">
+          <div class="notice-subtitle-content">
+            <span> {{team.deptName}} </span>
+          </div>
+        </div>
+      </div>
+      <div class="left-img">
+        <!-- <img src="assets/imgs/list/team.png" class="alarm-img" /> -->
+        <ion-icon name="team" class="alarm-img"></ion-icon>
+      </div>
+      <div class="checked-icon" *ngIf="showIcon(team.teamId)">
+        <!-- <img src="assets/imgs/buttons/ok.png" /> -->
+        <ion-icon name="ok"></ion-icon>
+      </div>
+    </div>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载更多数据..."
+      >
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar no-border-top class="page-bottom">
+    <button ion-button block class="clear" color="light" (click)="clearAll()">
+      清除
+    </button>
+  </ion-toolbar>
+</ion-footer>

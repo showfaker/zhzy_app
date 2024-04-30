@@ -1,0 +1,27 @@
+<!--
+  Generated template for the QrResultBarPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content no-scroll>
+    <div class="station-name">
+        {{info?.stationName}}
+    </div>
+    <div class="device-name">
+        {{info?.deviceName}}
+    </div>
+    <ion-grid>
+        <ion-row>
+            <ng-container *ngFor="let item of info?.modules">
+                <ion-col *ngIf="item.show" col-3 (click)="goLink(item.id)">
+                    <ion-img
+                        style="width: 40px; height: 40px;"
+                        src="assets/imgs/module/{{item.icon}}"
+                    ></ion-img>
+                    <p>{{item.name}}</p>
+                </ion-col>
+            </ng-container>
+        </ion-row>
+    </ion-grid>
+</ion-content>

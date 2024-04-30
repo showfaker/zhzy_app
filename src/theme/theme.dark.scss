@@ -1,0 +1,985 @@
+.dark-theme {
+  $searchbar-ios-input-search-icon-color: '#ff0';
+  ion-content,
+  .content-ios.outer-content {
+    background-color: #06171f;
+    color: #6aa1ac;
+  }
+  .toolbar-title {
+    color: #b9fcff;
+  }
+  .header .toolbar-background {
+    background-color: #0c4955;
+  }
+  .title-bar-icon {
+    color: #3d7c88;
+    font-size: 1.4em !important;
+  }
+  .power-energy .power {
+    color: #97bec2;
+  }
+
+  .trend-container {
+    height: 300px;
+  }
+
+  .monitor-container {
+    height: 255px;
+    .gonglv {
+      .subTitle {
+        background: unset;
+        color: #b9fcff;
+      }
+      .power-data {
+        color: #fff;
+        background-image: radial-gradient(
+          circle at bottom,
+          #30daee 12%,
+          #0b576b 100%
+        );
+        .data {
+          color: #fff;
+        }
+      }
+    }
+    .all-fadian {
+      background: unset;
+      .line {
+        background: #979797;
+      }
+      .fadian.name {
+        color: #97bec2;
+      }
+      .fadian.data {
+        color: #b9fcff;
+        div span {
+          color: #b9fcff;
+        }
+      }
+    }
+  }
+
+  .title-container {
+    height: 217px;
+  }
+  .page-header {
+    .toolbar-background {
+      background: linear-gradient(to bottom, #041118, #041119);
+    }
+  }
+  .trend-container,
+  .monitor-container,
+  .title-container {
+    position: relative;
+    &::before {
+      display: block;
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      z-index: 1;
+      background-image: linear-gradient(
+          to top,
+          rgba(255, 255, 255, 0.1) 1px,
+          transparent 0
+        ),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 0);
+      background-size: 10px 10px, 10px 10px;
+    }
+  }
+
+  .trend-bg,
+  .monitor-bg,
+  .title-message {
+    background-image: linear-gradient(to top, #076570, #041119);
+    background-size: 100% 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    opacity: 0.85;
+    .trend-chart {
+      background: unset;
+      opacity: 1;
+    }
+  }
+
+  .home-page2-modules2 {
+    background: unset;
+    color: unset;
+    border-bottom: 1px solid #0b2b3b;
+  }
+
+  homepage2-modules h1 {
+    color: #26babc;
+  }
+
+  .tabs-ios .tabbar {
+    background: #0c272f;
+  }
+  .tabs-ios .tab-button[aria-selected='true'] {
+    color: #0ab7be !important;
+    .tab-button-icon {
+      color: #0ab7be !important;
+    }
+  }
+  .tabs-ios .tab-button {
+    color: #3d7c88 !important;
+    .tab-button-icon {
+      color: #3d7c88 !important;
+    }
+  }
+
+  .divider-dashed {
+    display: table;
+    margin: 16px 0;
+    font-weight: 500;
+    font-size: 16px;
+    white-space: nowrap;
+    text-align: center;
+    background: transparent;
+    .divider-inner-text {
+      padding: 0 10px;
+    }
+    & > .left-line {
+      position: relative;
+      top: 50%;
+      display: table-cell;
+      width: 50%;
+      transform: translateY(50%);
+      vertical-align: top;
+      &::before {
+        display: block;
+        content: '';
+        border-top: 1px dashed #061720;
+        background: linear-gradient(to left, #008e90, #061720);
+        background-origin: border-box;
+      }
+    }
+    & > .right-line {
+      position: relative;
+      top: 50%;
+      display: table-cell;
+      width: 50%;
+      transform: translateY(50%);
+      vertical-align: top;
+      &::before {
+        display: block;
+        content: '';
+        border-top: 1px dashed #061720;
+        background: linear-gradient(to right, #008e90, #061720);
+        background-origin: border-box;
+      }
+    }
+  }
+
+  .item-ios {
+    // background-color: #243b48 !important;
+    background: #11222b !important;
+    color: #97bec2;
+    ion-icon {
+      color: #3e7d86;
+    }
+    ion-label {
+      color: #97bec2;
+    }
+  }
+
+  .title-message {
+    p {
+      color: #b9fcff;
+    }
+  }
+
+  .logout {
+    background: #213539 !important;
+    &.dif-cor {
+      background: #3d7c88 !important;
+    }
+  }
+
+  .search {
+    span {
+      border: 1px solid #3d7c88;
+      border-radius: 16px;
+      background: #243b48;
+      color: #97bec2;
+    }
+    .sort {
+      color: #98bfc1;
+      background: #3e7d86;
+    }
+  }
+
+  .card {
+    background: #11222b;
+    .card-content {
+      h1 {
+        color: #3d7c88;
+        border-bottom: 1px solid #243b48;
+      }
+      .card-content-list {
+        color: #97bec2;
+      }
+    }
+  }
+
+  .my-custom-menu {
+    background-color: #06171f;
+    .scroll-content {
+      background: #11222b;
+    }
+    .condition {
+      border-bottom: 1px solid #253f4c;
+      span,
+      input {
+        color: #97bec2;
+        background: #243b48;
+      }
+    }
+    .my-button button:first-child {
+      background: #213539;
+      color: #567778;
+    }
+    .my-button button:last-child {
+      background: #3d7c88;
+      color: #b9fcff;
+    }
+  }
+  .my-back {
+    color: #98bfc1;
+  }
+
+  .card-item {
+    .left-line {
+      background: #1f4148;
+      .line-icon {
+        background: url(../assets/imgs/operations/job-record/icon-dark.png);
+      }
+    }
+    color: #97bec2;
+    .right-content ion-card {
+      ion-card-header {
+        border-bottom: 1px solid #243b48;
+        color: #3d7c88;
+      }
+    }
+  }
+
+  ion-header .icon {
+    color: #97bec2;
+  }
+
+  .refresher-pulling-icon,
+  .refresher-refreshing-icon,
+  .refresher-pulling-text,
+  .refresher-refreshing-text {
+    color: unset;
+  }
+
+  .remind-icon {
+    background: #3d7c88;
+  }
+  .search-menu,
+  .commonSearchSideBar {
+    .menu-inner {
+      background-color: #253f4c;
+    }
+    .scroll-content {
+      background: #11222b;
+    }
+    .common-search {
+      & > div.border-bottom {
+        border-bottom: 1px solid #253f4c;
+      }
+      & > div.select-picker .select-option {
+        background: #213743;
+        color: #546b77;
+        &.active-option {
+          border: 1px solid #007f84;
+          background: #007f84;
+          color: #b9fcff;
+        }
+      }
+      & > div.input-picker input {
+        color: #97bec2;
+        background: #243b48;
+      }
+      & > div.button-picker button {
+        color: #97bec2;
+        background: #243b48;
+      }
+      & > div.time-picker ion-datetime {
+        color: #97bec2;
+        background: #243b48;
+      }
+    }
+    .fix-bottom {
+      .reset-btn {
+        background: #213539;
+        color: #567778;
+      }
+      .query-btn {
+        background: #3d7c88;
+        color: #b9fcff;
+      }
+    }
+  }
+
+  .searchbar-ios {
+    background: #11222b;
+  }
+  .searchbar-ios .searchbar-input {
+    color: #97bec2;
+    border: 1px solid #3d7c88;
+    background-color: #11222b;
+  }
+  .select-div {
+    background: #11222b;
+    .craft-div,
+    .device-div {
+      background: #213743;
+      color: #546b77;
+      &.active {
+        background: #007f84;
+        color: #b9fcff;
+      }
+    }
+
+    .craft-more {
+      background: #11222b;
+      color: #97bec2;
+      border: 1px solid #3d7c88;
+    }
+    .line1 {
+      background: #243b48;
+    }
+  }
+  .notice-list-box {
+    background: #06171f;
+    .new-notice-list {
+      background: #11222b;
+      .notice-title {
+        color: #3d7c88;
+      }
+      .notice-subtitle-content {
+        color: #97bec2;
+      }
+    }
+  }
+  ion-toolbar {
+    .toolbar-background {
+      background: #243b48;
+    }
+    .clear {
+      background: #213539;
+    }
+  }
+
+  .datetime-text {
+    color: #97bec2;
+  }
+
+  .item-ios[detail-push='true'] .item-inner,
+  .item-ios[detail-push] .item-inner,
+  button.item-ios:not([detail-none]) .item-inner,
+  a.item-ios:not([detail-none]) .item-inner {
+    background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2012%2020'><path%20d='M2,20l-2-2l8-8L0,2l2-2l10,10L2,20z'%20fill='%233e7d86'/></svg>");
+  }
+
+  .new-list.list-ios .list-header [icon-only] ion-icon {
+    color: #97bec2;
+  }
+
+  input[placeholder],
+  [placeholder],
+  *[placeholder],
+  ::-webkit-input-placeholder {
+    color: #97bec2 !important;
+  }
+
+  .searchbar-ios .searchbar-search-icon {
+    background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2013%2013'><path%20fill='%233D7C88'%20d='M5,1c2.2,0,4,1.8,4,4S7.2,9,5,9S1,7.2,1,5S2.8,1,5,1%20M5,0C2.2,0,0,2.2,0,5s2.2,5,5,5s5-2.2,5-5S7.8,0,5,0%20L5,0z'/><line%20stroke='%233D7C88'%20stroke-miterlimit='10'%20x1='12.6'%20y1='12.6'%20x2='8.2'%20y2='8.2'/></svg>");
+  }
+
+  .commonModal .modal-wrapper .scroll-content {
+    background: #11222b;
+    h6 {
+      color: #97bec2;
+    }
+
+    ion-input {
+      border: 1px solid #3d7c88;
+      background: #243b48;
+    }
+
+    button.clear-btn {
+      background: #213539;
+    }
+    button.ok-btn {
+      background: #3d7c88;
+    }
+  }
+
+  .defect-devices-header {
+    background: #06171f !important;
+  }
+
+  page-maintains-details .obj-items ion-row,
+  .defect-devices ion-row {
+    background: #11222b;
+    ion-col {
+      color: #97bec2;
+    }
+  }
+
+  .workflow-log {
+    background: #11222b;
+    p {
+      color: #97bec2;
+    }
+    .action-content {
+      background: #243b48;
+      color: #97bec2;
+    }
+  }
+  .workflow-chart {
+    background: #11222b;
+  }
+  .user-container {
+    background: #11222b;
+  }
+
+  .comment-container {
+    background: #11222b;
+    textarea {
+      border: 1px solid #3d7c88;
+      background: #243b48;
+    }
+    .button-ios {
+      background-color: #0b80a4;
+    }
+  }
+  cc p {
+    color: #97bec2 !important;
+  }
+
+  .footer-bar {
+    .toolbar-background-ios {
+      background: #243b48;
+    }
+    button {
+      background: #3d7c88 !important;
+      width: 100%;
+    }
+    p {
+      color: #97bec2;
+    }
+  }
+
+  ion-textarea {
+    border: 1px solid #3d7c88;
+    background: #243b48;
+  }
+
+  page-job-record-losses ion-datetime.datetime-ios {
+    border: 1px solid #3d7c88;
+    background: #243b48;
+  }
+
+  page-common-station .open {
+    background: unset;
+  }
+
+  .check-in-item {
+    background: #11222b;
+    border-bottom: 1px solid #243b48;
+  }
+
+  page-inventoris {
+    ion-card-header.card-header-ios {
+      color: #3d7c88;
+      border-bottom: 1px solid #3d7c88;
+    }
+    .card-content-ios p {
+      color: #97bec2;
+    }
+    ion-row button.button-clear-ios {
+      color: #97bec2;
+    }
+  }
+
+  page-operate-tickets-details .operate-steps ion-row {
+    background: #11222b;
+  }
+
+  page-common-operate-step ion-datetime.datetime-ios {
+    border: 1px solid #3d7c88;
+    background: #243b48;
+  }
+
+  page-login {
+    .item-ios {
+      background: #11222b !important;
+      border: 1px solid #3d7c88 !important;
+      input {
+        background: #11222b;
+      }
+    }
+    button {
+      background: #3d7c88;
+      color: #b9fcff;
+    }
+    .register {
+      color: #b9fcff;
+    }
+  }
+
+  equipment-message {
+    .equiment {
+      background: #0c4955;
+      color: #97bec2;
+    }
+    .segment-ios {
+      .segment-button {
+        color: #3d7c88;
+        background: #11222b;
+        &.segment-activated {
+          color: #b9fcff;
+          border-bottom: 2px solid #00e3ed;
+        }
+      }
+    }
+  }
+
+  page-device-archive .device-type {
+    background: #0c4955;
+  }
+
+  .echart-tab .segment-ios {
+    .boundary {
+      background: #97bec2;
+    }
+    .segment-button {
+      color: #3d7c88;
+      background: #11222b;
+      &.segment-activated {
+        color: #b9fcff;
+        border-bottom: 2px solid #00e3ed;
+      }
+    }
+  }
+  .rankechart {
+    background: #11222b;
+    .date-classify {
+      border: 1px solid #264555;
+      background: #0e2a39;
+      span {
+        border-right: none;
+        &.active {
+          background: #3d7c88;
+        }
+      }
+    }
+  }
+
+  page-cameraList .list .label-ios span {
+    color: #97bec2;
+  }
+
+  page-password {
+    .list-ios[no-lines] ion-item.item {
+      border: 1px solid #3d7c88;
+    }
+    .change-password-btn button {
+      background: #3d7c88;
+      color: #b9fcff;
+    }
+    .desc p {
+      color: #97bec2;
+    }
+  }
+
+  page-selected-equipment-list ion-content.content-ios,
+  page-selected-user-list ion-content.content-ios {
+    background-color: #06171f;
+    .item-block[no-lines] {
+      border-bottom: 1px solid #243b48 !important;
+    }
+    ion-label {
+      color: #3d7c88;
+    }
+    p {
+      color: #97bec2;
+    }
+  }
+
+  page-selected-equipment-list .selected-equipment {
+    border-bottom: 1px solid #243b48 !important;
+    .notice-title {
+      color: #97bec2;
+    }
+  }
+
+  .img-container,
+  .doc-container {
+    background: #11222b;
+    .doc-col {
+      color: #97bec2;
+    }
+  }
+
+  pow-setting {
+    .scroll-content {
+      background: #06171f;
+    }
+    .list-button button {
+      background: #213539;
+      color: #567778;
+      &.active {
+        background: #3d7c88;
+        color: #b9fcff;
+      }
+    }
+    .model .qz-content .submit {
+      border-top: 1px solid #253f4c;
+      :first-child {
+        color: #567778;
+        border-right: 1px solid #253f4c;
+      }
+      :last-child {
+        color: #b9fcff;
+      }
+    }
+  }
+
+  operations {
+    .operation-top {
+      background-color: #0c4955;
+      .font-my {
+        color: #b9fcff;
+      }
+    }
+    .operation-card {
+      background: #11222b;
+    }
+    .operation-calendar > div {
+      color: #97bec2;
+    }
+  }
+
+  .ion-ios-delete {
+    color: #ec0047 !important;
+  }
+  .ion-ios-save {
+    color: #2da141 !important;
+  }
+  .ion-ios-ok {
+    color: #2da141 !important;
+  }
+  .ion-ios-ok-green {
+    color: #2da141 !important;
+  }
+  // .ion-ios-ok-grey{
+  //   color: #2da141;
+  // }
+
+  warn-details .btn ion-icon,
+  page-maintains-device .btn ion-icon,
+  page-inspection-device .btn ion-icon,
+  page-inspections-details .btn ion-icon,
+  page-maintains-details .btn ion-icon,
+  page-defect-management-details .btn ion-icon,
+  page-operate-tickets-details .btn ion-icon,
+  page-repair-ticket-details .btn ion-icon {
+    color: #0b80a4;
+    &.ion-ios-wo-save {
+      color: #2da141;
+    }
+  }
+
+  page-inspection-device .new-list.list-ios .list-header,
+  page-maintains-device .new-list.list-ios .list-header {
+    background-color: #06171f !important;
+    .label {
+      color: #38747d;
+    }
+  }
+  page-inspections-details .obj-items ion-row {
+    background-color: #11222b !important;
+  }
+
+  .delete-user,
+  .delete-img,
+  .remove-icon,
+  .file-icon {
+    color: #3e7d86;
+  }
+
+  .unfold {
+    background: #11222b;
+  }
+  .ion-ios-status-01 {
+    color: #676767;
+  }
+  .ion-ios-status-02 {
+    color: #74e8ab;
+  }
+  .ion-ios-status-03 {
+    color: #ff8b6d;
+  }
+  .ion-ios-status-04 {
+    color: #ff5387;
+  }
+
+  daily-report .scroll-content,
+  report-detail .scroll-content {
+    font-family: unset;
+    background: unset;
+    ul {
+      li {
+        background: #11222b !important;
+
+        .date {
+          border-bottom: 1px solid #243b48;
+        }
+        .detail div {
+          border-right: 1px solid #243b48;
+          .num {
+            color: #b9fcff;
+          }
+          .dis {
+            color: #97bec2;
+          }
+        }
+      }
+    }
+    .weather {
+      background: unset;
+      li {
+        border-right: 1px solid #243b48;
+        border-bottom: 1px solid #243b48;
+        &:last-child {
+          border-bottom: 1px solid #243b48 !important;
+        }
+        div {
+          color: #b9fcff;
+        }
+        & > .num {
+          span {
+            color: #b9fcff;
+          }
+          .unit {
+            color: #97bec2;
+          }
+        }
+      }
+    }
+    .segment {
+      background: unset;
+      .segment-button {
+        background: #0e2a39;
+        color: #97bec2;
+        border-color: #3f6072;
+        &.segment-activated {
+          background: #3d7c88;
+          color: #b9fcff;
+        }
+      }
+    }
+    .group-progress,
+    .part-progress {
+      p {
+        color: #97bec2 !important;
+      }
+      .list-ios {
+        background: unset;
+      }
+      ul li {
+        color: #97bec2;
+        .list {
+          color: #97bec2;
+        }
+        .unit {
+          color: #97bec2;
+        }
+      }
+      .list-ios div {
+        border-bottom: 1px solid #243b48;
+        ul li {
+          color: #97bec2;
+        }
+      }
+    }
+    .list-header {
+      border-bottom: 1px solid #243b48;
+    }
+    .part-progress {
+      .province {
+        box-shadow: unset;
+      }
+
+      .list {
+        background: unset !important;
+      }
+
+      ul li {
+        border-bottom: 1px solid #243b48;
+      }
+    }
+  }
+
+  page-report-production-monthly-ly {
+    p {
+      color: #97bec2;
+    }
+    .item-ios.item-block .note-ios {
+      color: #97bec2;
+    }
+  }
+
+  page-modules-details3 .card,
+  page-modules-details4 .card {
+    box-shadow: unset;
+  }
+  global-search {
+    .alarm-img {
+      color: #243b47;
+    }
+    .notice-list .notice-bg {
+      background: #11222b;
+      .notice .notice-title {
+        color: #3d7c88;
+      }
+      .notice .notice-subtitle .notice-subtitle-content :first-child {
+        color: #97bec2;
+      }
+      .notice-line {
+        background: #243b48;
+      }
+    }
+
+    .button-clear-md-dark {
+      color: #3e7d86;
+    }
+    .segment {
+      background: unset;
+      .segment-button {
+        background: #0e2a39;
+        color: #97bec2;
+        border-color: #3f6072;
+        &.segment-activated {
+          background: #3d7c88;
+          color: #b9fcff;
+        }
+      }
+    }
+    .searchbar-ios {
+      .button-clear-ios {
+        color: #3e7d86;
+      }
+      .searchbar-clear-icon {
+        background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'><path%20fill='%233e7d86'%20d='M403.1,108.9c-81.2-81.2-212.9-81.2-294.2,0s-81.2,212.9,0,294.2c81.2,81.2,212.9,81.2,294.2,0S484.3,190.1,403.1,108.9z%20M352,340.2L340.2,352l-84.4-84.2l-84,83.8L160,339.8l84-83.8l-84-83.8l11.8-11.8l84,83.8l84.4-84.2l11.8,11.8L267.6,256L352,340.2z'/></svg>");
+      }
+    }
+  }
+
+  page-common-teams
+    .new-notice-list
+    .notice
+    .notice-subtitle
+    .notice-subtitle-content
+    :first-child {
+    color: #97bec2;
+  }
+  equipment-list
+    .new-notice-list
+    .notice
+    .notice-subtitle
+    .notice-subtitle-content,
+  station-equipment-list
+    .new-notice-list
+    .notice
+    .notice-subtitle
+    .notice-subtitle-content {
+    :first-child {
+      color: #97bec2;
+    }
+    color: #97bec2;
+  }
+
+  page-common-materials ion-item.item-block {
+    .list-content-name {
+      color: #3d7c88;
+    }
+    p {
+      color: #97bec2;
+    }
+  }
+
+  page-common-defect-code ion-icon {
+    color: #3d7c88;
+  }
+
+  .footer-bar button.clear-btn {
+    color: #b9fcff;
+    border-color: #b9fcff;
+  }
+
+  page-operate-tickets-details .operate-steps .task-index {
+    color: #97bec2;
+  }
+  page-operate-tickets-details .finish-step span {
+    color: #97bec2;
+  }
+
+  page-inventoris-out-in .material-iostorge ion-row {
+    background: #11222b;
+    ion-col {
+      color: #97bec2;
+    }
+  }
+
+  page-inventoris-record .card-item {
+    border-left: 1px solid #1f4148;
+  }
+
+  page-common-materials {
+    ion-input {
+      border: 1px solid #3d7c88;
+    }
+    .page-bottom button.ok-btn {
+      background: #3d7c88;
+      color: #b9fcff;
+    }
+  }
+
+  page-register {
+    .item-ios {
+      background: #11222b !important;
+      border: 1px solid #3d7c88 !important;
+      input {
+        background: #11222b;
+      }
+    }
+    button {
+      background: #3d7c88;
+      color: #b9fcff;
+    }
+  }
+  page-inspection-device .item-his {
+    color: #97bec2;
+  }
+  page-maintains-device .item-his {
+    color: #97bec2;
+  }
+  page-inspection-item-his {
+    .list-ios .item-ios {
+      color: #97bec2;
+    }
+  }
+  page-maintains-item-his {
+    .list-ios .item-ios {
+      color: #97bec2;
+    }
+  }
+}

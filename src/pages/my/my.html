@@ -1,0 +1,55 @@
+<ion-header class="page-header">
+  <ion-navbar>
+    <ion-title> 我的 </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="title-container">
+    <div class="title-message">
+      <img src="assets/imgs/avatar/{{user.attr3||'00.png'}}" />
+      <p>{{user.userName}}</p>
+      <p>{{user.realName}}</p>
+    </div>
+  </div>
+  <ion-list>
+    <ion-item detail-push (tap)="changePassword($event)">
+      <ion-avatar item-start>
+        <img src="assets/imgs/my/icons/password.png" />
+      </ion-avatar>
+      修改密码
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/imgs/my/icons/post.png" />
+      </ion-avatar>
+      职务
+      <span item-end>{{user?.titleText}}</span>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/imgs/my/icons/phone.png" />
+      </ion-avatar>
+      电话
+      <span item-end>{{user?.telephone}}</span>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/imgs/my/icons/email.png" />
+      </ion-avatar>
+      邮箱
+      <span item-end>{{user?.email}}</span>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/imgs/my/icons/version.png" />
+      </ion-avatar>
+      版本
+      <span item-end>{{version}}</span>
+    </ion-item>
+  </ion-list>
+
+  <div class="bottom-button">
+    <div class="logout dif-cor" (click)="loginOut()">退出登录</div>
+  </div>
+</ion-content>

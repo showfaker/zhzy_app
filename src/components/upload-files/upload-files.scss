@@ -1,0 +1,29 @@
+upload-files {
+  .doc-container {
+    background: #fff;
+  }
+  .doc-col {
+    line-height: 24px;
+    border-bottom: 1px solid #eee;
+    color: #727272;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  .file-icon {
+    font-size: 16px;
+    margin: 0 5px;
+    vertical-align: middle;
+  }
+  .remove-icon {
+    font-size: 16px;
+    float: right;
+    margin: 4px;
+  }
+  .ion-ios-remove:before {
+    content: '\e760' !important;
+  }
+  .grid {
+    padding: 5px 0;
+  }
+}
