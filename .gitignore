@@ -5,3 +5,4 @@ node_modules/
 ionic.config.json
 .idea/workspace.xml
 # platforms/
+__MACOSX/platforms/ios/zyet_fore_code/
