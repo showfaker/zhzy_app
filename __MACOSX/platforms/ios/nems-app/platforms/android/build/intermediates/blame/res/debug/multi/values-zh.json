@@ -1,0 +1,254 @@
+[
+    {
+        "outputFile": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh\\values-zh.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 58,
+                    "endOffset": 109
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-zh\\appupdate_strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 501,
+                        "endColumn": 58,
+                        "endOffset": 555
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 114,
+                    "endColumn": 58,
+                    "endOffset": 168
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-zh\\appupdate_strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 442,
+                        "endColumn": 58,
+                        "endOffset": 496
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 173,
+                    "endColumn": 56,
+                    "endOffset": 225
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-zh\\appupdate_strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 385,
+                        "endColumn": 56,
+                        "endOffset": 437
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 230,
+                    "endColumn": 44,
+                    "endOffset": 270
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-zh\\appupdate_strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 340,
+                        "endColumn": 44,
+                        "endOffset": 380
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 275,
+                    "endColumn": 44,
+                    "endOffset": 315
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-zh\\appupdate_strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 295,
+                        "endColumn": 44,
+                        "endOffset": 335
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 320,
+                    "endColumn": 67,
+                    "endOffset": 383
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-zh\\appupdate_strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 611,
+                        "endColumn": 67,
+                        "endOffset": 674
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 388,
+                    "endColumn": 49,
+                    "endOffset": 433
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-zh\\appupdate_strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 561,
+                        "endColumn": 49,
+                        "endOffset": 606
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 438,
+                    "endColumn": 52,
+                    "endOffset": 486
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-zh\\appupdate_strings.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 679,
+                        "endColumn": 52,
+                        "endOffset": 727
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 491,
+                    "endColumn": 49,
+                    "endOffset": 536
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-zh\\appupdate_strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 49,
+                        "endOffset": 100
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 541,
+                    "endColumn": 52,
+                    "endOffset": 589
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-zh\\appupdate_strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 151,
+                        "endColumn": 52,
+                        "endOffset": 199
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 594,
+                    "endColumn": 45,
+                    "endOffset": 635
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-zh\\appupdate_strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 105,
+                        "endColumn": 45,
+                        "endOffset": 146
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 640,
+                    "endColumn": 48,
+                    "endOffset": 684
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-zh\\appupdate_strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 204,
+                        "endColumn": 48,
+                        "endOffset": 248
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 689,
+                    "endColumn": 41,
+                    "endOffset": 726
+                },
+                "from": {
+                    "file": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\res\\values-zh\\appupdate_strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 253,
+                        "endColumn": 41,
+                        "endOffset": 290
+                    }
+                }
+            }
+        ]
+    }
+]

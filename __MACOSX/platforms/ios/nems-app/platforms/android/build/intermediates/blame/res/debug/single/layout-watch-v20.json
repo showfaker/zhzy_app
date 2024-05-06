@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\layout-watch-v20\\abc_alert_dialog_title_material.xml",
+        "source": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\layout-watch-v20\\abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\layout-watch-v20\\abc_alert_dialog_button_bar_material.xml",
+        "source": "D:\\dev\\code_08\\zyet_fore_code\\nems-app\\platforms\\android\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\27.1.1\\res\\layout-watch-v20\\abc_alert_dialog_button_bar_material.xml"
+    }
+]

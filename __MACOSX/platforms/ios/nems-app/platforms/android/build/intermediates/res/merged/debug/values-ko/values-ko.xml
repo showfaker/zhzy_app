@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="4600421777120114993" name="abc_action_bar_home_description">"홈 탐색"</string>
+    <string msgid="1594238315039666878" name="abc_action_bar_up_description">"위로 탐색"</string>
+    <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"옵션 더보기"</string>
+    <string msgid="4076576682505996667" name="abc_action_mode_done">"완료"</string>
+    <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"전체 보기"</string>
+    <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"앱 선택"</string>
+    <string msgid="121134116657445385" name="abc_capital_off">"사용 안함"</string>
+    <string msgid="3405795526292276155" name="abc_capital_on">"사용"</string>
+    <string msgid="7723749260725869598" name="abc_search_hint">"검색..."</string>
+    <string msgid="3691816814315814921" name="abc_searchview_description_clear">"검색어 삭제"</string>
+    <string msgid="2550479030709304392" name="abc_searchview_description_query">"검색어"</string>
+    <string msgid="8264924765203268293" name="abc_searchview_description_search">"검색"</string>
+    <string msgid="8928215447528550784" name="abc_searchview_description_submit">"검색어 보내기"</string>
+    <string msgid="893419373245838918" name="abc_searchview_description_voice">"음성 검색"</string>
+    <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"공유 대상"</string>
+    <string msgid="3300176832234831527" name="abc_shareactionprovider_share_with_application">"<ns1:g id="APPLICATION_NAME">%s</ns1:g>와(과) 공유"</string>
+    <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"접기"</string>
+    <string name="download_complete">다운로드 완료</string>
+    <string name="download_complete_neu_btn">수동으로 다운로드</string>
+    <string name="download_complete_pos_btn">다시 다운로드</string>
+    <string name="download_complete_title">다운로드 완료</string>
+    <string name="error_database">이미지 데이터베이스를 여는 데 오류가 발생했습니다. 문제를 보고하세요.</string>
+    <string name="free_version_label">무료 버전 - 남은 이미지: %d</string>
+    <string name="multi_app_name">MultiImageChooser</string>
+    <string name="requesting_thumbnails">썸네일 요청 중. 기다려주세요</string>
+    <string msgid="146198913615257606" name="search_menu_title">"검색"</string>
+    <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="update_bg">백그라운드 업데이트</string>
+    <string name="update_cancel">취소</string>
+    <string name="update_error_message">네트워크를 사용할 수 없습니다, 네트워크 상태를 확인해주세요.</string>
+    <string name="update_error_title">에러</string>
+    <string name="update_error_yes_btn">확인</string>
+    <string name="update_latest">최신 버전입니다</string>
+    <string name="update_message">업데이트가 필요합니다!</string>
+    <string name="update_title">새로운 업데이트</string>
+    <string name="update_update_btn">업데이트</string>
+    <string name="updating">업데이트 중입니다</string>
+    <string name="zxing_app_name">바코드 스캐너</string>
+    <string name="zxing_button_ok">확인</string>
+    <string name="zxing_msg_camera_framework_bug">죄송합니다. 기기의 카메라에 오류가 생겼습니다. 기기를 재시작 해야될 수도 있습니다.</string>
+    <string name="zxing_msg_default_status">바코드를 사각형 안에 비춰주세요.</string>
+</resources>
