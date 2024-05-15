@@ -1,0 +1,1054 @@
+<!--
+  Generated template for the JobRecordDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleBaseInfo = !toggleBaseInfo">
+        电站信息
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleBaseInfo?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <!-- 电站信息 -->
+      <ng-container *ngIf="toggleBaseInfo">
+        <!--电站名称  -->
+        <ion-item [attr.detail-push]="false" no-lines>
+          <ion-label><b>*</b>电站名称:</ion-label>
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="stationName"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 并网容量(MW) -->
+        <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+          <ion-label><b>*</b>并网容量-MW:</ion-label>
+          <ion-input
+            (tap)="openInputModal('parallelCapacity',  'number', '并网容量-MW',4)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="parallelCapacity"
+          ></ion-input>
+        </ion-item>
+
+        <!--并网时间  -->
+        <ion-item no-lines [attr.detail-push]="false">
+          <ion-label>并网日期:</ion-label>
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="operationDate"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 日报时间 -->
+        <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+          <ion-label> <b>*</b>填报日期:</ion-label>
+          <ion-datetime
+            doneText="确定"
+            cancelText="清除"
+            displayFormat="YYYY-MM-DD"
+            formControlName="reportDate"
+            (ionBlur)="handleDateTimeBlur($event)"
+            [max]="max"
+          ></ion-datetime>
+        </ion-item>
+
+        <!--填报人  -->
+        <ion-item no-lines [attr.detail-push]="false">
+          <ion-label><b>*</b>填报人:</ion-label>
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="recorderName"
+          ></ion-input>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <!-- 集电线路电量 -->
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleEnegies01 = !toggleEnegies01">
+        集电线路电量 ({{getFormItem('enegies', '01').length || 0}})
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleEnegies01?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleEnegies01">
+        <ng-container formGroupName="enegies">
+          <ng-container formArrayName="01">
+            <ion-list
+              class="new-list new-list-insert"
+              *ngFor=" let formItem of getFormItem('enegies', '01'); let i = index"
+              [formGroupName]="i"
+            >
+              <ion-item no-lines [attr.detail-push]="editType !== 'view'">
+                <ion-label><b>*</b>集电线路编号:</ion-label>
+                <ion-input
+                  (tap)="openInputModal('energyNo','text','集电线路编号',0, 'enegies',i, '01')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="energyNo"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item no-lines [attr.detail-push]="editType !== 'view'">
+                <ion-label>计量设备:</ion-label>
+                <ion-input
+                  (tap)="selectEquipment('deviceId','deviceName','enegies',i, '01')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="deviceName"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+                <ion-label>倍率:</ion-label>
+                <ion-input
+                  (tap)="openInputModal('meterRatio','number','倍率',2, 'enegies',i, '01')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="meterRatio"
+                ></ion-input>
+              </ion-item>
+              <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+                <ion-label>昨日读数:</ion-label>
+                <ion-input
+                  (tap)="openInputModal('preValue','number','昨日读数',4, 'enegies',i, '01')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="preValue"
+                ></ion-input>
+              </ion-item>
+              <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+                <ion-label>今日读数:</ion-label>
+                <ion-input
+                  (tap)="openInputModal('meterValue','number','今日读数',4, 'enegies',i, '01')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="meterValue"
+                ></ion-input>
+              </ion-item>
+              <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+                <ion-label>今日发电量-kWh:</ion-label>
+                <ion-input
+                  (tap)="openInputModal('dailyEnergy','number','今日发电量-kWh',2, 'enegies',i, '01')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="dailyEnergy"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <button
+                  ion-button
+                  color="danger"
+                  item-end
+                  (click)="removeItem('enegies', '01', i)"
+                  style="color: #fff"
+                >
+                  删除
+                </button>
+              </ion-item>
+            </ion-list>
+          </ng-container>
+          <ion-item (tap)="addEnegies('enegies', '01')">
+            <ion-label text-right>点击添加:</ion-label>
+            <button ion-button icon-only item-end clear type="button">
+              <ion-icon name="add-new"></ion-icon>
+            </button>
+          </ion-item>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+
+    <!-- 关口表正向有功电量 -->
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleEnegies02 = !toggleEnegies02">
+        <b>*</b> 关口表正向有功电量 ({{getFormItem('enegies', '02').length ||
+        0}})
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleEnegies02?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleEnegies02">
+        <ng-container formGroupName="enegies">
+          <ng-container formArrayName="02">
+            <ion-list
+              class="new-list new-list-insert"
+              *ngFor=" let formItem of getFormItem('enegies', '02'); let i = index"
+              [formGroupName]="i"
+            >
+              <ion-item no-lines [attr.detail-push]="false">
+                <ion-label>序号:</ion-label>
+                <ion-input
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  [value]="(i+1).toString()"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item no-lines [attr.detail-push]="editType !== 'view'">
+                <ion-label>电表:</ion-label>
+                <ion-input
+                  (tap)="selectEquipment('deviceId','deviceName','enegies',i, '02')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="deviceName"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+                <ion-label>倍率:</ion-label>
+                <ion-input
+                  (tap)="openInputModal('meterRatio','number','倍率',2, 'enegies',i, '02')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="meterRatio"
+                ></ion-input>
+              </ion-item>
+              <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+                <ion-label>昨日读数:</ion-label>
+                <ion-input
+                  (tap)="openInputModal('preValue','number','昨日读数',4, 'enegies',i, '02')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="preValue"
+                ></ion-input>
+              </ion-item>
+              <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+                <ion-label>今日读数:</ion-label>
+                <ion-input
+                  (tap)="openInputModal('meterValue','number','今日读数',4, 'enegies',i, '02')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="meterValue"
+                ></ion-input>
+              </ion-item>
+              <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+                <ion-label>今日发电量-kWh:</ion-label>
+                <ion-input
+                  (tap)="openInputModal('dailyEnergy','number','今日发电量-kWh',2, 'enegies',i, '02')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="dailyEnergy"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <button
+                  ion-button
+                  color="danger"
+                  item-end
+                  (click)="removeItem('enegies', '02', i)"
+                  style="color: #fff"
+                >
+                  删除
+                </button>
+              </ion-item>
+            </ion-list>
+          </ng-container>
+          <ion-item (tap)="addEnegies('enegies', '02')">
+            <ion-label text-right>点击添加:</ion-label>
+            <button ion-button icon-only item-end clear type="button">
+              <ion-icon name="add-new"></ion-icon>
+            </button>
+          </ion-item>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+    <!-- 关口表反向有功电量 -->
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleEnegies03 = !toggleEnegies03">
+        <b>*</b> 关口表反向有功电量 ({{getFormItem('enegies', '03').length ||
+        0}})
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleEnegies03?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleEnegies03">
+        <ng-container formGroupName="enegies">
+          <ng-container formArrayName="03">
+            <ion-list
+              class="new-list new-list-insert"
+              *ngFor=" let formItem of getFormItem('enegies', '03'); let i = index"
+              [formGroupName]="i"
+            >
+              <ion-item no-lines [attr.detail-push]="false">
+                <ion-label>序号:</ion-label>
+                <ion-input
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  [value]="(i+1).toString()"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item no-lines [attr.detail-push]="editType !== 'view'">
+                <ion-label>电表:</ion-label>
+                <ion-input
+                  (tap)="selectEquipment('deviceId','deviceName','enegies',i, '03')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="deviceName"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+                <ion-label>倍率:</ion-label>
+                <ion-input
+                  (tap)="openInputModal('meterRatio','number','倍率',2, 'enegies',i, '03')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="meterRatio"
+                ></ion-input>
+              </ion-item>
+              <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+                <ion-label>昨日读数:</ion-label>
+                <ion-input
+                  (tap)="openInputModal('preValue','number','昨日读数',4, 'enegies',i, '03')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="preValue"
+                ></ion-input>
+              </ion-item>
+              <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+                <ion-label>今日读数:</ion-label>
+                <ion-input
+                  (tap)="openInputModal('meterValue','number','今日读数',4, 'enegies',i, '03')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="meterValue"
+                ></ion-input>
+              </ion-item>
+              <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+                <ion-label>今日发电量-kWh:</ion-label>
+                <ion-input
+                  (tap)="openInputModal('dailyEnergy','number','今日发电量-kWh',2, 'enegies',i, '03')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="dailyEnergy"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <button
+                  ion-button
+                  color="danger"
+                  item-end
+                  (click)="removeItem('enegies', '03', i)"
+                  style="color: #fff"
+                >
+                  删除
+                </button>
+              </ion-item>
+            </ion-list>
+          </ng-container>
+          <ion-item (tap)="addEnegies('enegies', '03')">
+            <ion-label text-right>点击添加:</ion-label>
+            <button ion-button icon-only item-end clear type="button">
+              <ion-icon name="add-new"></ion-icon>
+            </button>
+          </ion-item>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+
+    <!-- 出口发电量 -->
+    <ion-list class="new-list">
+      <ion-list-header
+        no-lines
+        (tap)="toggleDeviceEnergy = !toggleDeviceEnergy"
+      >
+        出口发电量 {{getFormItem('enegies', '04').length>0 ?
+        '('+getFormItem('enegies', '04').length+')' : ''}}
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleDeviceEnergy?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleDeviceEnergy">
+        <!-- 出口总发电量-kWh -->
+        <ion-item
+          [hidden]="!fields['deviceEnergy']?.show"
+          [attr.detail-push]="editType !== 'view'"
+          no-lines
+        >
+          <ion-label>{{ fields['deviceEnergy']?.label }}:</ion-label>
+          <ion-input
+            (tap)="openInputModal('deviceEnergy','number',fields['deviceEnergy']?.label,2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="deviceEnergy"
+          ></ion-input>
+        </ion-item>
+
+        <ng-container formGroupName="enegies">
+          <ng-container formArrayName="04">
+            <ion-list
+              class="new-list new-list-insert"
+              *ngFor=" let formItem of getFormItem('enegies', '04'); let i = index"
+              [formGroupName]="i"
+            >
+              <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+                <ion-label>名称:</ion-label>
+                <ion-input
+                  (tap)="openInputModal('deviceName','text','名称',0, 'enegies',i, '04')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="deviceName"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+                <ion-label>今日发电量-kWh:</ion-label>
+                <ion-input
+                  (tap)="openInputModal('dailyEnergy','number','今日发电量-kWh',2, 'enegies',i, '04')"
+                  type="text"
+                  [readonly]="true"
+                  text-right
+                  formControlName="dailyEnergy"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <button
+                  ion-button
+                  color="danger"
+                  item-end
+                  (click)="removeItem('enegies', '04', i)"
+                  style="color: #fff"
+                >
+                  删除
+                </button>
+              </ion-item>
+            </ion-list>
+          </ng-container>
+          <ion-item
+            (tap)="addEnegies('enegies', '04')"
+            [hidden]="!form.value.showDevEnergies"
+          >
+            <ion-label text-right>点击添加:</ion-label>
+            <button ion-button icon-only item-end clear type="button">
+              <ion-icon name="add-new"></ion-icon>
+            </button>
+          </ion-item>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+
+    <!-- 发电功率 -->
+    <ion-list class="new-list">
+      <ion-list-header
+        no-lines
+        (tap)="togglePowerGeneration = !togglePowerGeneration"
+      >
+        发电功率
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{togglePowerGeneration?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="togglePowerGeneration">
+        <!-- 当天最大出力-MW -->
+        <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+          <ion-label>当天最大出力-MW:</ion-label>
+          <ion-input
+            (tap)="openInputModal('maxPower','number','当天最大出力-MW',2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="maxPower"
+          ></ion-input>
+        </ion-item>
+        <!-- 当天最大出力时间 -->
+        <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+          <ion-label>当天最大出力时间:</ion-label>
+          <ion-datetime
+            doneText="确定"
+            cancelText="清除"
+            displayFormat="HH:mm"
+            formControlName="maxPowerTime"
+          ></ion-datetime>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <!-- 天气情况 -->
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleWeatherInfo = !toggleWeatherInfo">
+        天气情况
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleWeatherInfo?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleWeatherInfo">
+        <!-- 最高气温-℃ -->
+        <ion-item [attr.detail-push]="editType!=='view'" no-lines>
+          <ion-label> 最高气温-℃:</ion-label>
+          <ion-input
+            (tap)="openInputModal('maxTemp','number','最高气温-℃',2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="maxTemp"
+          ></ion-input>
+        </ion-item>
+        <!-- 最低气温-℃ -->
+        <ion-item [attr.detail-push]="editType!=='view'" no-lines>
+          <ion-label> 最低气温-℃:</ion-label>
+          <ion-input
+            (tap)="openInputModal('minTemp','number','最低气温-℃',2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="minTemp"
+          ></ion-input>
+        </ion-item>
+        <!-- 平均气温-℃ -->
+        <ion-item [attr.detail-push]="editType!=='view'" no-lines>
+          <ion-label> 平均气温-℃:</ion-label>
+          <ion-input
+            (tap)="openInputModal('avgTemp','number','平均气温-℃',2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="avgTemp"
+          ></ion-input>
+        </ion-item>
+        <!-- 最大风速-m/s -->
+        <ion-item
+          [attr.detail-push]="editType!=='view'"
+          no-lines
+          [hidden]="!fields['maxWindSpeed']?.show"
+        >
+          <ion-label> {{fields['maxWindSpeed']?.label}}:</ion-label>
+          <ion-input
+            (tap)="openInputModal('maxWindSpeed','number',fields['maxWindSpeed']?.label,2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="maxWindSpeed"
+          ></ion-input>
+        </ion-item>
+        <!-- 最小风速-m/s -->
+        <ion-item
+          [attr.detail-push]="editType!=='view'"
+          no-lines
+          [hidden]="!fields['minWindSpeed']?.show"
+        >
+          <ion-label> {{fields['minWindSpeed']?.label}}:</ion-label>
+          <ion-input
+            (tap)="openInputModal('minWindSpeed','number',fields['minWindSpeed']?.label,2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="minWindSpeed"
+          ></ion-input>
+        </ion-item>
+        <!-- 平均风速-m/s -->
+        <ion-item
+          [attr.detail-push]="editType!=='view'"
+          no-lines
+          [hidden]="!fields['windSpeed']?.show"
+        >
+          <ion-label> {{fields['windSpeed']?.label}}:</ion-label>
+          <ion-input
+            (tap)="openInputModal('windSpeed','number',fields['windSpeed']?.label,2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="windSpeed"
+          ></ion-input>
+        </ion-item>
+        <!-- 天气情况 -->
+        <ion-item [attr.detail-push]="editType!=='view'" no-lines>
+          <ion-label> <b>*</b>天气情况:</ion-label>
+          <ion-input
+            (tap)="openSheetModal('weatherInfo','weatherInfoText')"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="weatherInfoText"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 逆变器启动时间 -->
+        <ion-item
+          [hidden]="!fields['inverterStart']?.show"
+          [attr.detail-push]="editType !== 'view'"
+          no-lines
+        >
+          <ion-label>{{ fields['inverterStart']?.label }}:</ion-label>
+          <ion-datetime
+            doneText="确定"
+            cancelText="清除"
+            displayFormat="HH:mm"
+            formControlName="inverterStart"
+          ></ion-datetime>
+        </ion-item>
+        <!-- 逆变器启动时间 -->
+        <ion-item
+          [hidden]="!fields['inverterStop']?.show"
+          [attr.detail-push]="editType !== 'view'"
+          no-lines
+        >
+          <ion-label>{{ fields['inverterStop']?.label }}:</ion-label>
+          <ion-datetime
+            doneText="确定"
+            cancelText="清除"
+            displayFormat="HH:mm"
+            formControlName="inverterStop"
+          ></ion-datetime>
+        </ion-item>
+        <!-- 日累计辐射-MJ/㎡ -->
+        <ion-item
+          [hidden]="!fields['irradiation']?.show"
+          [attr.detail-push]="editType !== 'view'"
+          no-lines
+        >
+          <ion-label>{{ fields['irradiation']?.label }}:</ion-label>
+          <ion-input
+            (tap)="openInputModal('irradiation','number',fields['irradiation']?.label ,2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="irradiation"
+          ></ion-input>
+        </ion-item>
+        <!-- 日发电时长-h -->
+        <ion-item
+          [hidden]="!fields['inverterHours']?.show"
+          [attr.detail-push]="editType !== 'view'"
+          no-lines
+        >
+          <ion-label>{{ fields['inverterHours']?.label }}:</ion-label>
+          <ion-input
+            (tap)="openInputModal('inverterHours','number',fields['inverterHours']?.label ,2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="inverterHours"
+          ></ion-input>
+        </ion-item>
+        <!-- 等效利用时数-h -->
+        <ion-item
+          [hidden]="!fields['kwhkwp']?.show"
+          [attr.detail-push]="editType !== 'view'"
+          no-lines
+        >
+          <ion-label>{{ fields['kwhkwp']?.label }}:</ion-label>
+          <ion-input
+            (tap)="openInputModal('kwhkwp','number',fields['kwhkwp']?.label,2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="kwhkwp"
+          ></ion-input>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <!-- 损失电量 -->
+    <ion-list class="new-list">
+      <ion-list-header
+        no-lines
+        (tap)="toggleJobRecordLosses = !toggleJobRecordLosses"
+      >
+        损失电量
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleJobRecordLosses?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleJobRecordLosses">
+        <ng-container formArrayName="loss">
+          <ion-list
+            class="new-list new-list-insert"
+            *ngFor="let item of getJobRecordLosses(form); let i = index"
+            [formGroupName]="i"
+          >
+            <ion-item no-lines [attr.detail-push]="editType !== 'view'">
+              <ion-label><b>*</b>损失类别:</ion-label>
+              <ion-input
+                (tap)="openSheetModal('lossType','lossTypeText','loss',i)"
+                type="text"
+                [readonly]="true"
+                text-right
+                formControlName="lossTypeText"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item no-lines [attr.detail-push]="editType !== 'view'">
+              <ion-label>故障设备:</ion-label>
+              <ion-input
+                (tap)="selectEquipment('deviceId','deviceName','loss',i)"
+                type="text"
+                [readonly]="true"
+                text-right
+                formControlName="deviceName"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+              <ion-label>损失情况说明:</ion-label>
+              <ion-input
+                (tap)="openInputModal('lossDesc','text','损失情况说明',0, 'loss',i)"
+                type="text"
+                [readonly]="true"
+                text-right
+                formControlName="lossDesc"
+              ></ion-input>
+            </ion-item>
+            <ion-item no-lines [attr.detail-push]="editType !== 'view'">
+              <ion-label>开始时间:</ion-label>
+              <ion-datetime
+                doneText="确定"
+                cancelText="清除"
+                displayFormat="HH:mm"
+                formControlName="startTime"
+              ></ion-datetime>
+            </ion-item>
+            <ion-item no-lines [attr.detail-push]="editType !== 'view'">
+              <ion-label>结束时间: </ion-label>
+              <ion-datetime
+                doneText="确定"
+                cancelText="清除"
+                displayFormat="HH:mm"
+                formControlName="endTime"
+              ></ion-datetime>
+            </ion-item>
+            <ion-item [attr.detail-push]="editType !== 'view'" no-lines>
+              <ion-label><b>*</b>损失电量-kWh:</ion-label>
+              <ion-input
+                (tap)="openInputModal('lossEnergy','number','损失电量-kWh',2, 'loss',i)"
+                type="text"
+                [readonly]="true"
+                text-right
+                formControlName="lossEnergy"
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <button
+                ion-button
+                color="danger"
+                item-end
+                (click)="removeLoss(i)"
+                style="color: #fff"
+              >
+                删除
+              </button>
+            </ion-item>
+          </ion-list>
+
+          <ion-item (tap)="addJobRecordLosses()">
+            <ion-label text-right>点击添加:</ion-label>
+            <button ion-button icon-only item-end clear type="button">
+              <ion-icon name="add-new"></ion-icon>
+            </button>
+          </ion-item>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+
+    <!-- 发电预测 -->
+    <ion-list class="new-list">
+      <ion-list-header
+        no-lines
+        (tap)="togglePowerForecast = !togglePowerForecast"
+      >
+        发电预测
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{togglePowerForecast?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="togglePowerForecast">
+        <!-- 次日发电时长-h -->
+        <ion-item
+          [hidden]="!fields['forecastHours']?.show"
+          [attr.detail-push]="editType !== 'view'"
+          no-lines
+        >
+          <ion-label>{{ fields['forecastHours']?.label }}:</ion-label>
+          <ion-input
+            (tap)="openInputModal('forecastHours','number',fields['forecastHours']?.label,2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="forecastHours"
+          ></ion-input>
+        </ion-item>
+        <!-- 次日电量预估-kWh -->
+        <ion-item
+          [hidden]="!fields['forecastEnergy']?.show"
+          [attr.detail-push]="editType !== 'view'"
+          no-lines
+        >
+          <ion-label>{{ fields['forecastEnergy']?.label }}:</ion-label>
+          <ion-input
+            (tap)="openInputModal('forecastEnergy','number',fields['forecastHours']?.label,2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="forecastEnergy"
+          ></ion-input>
+        </ion-item>
+        <!-- 光功率预测电量-kWh -->
+        <ion-item
+          [hidden]="!fields['forecastEnergy2']?.show"
+          [attr.detail-push]="editType !== 'view'"
+          no-lines
+        >
+          <ion-label>{{ fields['forecastEnergy2']?.label }}:</ion-label>
+          <ion-input
+            (tap)="openInputModal('forecastEnergy2','number',fields['forecastEnergy2']?.label,2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="forecastEnergy2"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 次日平均风速-m/s -->
+        <ion-item
+          [attr.detail-push]="editType!=='view'"
+          no-lines
+          [hidden]="!fields['forecastWindSpeed']?.show"
+        >
+          <ion-label> {{fields['forecastWindSpeed']?.label}}:</ion-label>
+          <ion-input
+            (tap)="openInputModal('forecastWindSpeed','number',fields['forecastWindSpeed']?.label,2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="forecastWindSpeed"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 次日功率预测-kW -->
+        <ion-item
+          [attr.detail-push]="editType!=='view'"
+          no-lines
+          [hidden]="!fields['forecastPower']?.show"
+        >
+          <ion-label> {{fields['forecastPower']?.label}}:</ion-label>
+          <ion-input
+            (tap)="openInputModal('forecastPower','number',fields['forecastPower']?.label,2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="forecastPower"
+          ></ion-input>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <!-- 损耗情况 -->
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleDailyLoss = !toggleDailyLoss">
+        损耗情况
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon
+            name="{{toggleDailyLoss?'arrow-up':'arrow-down'}}"
+          ></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleDailyLoss">
+        <!-- 逆变器到关口表损耗-kWh -->
+        <ion-item
+          [hidden]="!fields['dailyLoss']?.show"
+          [attr.detail-push]="editType !== 'view'"
+          no-lines
+        >
+          <ion-label>{{ fields['dailyLoss']?.label }}:</ion-label>
+          <ion-input
+            (tap)="openInputModal('dailyLoss','number',fields['dailyLoss']?.label,2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="dailyLoss"
+          ></ion-input>
+        </ion-item>
+
+        <!-- SVG出线柜损耗-kWh -->
+        <ion-item [attr.detail-push]="editType!=='view'" no-lines>
+          <ion-label> SVG出线柜损耗-kWh:</ion-label>
+          <ion-input
+            (tap)="openInputModal('svgLoss','number','SVG出线柜损耗-kWh',2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="svgLoss"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 站用变兼接地变损耗-kWh -->
+        <ion-item [attr.detail-push]="editType!=='view'" no-lines>
+          <ion-label> 站用变兼接地变损耗-kWh:</ion-label>
+          <ion-input
+            (tap)="openInputModal('transformerLoss','number','站用变兼接地变损耗-kWh',2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="transformerLoss"
+          ></ion-input>
+        </ion-item>
+
+        <!-- 综合厂用电量-kWh -->
+        <ion-item [attr.detail-push]="editType!=='view'" no-lines>
+          <ion-label> 综合厂用电量-kWh:</ion-label>
+          <ion-input
+            (tap)="openInputModal('usageEnergy','number','综合厂用电量-kWh',2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="usageEnergy"
+          ></ion-input>
+        </ion-item>
+        <!-- 综合厂用电率-% -->
+        <ion-item [attr.detail-push]="editType!=='view'" no-lines>
+          <ion-label> 综合厂用电率-%:</ion-label>
+          <ion-input
+            (tap)="openInputModal('usageEnergyRate','number','综合厂用电率-%',2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="usageEnergyRate"
+          ></ion-input>
+        </ion-item>
+        <!-- 风机故障停机时间-h -->
+        <ion-item
+          [attr.detail-push]="editType!=='view'"
+          no-lines
+          [hidden]="!fields['stopHours']?.show"
+        >
+          <ion-label> {{fields['stopHours']?.label}}:</ion-label>
+          <ion-input
+            (tap)="openInputModal('stopHours','number',fields['stopHours']?.label,2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="stopHours"
+          ></ion-input>
+        </ion-item>
+        <!-- 风机可利用率-% -->
+        <ion-item
+          [attr.detail-push]="editType!=='view'"
+          no-lines
+          [hidden]="!fields['usageRate']?.show"
+        >
+          <ion-label> {{fields['usageRate']?.label}}:</ion-label>
+          <ion-input
+            (tap)="openInputModal('usageRate','number',fields['usageRate']?.label,2)"
+            type="text"
+            [readonly]="true"
+            text-right
+            formControlName="usageRate"
+          ></ion-input>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <!-- 特殊情况说明 -->
+    <ion-list class="new-list">
+      <ion-list-header no-lines (tap)="toggleMemo = !toggleMemo">
+        特殊情况说明
+        <button ion-button icon-only item-end clear type="button">
+          <ion-icon name="{{toggleMemo?'arrow-up':'arrow-down'}}"></ion-icon>
+        </button>
+      </ion-list-header>
+      <ng-container *ngIf="toggleMemo">
+        <ion-item
+          *ngIf="form.value.memo"
+          [attr.detail-push]="true"
+          no-lines
+          (tap)="editMemo()"
+        >
+          <ion-input
+            type="text"
+            [readonly]="true"
+            text-left
+            formControlName="memo"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!form.value.memo" (tap)="addMemo()">
+          <ion-label text-right>点击添加：</ion-label>
+          <button ion-button icon-only item-end clear type="button">
+            <ion-icon name="add-new"></ion-icon>
+          </button>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="footer-bar">
+    <ion-grid>
+      <ion-row>
+        <ion-col
+          *ngFor="let button of buttons"
+          class="{{buttons.length==1?'col-12':'col-6'}}"
+        >
+          <div class="btn">
+            <ion-icon
+              (tap)="buttonFunction(button.function)"
+              [name]="button.icon.split('.')[0]"
+            ></ion-icon>
+            <p>{{button.text}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

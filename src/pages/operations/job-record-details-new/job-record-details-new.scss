@@ -1,0 +1,89 @@
+page-job-record-details-new {
+  ion-content {
+    & > div {
+      margin-bottom: 88px !important;
+    }
+  }
+  b {
+    color: #f00;
+  }
+  .list-ios > .item-block:last-child {
+    border-bottom: 0;
+  }
+
+  .new-list.new-list-insert.list-ios {
+    margin: 16px;
+    padding-bottom: 0;
+    border-radius: 10px;
+    .item-block {
+      height: 42px;
+      min-height: 42px !important;
+    }
+  }
+
+  .check-in-item {
+    min-height: 100px;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    .p-header {
+      padding: 5px;
+      text-align: center;
+    }
+    [col-3] {
+      width: 20%;
+      max-width: 20%;
+      text-align: center;
+      .img-container {
+        position: relative;
+        text-align: center;
+        .delete-user {
+          font-size: 12px;
+          position: absolute;
+          right: 10px;
+        }
+      }
+      img {
+        width: 40px;
+      }
+
+      .add {
+        color: #ccc;
+      }
+      p {
+        color: #727272;
+        font-size: 12px;
+      }
+    }
+  }
+  ion-toolbar {
+    .toolbar-background-ios {
+      background: #fff;
+    }
+    .col-12 {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      width: 100%;
+      max-width: 100%;
+    }
+    .col-6 {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+      flex: 0 0 50%;
+      width: 50%;
+      max-width: 50%;
+    }
+    ion-col {
+      text-align: center;
+      font-size: 12px;
+      color: #727272;
+      img {
+        width: 40px;
+      }
+      .icon {
+        font-size: 30px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}

@@ -172,6 +172,7 @@
             >{{fields?.lastMeterValue.name}}：</ion-label
           >
           <ion-input
+            (tap)="openInputModal('lastMeterValue',fields?.lastMeterValue.editable, 'number')"
             type="text"
             [readonly]="true"
             text-right
@@ -189,6 +190,7 @@
             >{{fields?.lastDailyEnergy.name}}：</ion-label
           >
           <ion-input
+            (tap)="openInputModal('lastDailyEnergy',fields?.lastDailyEnergy.editable, 'number')"
             type="text"
             [readonly]="true"
             text-right

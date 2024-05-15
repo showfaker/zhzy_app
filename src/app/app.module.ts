@@ -179,6 +179,7 @@ import {
   ModalScaleLeave
 } from './modal-transitions';
 import { SettingPage } from '../pages/monitor/child/setting';
+import { JobRecordDetailsNewPage } from '../pages/operations/job-record-details-new/job-record-details-new';
 
 const modals = [
   CommonInputPage,
@@ -244,6 +245,7 @@ const operateTabPage = [
     Operations,
     JobRecordPage,
     JobRecordDetailsPage,
+    JobRecordDetailsNewPage,
     InventorisPage,
     InventorisMenusPage,
     InventorisOutInPage,
@@ -330,6 +332,7 @@ const operateTabPage = [
     Operations,
     JobRecordPage,
     JobRecordDetailsPage,
+    JobRecordDetailsNewPage,
     InventorisPage,
     InventorisMenusPage,
     InventorisOutInPage,

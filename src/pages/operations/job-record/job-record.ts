@@ -10,8 +10,9 @@ import {
 } from 'ionic-angular';
 import { CommonStationPage } from '../../util/common-station/common-station';
 import * as moment from 'moment';
-import { JobRecordDetailsPage } from '../job-record-details/job-record-details';
+import { JobRecordDetailsNewPage as JobRecordDetailsPage } from '../job-record-details-new/job-record-details-new';
 import { JobRecordSearchPage } from '../../util/modal/job-record-search/job-record-search';
+// import { JobRecordDetailsPage } from '../job-record-details/job-record-details';
 
 /**
  * Generated class for the JobRecordPage page.
@@ -41,16 +42,14 @@ export class JobRecordPage {
     private modalCtrl: ModalController,
     public menuCtrl: MenuController,
     private runlogservice: RunLogService,
-    private loadingCtrl: LoadingController,
+    private loadingCtrl: LoadingController
   ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad JobRecordPage222');
-    this.query(true);
+    console.log('ionViewDidLoad JobRecordPage');
+    // this.query(true);
   }
-  /** every come into page query  **/
   ionViewWillEnter() {
-    console.log('ionViewDidLoad JobRecordPage333');
     this.query(true);
   }
 
@@ -67,7 +66,7 @@ export class JobRecordPage {
         enterAnimation: 'modal-from-right-enter',
         leaveAnimation: 'modal-from-right-leave',
         cssClass: 'commonSearchSideBar',
-      },
+      }
     );
     modal.onDidDismiss((data) => {
       if (data) {
